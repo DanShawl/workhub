@@ -25,3 +25,6 @@ function App() {
 }
 
 export default App;
+
+// Proxy error: Could not proxy request /api/tasks/ from localhost:3000 to http://localhost:5000/.
+// [1] See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (ECONNREFUSED).
