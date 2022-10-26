@@ -4,12 +4,13 @@ import { createTask } from '../features/tasks/taskSlice';
 
 function TaskForm() {
   const [text, setText] = useState('');
+  const [category, selectCategory] = useState('');
+  const [priority, selectPriority] = useState('');
   const dispatch = useDispatch();
 
   const onFormSubmit = (e) => {
     e.preventDefault();
-
-    dispatch(createTask({ text }));
+    dispatch(createTask({ text, category, priority }));
     setText('');
   };
 
@@ -19,12 +20,40 @@ function TaskForm() {
         <div className="form-group">
           <input
             type="text"
-            placeholder="Change water filters"
+            placeholder="Enter a task, work order, etc..."
             name="text"
             id="text"
             value={text}
             onChange={(e) => setText(e.target.value)}
           />
+          {/* <label htmlFor="category-select">Category</label> */}
+          <select
+            name="category"
+            id="category-select"
+            value={category}
+            onChange={(e) => selectCategory(e.target.value)}
+          >
+            <option value="" disabled>
+              Select a category
+            </option>
+            <option value="Work Order">Work Order</option>
+            <option value="Task">Task</option>
+            <option value="Equipment Order">Equipment</option>
+          </select>
+          {/* <label htmlFor="priority-select">Priority</label> */}
+          <select
+            name="priority"
+            id="priority-select"
+            value={priority}
+            onChange={(e) => selectPriority(e.target.value)}
+          >
+            <option value="" disabled>
+              Select a priority level
+            </option>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+          </select>
         </div>
         <div className="form-group">
           <button className="btn btn-block" type="submit">
@@ -37,3 +66,8 @@ function TaskForm() {
 }
 
 export default TaskForm;
+
+//  Categories
+//    Work Order
+//
+//  Priority

@@ -11,6 +11,14 @@ const taskSchema = mongoose.Schema(
       type: String,
       required: [true, 'Please add a text value'],
     },
+    category: {
+      type: String,
+      required: [true, 'Please add a category value.'],
+    },
+    priority: {
+      type: String,
+      required: [true, 'Please add a priority level.'],
+    },
   },
   {
     timestamps: true,

@@ -6,8 +6,10 @@ function TaskItem({ task }) {
   //  separate date string by ,
   return (
     <div className="goal">
-      <div>{new Date(task.createdAt).toLocaleString('en-US')}</div>
       <h2>{task.text}</h2>
+      <h3>{task.category}</h3>
+      <h3>{task.priority}</h3>
+      <div>{new Date(task.createdAt).toLocaleString('en-US')}</div>
       <button onClick={() => dispatch(deleteTask(task._id))} className="close">
         X
       </button>

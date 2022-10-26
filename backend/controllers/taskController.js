@@ -14,14 +14,24 @@ const getTasks = asyncHandler(async (req, res) => {
 //  @route    POST /api/tasks
 //  @access   Private
 const setTask = asyncHandler(async (req, res) => {
-  if (!req.body.text) {
+  // if (!req.body.text) {
+  //   res.status(400);
+  //   throw new Error('Please add text field.');
+  // }
+  if (!req.body.text || !req.body.category) {
     res.status(400);
-    throw new Error('Please add text field.');
+    throw new Error('Please add all fields.');
   }
 
   const task = await Task.create({
     text: req.body.text,
     user: req.user.id,
+    category: req.body.category,
+    priority: req.body.priority,
+    // ticketNumber: req.body.number // #
+    // status: req.body.status // open pending closed
+    // quote: req.body.price
+    // contractor: req.body.contractor  // name
   });
   res.status(200).json(task);
 });
