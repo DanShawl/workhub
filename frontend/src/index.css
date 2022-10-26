@@ -18,6 +18,11 @@ code {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 
 body {
@@ -51,7 +56,7 @@ h3 {
 
 .container {
   width: 100%;
-  max-width: 960px;
+  max-width: 1240px;
   margin: 0 auto;
   padding: 0 20px;
   text-align: center;
@@ -63,7 +68,7 @@ h3 {
   align-items: center;
   padding: 20px 0;
   border-bottom: 1px solid #e6e6e6;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
 }
 
 .header ul {
@@ -92,9 +97,10 @@ h3 {
 .heading {
   font-size: 2rem;
   font-weight: 700;
-  margin-bottom: 50px;
-  padding: 0 20px;
+  margin-bottom: 25px;
+  padding: 0 0;
   text-align: left;
+  /* width: 100%; */
 }
 
 .heading p {
@@ -103,29 +109,60 @@ h3 {
 
 .goals {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   gap: 10px;
 }
 
 .goal {
   background-color: #f4f4f4;
   margin: 10px 0;
-  padding: 20px 0 10px;
+  /* padding: 20px 10px 10px; */
+  padding: 20px;
+  text-align: left;
   position: relative;
 }
 
-.goal .close {
+.goal .priority {
   position: absolute;
+  font-size: 14px;
   top: 10px;
   right: 15px;
-  cursor: pointer;
-  border: none;
-  background: none;
+  /* cursor: pointer; */
+  /* border: none;
+  background: none; */
+}
+
+.task-info {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.task-info p {
+  font-size: 14px;
+}
+
+.task-button {
+  margin-top: 25px;
+}
+.task-button button svg {
+  color: green;
+}
+.task-button button {
+  /* color: green; */
+  border: 1px solid #e6e6e6;
+  border-radius: 3px;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
 }
 
 .form,
 .content {
-  width: 70%;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -151,13 +188,17 @@ h3 {
 }
 
 .btn {
+  font-family: 'Urbanist', sans-serif;
   padding: 10px 20px;
-  border: 1px solid #000;
-  border-radius: 5px;
-  background: #000;
+  border: 1px solid rgb(105, 69, 205);
+  border-radius: 3px;
+  /* background: rgb(73, 45, 103); */
+  background: rgb(97, 53, 218);
+  /* background: rgb(105, 69, 205); */
+  /* background: #000; */
   color: #fff;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
   cursor: pointer;
   text-align: center;
   appearance: button;
@@ -171,8 +212,21 @@ h3 {
 }
 
 .btn-reverse {
+  white-space: nowrap;
+  font-family: 'Urbanist', sans-serif;
+  padding: 10px 0;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
   background: #fff;
   color: #000;
+  border: none;
+  /* border-bottom: 1px solid black; */
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3rem;
 }
 
 .btn-block {
@@ -182,6 +236,42 @@ h3 {
 
 .btn:hover {
   transform: scale(0.98);
+}
+
+.categories-section {
+  margin-top: 45px;
+}
+
+.categories-section h2 {
+  text-align: left;
+}
+
+.categories {
+  display: flex;
+  gap: 2rem;
+  overflow-x: scroll;
+}
+
+.btn-category {
+  background-color: none;
+}
+
+.category-blocks {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.4rem;
+}
+
+.category-count-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #f4f4f4;
+  padding: 0.6rem;
+}
+
+.category-count-block > h6 {
+  font-size: 1rem;
 }
 
 .loadingSpinnerContainer {
@@ -212,6 +302,73 @@ h3 {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@media (min-width: 880px) {
+  .container {
+    padding-bottom: 70px;
+  }
+  .heading {
+    margin-left: 25px;
+    margin-right: 25px;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .category-blocks {
+    gap: 1rem;
+  }
+  .content {
+    margin-left: 25px;
+    margin-right: 25px;
+  }
+}
+@media (min-width: 880px) {
+  .categories-section {
+    margin: 30px 25px;
+  }
+  .task-form {
+    margin: 0 25px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: space-between;
+    border: 1px solid #e6e6e6;
+    padding: 1rem;
+  }
+  .form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+  }
+  .task-inputs {
+    flex: 1;
+    gap: 2rem;
+    margin-bottom: 0;
+  }
+  .btn-task {
+    width: auto;
+    margin-bottom: 0;
+  }
+
+  .task-inputs input {
+    border: none;
+  }
+
+  .task-inputs input,
+  .task-inputs select,
+  .task-inputs textarea {
+    margin-bottom: 0;
+  }
+  .goal {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .goal .priority {
+    position: static;
   }
 }
 

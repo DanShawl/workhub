@@ -16,8 +16,8 @@ function TaskForm() {
 
   return (
     <section className="form">
-      <form onSubmit={onFormSubmit}>
-        <div className="form-group">
+      <form onSubmit={onFormSubmit} className="task-form">
+        <div className="form-group task-inputs">
           <input
             type="text"
             placeholder="Enter a task, work order, etc..."
@@ -38,7 +38,7 @@ function TaskForm() {
             </option>
             <option value="Work Order">Work Order</option>
             <option value="Task">Task</option>
-            <option value="Equipment Order">Equipment</option>
+            <option value="Equipment Report">Equipment Report</option>
           </select>
           {/* <label htmlFor="priority-select">Priority</label> */}
           <select
@@ -56,7 +56,7 @@ function TaskForm() {
           </select>
         </div>
         <div className="form-group">
-          <button className="btn btn-block" type="submit">
+          <button className="btn btn-block btn-task" type="submit">
             Add Task
           </button>
         </div>
