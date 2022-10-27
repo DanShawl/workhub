@@ -1,5 +1,4 @@
 function CategoryCount({ tasks }) {
-  console.table(tasks);
   return (
     <div className="category-blocks">
       <div className="category-count-block">

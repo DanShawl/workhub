@@ -35,7 +35,7 @@ function TaskItem({ task }) {
       </div>
 
       <div className="task-button">
-        <button>
+        <button onClick={() => dispatch(deleteTask(task._id))}>
           <BiCheck />
           Complete Task
         </button>

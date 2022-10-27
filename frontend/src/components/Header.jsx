@@ -22,8 +22,8 @@ function Header() {
       </div>
       <ul>
         {user ? (
-          <li>
-            <button className="btn" onClick={onLogout}>
+          <li className="task-button">
+            <button className="" onClick={onLogout}>
               Logout
             </button>
           </li>
