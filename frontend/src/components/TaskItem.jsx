@@ -10,10 +10,21 @@ import {
 } from 'react-icons/bi';
 function TaskItem({ task }) {
   const dispatch = useDispatch();
-  //  separate date string by ,
-  // let bgColor;
-  // if (task.priority === 'High') bgColor = 'red'
 
+  let bgColor, textColor;
+  if (task.priority === 'High') {
+    textColor = '#c83838';
+    bgColor = '#fea2a2';
+  }
+  if (task.priority === 'Low') {
+    textColor = '#c0ce03';
+    bgColor = '#fbffab';
+  }
+  if (task.priority === 'Medium') {
+    textColor = '#d2711d';
+    bgColor = '#ffaf6a';
+  }
+  // fbffab;
   const categoryIcon = () => {
     if (task.category === 'Work Order') return <BiWrench />;
     if (task.category === 'Task') return <BiTask />;
@@ -23,7 +34,12 @@ function TaskItem({ task }) {
   return (
     <div className="goal">
       <h3>{task.text}</h3>
-      <p className="priority">{task.priority}</p>
+      <p
+        className="priority"
+        style={{ backgroundColor: `${bgColor}`, color: `${textColor}` }}
+      >
+        {task.priority}
+      </p>
       <div className="task-info">
         {/* <BiCategory /> */}
         {categoryIcon()}
