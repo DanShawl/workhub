@@ -17,12 +17,13 @@ function TaskItem({ task }) {
     bgColor = '#fea2a2';
   }
   if (task.priority === 'Low') {
-    textColor = '#c0ce03';
-    bgColor = '#fbffab';
+    textColor = 'rgb(75, 177, 68)';
+    bgColor = 'rgb(209, 255, 207)';
   }
   if (task.priority === 'Medium') {
     textColor = '#d2711d';
-    bgColor = '#ffaf6a';
+    bgColor = 'rgb(253, 221, 170)';
+    // bgColor = '#ffaf6a';
   }
   // fbffab;
   const categoryIcon = () => {
