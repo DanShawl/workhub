@@ -54,42 +54,55 @@ function Login() {
 
   return (
     <>
-      <section className="heading">
-        <h1>Login</h1>
-        <p>Please sign in.</p>
-      </section>
-      <section className="form">
-        <form onSubmit={onFormSubmit}>
-          <div className="form-group">
-            <input
-              type="email"
-              className="form-control"
-              id="email"
-              name="email"
-              value={email}
-              placeholder="Enter your email"
-              onChange={onFormChange}
-            />
+      <div className="login-register">
+        <section className="heading">
+          <div className="heading-info">
+            <h1>Easily manage your day-to-day facility management tasks.</h1>
+            <p>
+              With WorkHub's easy-to-use and simplified facility management
+              software, you'll have all of your tasks, work orders, and
+              equipment reports in one place.
+            </p>
           </div>
-          <div className="form-group">
-            <input
-              type="password"
-              className="form-control"
-              id="password"
-              name="password"
-              value={password}
-              placeholder="Enter a password"
-              onChange={onFormChange}
-            />
-          </div>
+        </section>
 
-          <div className="form-group">
-            <button type="submit" className="btn btn-block">
-              Login
-            </button>
+        <section className="form login-form">
+          <div className="heading-form">
+            <h1>Login</h1>
+            <p>Please sign in.</p>
           </div>
-        </form>
-      </section>
+          <form onSubmit={onFormSubmit}>
+            <div className="form-group">
+              <input
+                type="email"
+                className="form-control"
+                id="email"
+                name="email"
+                value={email}
+                placeholder="Enter your email"
+                onChange={onFormChange}
+              />
+            </div>
+            <div className="form-group">
+              <input
+                type="password"
+                className="form-control"
+                id="password"
+                name="password"
+                value={password}
+                placeholder="Enter a password"
+                onChange={onFormChange}
+              />
+            </div>
+
+            <div className="form-group">
+              <button type="submit" className="btn btn-block">
+                Login
+              </button>
+            </div>
+          </form>
+        </section>
+      </div>
     </>
   );
 }

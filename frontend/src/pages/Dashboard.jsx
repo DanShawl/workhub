@@ -38,7 +38,6 @@ function Dashboard() {
     // dispatch(getTasks());
 
     if (!user) {
-      // dispatch(reset());
       navigate('/login');
     }
 
@@ -67,22 +66,32 @@ function Dashboard() {
         <h2>Current Work</h2>
 
         <div className="categories">
-          <button className="btn-reverse" onClick={() => setCategory('All')}>
+          <button
+            className={`btn-reverse ${category === 'All' ? 'active' : ''} `}
+            onClick={() => setCategory('All')}
+          >
             All Work
           </button>
           <button
-            className="btn-reverse"
+            className={`btn-reverse ${
+              category === 'Work Order' ? 'active' : ''
+            } `}
             onClick={() => setCategory('Work Order')}
           >
             <BiWrench />
             Work Orders
           </button>
-          <button className="btn-reverse" onClick={() => setCategory('Task')}>
+          <button
+            className={`btn-reverse ${category === 'Task' ? 'active' : ''} `}
+            onClick={() => setCategory('Task')}
+          >
             <BiTask />
             Facility Tasks
           </button>
           <button
-            className="btn-reverse"
+            className={`btn-reverse ${
+              category === 'Equipment Report' ? 'active' : ''
+            } `}
             onClick={() => setCategory('Equipment Report')}
           >
             <BiPackage />
@@ -97,7 +106,10 @@ function Dashboard() {
               ? tasks
                   .filter((task) => task.category === category)
                   .map((task) => <TaskItem key={task._id} task={task} />)
-              : tasks.map((task) => <TaskItem key={task._id} task={task} />)}
+                  .reverse()
+              : tasks
+                  .map((task) => <TaskItem key={task._id} task={task} />)
+                  .reverse()}
           </div>
         ) : (
           <h3>You have not set any Tasks.</h3>

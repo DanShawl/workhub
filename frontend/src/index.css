@@ -98,6 +98,16 @@ h3 {
   margin-right: 5px;
 }
 
+.login-register {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.heading-form {
+  padding: 1rem 0;
+}
+
 .heading {
   font-size: 2rem;
   font-weight: 700;
@@ -108,17 +118,21 @@ h3 {
 }
 
 .heading p {
-  color: #828282;
+  color: #4b4b4b;
 }
 
 .goals {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: 10px;
+  /* background-color: #f4f4f4; */
+
+  /* padding: 1rem; */
 }
 
 .goal {
   background-color: #f4f4f4;
+
   margin: 10px 0;
   /* padding: 20px 10px 10px; */
   padding: 35px 20px 20px;
@@ -241,7 +255,7 @@ ul > .task-button {
   font-weight: 600;
   cursor: pointer;
   background: #fff;
-  color: #000;
+  color: rgba(0, 0, 0, 0.437);
   border: none;
   /* border-bottom: 1px solid black; */
   text-align: center;
@@ -301,6 +315,11 @@ ul > .task-button {
   font-size: 1rem;
 }
 
+.active {
+  border-bottom: 2px solid #000;
+  color: #000;
+}
+
 .loadingSpinnerContainer {
   position: fixed;
   top: 0;
@@ -339,14 +358,37 @@ ul > .task-button {
   .heading {
     margin-left: 25px;
     margin-right: 25px;
+    padding-right: 50px;
     display: flex;
     gap: 2rem;
     align-items: center;
     justify-content: space-between;
+    border-right: 1px solid rgba(36, 36, 36, 0.213);
   }
   .category-blocks {
     gap: 1rem;
   }
+
+  .login-register {
+    flex-direction: row;
+    gap: 2rem;
+    margin-top: 10rem;
+    /* align-items: center; */
+  }
+
+  .heading-form {
+    flex-direction: column;
+    text-align: left;
+  }
+
+  .login-form {
+    max-width: 500px;
+  }
+
+  .heading p {
+    font-size: 1.5rem;
+  }
+
   .content {
     margin-left: 25px;
     margin-right: 25px;
@@ -420,6 +462,6 @@ ul > .task-button {
   }
 
   .heading p {
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
 }
