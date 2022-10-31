@@ -34,16 +34,20 @@ function Dashboard() {
     if (isError) {
       console.log(message);
     }
-    dispatch(getTasks());
+
+    // dispatch(getTasks());
 
     if (!user) {
       // dispatch(reset());
       navigate('/login');
     }
 
-    // return () => {
-    //   dispatch(reset());
-    // };
+    if (user) {
+      dispatch(getTasks());
+    }
+    return () => {
+      dispatch(reset());
+    };
   }, [user, navigate, isError, message, dispatch]);
 
   if (isLoading) {
