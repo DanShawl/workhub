@@ -15,7 +15,7 @@ function TaskForm() {
   };
 
   return (
-    <section className="form">
+    <section className="form form-sticky">
       <form onSubmit={onFormSubmit} className="task-form">
         <div className="form-group task-inputs">
           <input

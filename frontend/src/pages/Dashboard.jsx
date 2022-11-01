@@ -55,7 +55,7 @@ function Dashboard() {
 
   return (
     <>
-      <section className="heading">
+      <section className="heading category-sticky">
         <h1>Welcome {user && user.name}</h1>
         <section className="category-counters">
           <CategoryCount tasks={tasks} />

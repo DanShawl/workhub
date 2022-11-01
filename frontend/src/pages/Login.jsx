@@ -55,7 +55,7 @@ function Login() {
   return (
     <>
       <div className="login-register">
-        <section className="heading">
+        <section className="heading login-register-heading">
           <div className="heading-info">
             <h1>Easily manage your day-to-day facility management tasks.</h1>
             <p>
