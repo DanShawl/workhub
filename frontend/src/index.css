@@ -148,7 +148,7 @@ h3 {
   padding: 0 10px;
   border-radius: 5px;
   font-weight: 600;
-  color: #d2711d;
+  /* color: #d2711d; */
   /* color: white; */
   /* cursor: pointer; */
   /* border: none;
@@ -230,6 +230,7 @@ ul > .task-button {
   border: 1px solid rgb(105, 69, 205);
   border-radius: 3px;
   /* background: rgb(73, 45, 103); */
+  /* background-color: #4608ad; */
   background: rgb(97, 53, 218);
   /* background: rgb(105, 69, 205); */
   /* background: #000; */
@@ -317,8 +318,10 @@ ul > .task-button {
 }
 
 .active {
-  border-bottom: 2px solid #000;
-  color: #000;
+  /* border-bottom: 2px solid #000; */
+  border-bottom: 2px solid #4a4a4a;
+  color: #4a4a4a;
+  /* color: #000; */
 }
 
 .loadingSpinnerContainer {
