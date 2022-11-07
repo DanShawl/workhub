@@ -28,6 +28,7 @@ const setTask = asyncHandler(async (req, res) => {
     user: req.user.id,
     category: req.body.category,
     priority: req.body.priority,
+    // completed: req.body.completed,
     // ticketNumber: req.body.number // #
     // status: req.body.status // open pending closed
     // quote: req.body.price
