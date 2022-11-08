@@ -21,7 +21,11 @@ const taskSchema = mongoose.Schema(
     },
     // completed: {
     //   type: Boolean,
-    // }
+    // },
+    // status: {
+    //   type: String,
+    //   required: [true, 'Please add a priority level.'],
+    // },
   },
   {
     timestamps: true,
