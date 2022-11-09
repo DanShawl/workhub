@@ -29,7 +29,7 @@ const setTask = asyncHandler(async (req, res) => {
     category: req.body.category,
     priority: req.body.priority,
     // status: req.body.status // open pending closed in progress
-    // completed: req.body.completed,
+    completed: req.body.completed,
     // ticketNumber: req.body.number // #
     // quote: req.body.price
     // contractor: req.body.contractor  // name

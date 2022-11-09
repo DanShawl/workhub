@@ -54,7 +54,7 @@ function TaskItem({ task }) {
       <div className="task-button">
         <button onClick={() => dispatch(deleteTask(task._id))}>
           <BiCheck />
-          Complete Task
+          {task.completed === true ? 'Done' : 'Not Done'}
         </button>
       </div>
       {/* <button
