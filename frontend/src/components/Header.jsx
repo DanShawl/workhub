@@ -79,7 +79,7 @@ function Header() {
               </li>
               <li className="">
                 <button
-                  className="w-full bg-zinc-200 rounded mt-6"
+                  className=" bg-zinc-200 rounded mt-6 absolute bottom-4 left-[50%] -translate-x-[50%] w-[90%] md:w-52 md:left-4 md:-translate-x-0"
                   onClick={onLogout}
                 >
                   Logout
