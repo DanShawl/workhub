@@ -6,13 +6,11 @@ import Spinner from '../components/Spinner';
 import { getTasks, reset } from '../features/tasks/taskSlice';
 import TaskItem from '../components/TaskItem';
 import CategoryCount from '../components/CategoryCount';
-import {
-  BiPackage,
-  BiPlus,
-  BiTask,
-  BiWrench,
-  BiPlusMedical,
-} from 'react-icons/bi';
+
+import DashboardHeader from '../components/DashboardHeader';
+import DashboardCounts from '../components/DashboardCounts';
+import FormModal from '../components/FormModal';
+import ItemBox from '../components/ItemBox';
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -21,7 +19,16 @@ function Dashboard() {
   const { tasks, isLoading, isError, message } = useSelector(
     (state) => state.tasks
   );
-  const [category, setCategory] = useState('All');
+  const [toggleModal, setToggleModal] = useState(false);
+  const handleOpen = (taskID) => {
+    let task = tasks.filter((task) => task._id === taskID);
+
+    setToggleModal(true);
+  };
+  const handleClose = () => {
+    setToggleModal(false);
+  };
+  // const [category, setCategory] = useState('All');
 
   useEffect(() => {
     if (isError) {
@@ -48,112 +55,32 @@ function Dashboard() {
   // bg-[#4cceac]
   // bg-[#6870fa]
 
-  const getDate = () => {
-    let newDate = new Date();
-    let date = newDate.getDate();
-    let month = newDate.toLocaleString('default', { month: 'long' });
-    let year = newDate.getFullYear();
-
-    return `${year} ${month < 10 ? `0${month}` : `${month}`} ${date}`;
-  };
   return (
     <>
-      <section className="md:ml-60 px-4 py-16">
-        <section className="flex flex-col justify-center items-center py-10">
-          {/* <h1>Welcome {user && user.name}</h1> */}
-          <h1 className=" text-2xl -mb-1">Facility Tasks </h1>
-          <p>{getDate()}</p>
-          <button className=" mt-6 flex justify-center items-center gap-1 font-extrabold bg-[#6870fa] rounded-[3px] w-full py-3 text-white">
-            {/* <BiPlus className="text-1xl" /> */}
-            Add New
-          </button>
-        </section>
-        <section className=" flex flex-col-reverse">
-          <div className="">tasks</div>
-          <div className="flex justify-around">
-            {/* Make a component for the count (title as prop) */}
-            {/* add button styles */}
-            <div className="flex flex-col justify-center items-center">
-              <div className=" w-10 h-10 rounded-full bg-slate-200 flex justify-center items-center mb-2">
-                3
-              </div>
-              Not Started
-            </div>
-            <div className="flex flex-col justify-center items-center ">
-              <div className=" w-10 h-10 rounded-full bg-slate-200 flex justify-center items-center">
-                1
-              </div>
-              In Progress
-            </div>
-            <div className="flex flex-col justify-center items-center">
-              <div className=" w-10 h-10 rounded-full bg-slate-200 flex justify-center items-center">
-                2
-              </div>
-              Completed
-            </div>
-          </div>
-        </section>
-        <section></section>
-        {/* <section className="heading">
-          <h1>Welcome {user && user.name}</h1>
-          <section className="category-counters">
-            <CategoryCount tasks={tasks} />
-          </section>
-        </section>
-        <TaskForm />
-        <section className="categories-section">
-          <h2>Current Work</h2>
+      <section className="md:ml-60 py-16 md:pt-0 md:w-[calc(100%-240px)]">
+        {/* [calc(100%-${divWidth}px)] */}
+        <DashboardHeader
+          // type={}
+          // submitFunction={}
 
-          <div className="categories">
-            <button
-              className={`btn-reverse ${category === 'All' ? 'active' : ''} `}
-              onClick={() => setCategory('All')}
-            >
-              All Work
-            </button>
-            <button
-              className={`btn-reverse ${
-                category === 'Work Order' ? 'active' : ''
-              } `}
-              onClick={() => setCategory('Work Order')}
-            >
-              <BiWrench />
-              Work Orders
-            </button>
-            <button
-              className={`btn-reverse ${category === 'Task' ? 'active' : ''} `}
-              onClick={() => setCategory('Task')}
-            >
-              <BiTask />
-              Facility Tasks
-            </button>
-            <button
-              className={`btn-reverse ${
-                category === 'Equipment Report' ? 'active' : ''
-              } `}
-              onClick={() => setCategory('Equipment Report')}
-            >
-              <BiPackage />
-              Equipment Reports
-            </button>
+          handleOpen={handleOpen}
+        />
+        <section className=" flex flex-col-reverse md:flex-row md:relative">
+          <div className=" mt-9 md:mt-0 md:border-r-2 border-zinc-200 md:max-w-[80%] md:min-w-[80%]">
+            {tasks.length > 0 ? (
+              tasks
+                .map((task) => (
+                  <ItemBox task={task} key={task._id} handleOpen={handleOpen} />
+                ))
+                .reverse()
+            ) : (
+              <h1>You have no tasks</h1>
+            )}
           </div>
+          <DashboardCounts />
         </section>
-        <section className="content">
-          {tasks.length > 0 ? (
-            <div className="goals">
-              {category !== 'All'
-                ? tasks
-                    .filter((task) => task.category === category)
-                    .map((task) => <TaskItem key={task._id} task={task} />)
-                    .reverse()
-                : tasks
-                    .map((task) => <TaskItem key={task._id} task={task} />)
-                    .reverse()}
-            </div>
-          ) : (
-            <h3>You have not set any Tasks.</h3>
-          )}
-        </section> */}
+
+        <FormModal toggleModal={toggleModal} handleClose={handleClose} />
       </section>
     </>
   );

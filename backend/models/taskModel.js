@@ -19,12 +19,20 @@ const taskSchema = mongoose.Schema(
       type: String,
       required: [true, 'Please add a priority level.'],
     },
-    completed: {
-      type: Boolean,
+    taskStatus: {
+      type: String,
+      required: [true, 'Please add a status level.'],
     },
-    // status: {
+    description: {
+      type: String,
+      required: false,
+    },
+    // completed: {
+    //   type: Boolean,
+    // },
+    // type: {
     //   type: String,
-    //   required: [true, 'Please add a priority level.'],
+    //   required: [true, 'Please add a type.'],
     // },
   },
   {

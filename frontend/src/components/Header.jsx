@@ -22,10 +22,8 @@ function Header() {
     navigate('/');
   };
 
-  //  set up state for open and close
-
   return (
-    <header className="bg-white md:h-screen w-screen md:w-60 fixed top-0 left-0 md:border-r-2 border-zinc-200">
+    <header className="bg-white md:h-screen w-screen md:w-60 fixed top-0 left-0 md:border-r-2 border-zinc-200 md:block">
       <div
         className={`flex items-center h-14 p-3 justify-between ${
           !toggleNav && 'border-b border-zinc-200 md:border-0'

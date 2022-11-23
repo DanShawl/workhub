@@ -18,7 +18,7 @@ const setTask = asyncHandler(async (req, res) => {
   //   res.status(400);
   //   throw new Error('Please add text field.');
   // }
-  if (!req.body.text || !req.body.category) {
+  if (!req.body.text) {
     res.status(400);
     throw new Error('Please add all fields.');
   }
@@ -28,8 +28,10 @@ const setTask = asyncHandler(async (req, res) => {
     user: req.user.id,
     category: req.body.category,
     priority: req.body.priority,
-    // status: req.body.status // open pending closed in progress
-    completed: req.body.completed,
+    // completed: req.body.completed,
+    description: req.body.description,
+    taskStatus: req.body.taskStatus, // open pending closed in progress
+    // type: req.body.type,
     // ticketNumber: req.body.number // #
     // quote: req.body.price
     // contractor: req.body.contractor  // name

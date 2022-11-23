@@ -12,6 +12,7 @@ const initialState = {
 export const createTask = createAsyncThunk(
   'tasks/create',
   async (taskData, thunkAPI) => {
+    console.log(taskData);
     try {
       const token = thunkAPI.getState().auth.user.token;
       return await taskService.createTask(taskData, token);

@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <Router>
-        <div className="container">
+        <div className="md:w-full">
           <Header />
           <Routes>
             <Route path="/" element={<Dashboard />} />

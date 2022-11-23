@@ -1,69 +1,54 @@
 import { useDispatch } from 'react-redux';
 import { deleteTask } from '../features/tasks/taskSlice';
-import {
-  BiCalendar,
-  BiCategory,
-  BiCheck,
-  BiTask,
-  BiWrench,
-  BiPackage,
-} from 'react-icons/bi';
+
 function TaskItem({ task }) {
   const dispatch = useDispatch();
-
-  let bgColor, textColor;
-  if (task.priority === 'High') {
-    textColor = '#c83838';
-    bgColor = '#fea2a2';
+  let priorityColor;
+  let priorityTextColor;
+  if (task.priority == 'Low') {
+    priorityColor = 'bg-green-100';
+    priorityTextColor = 'text-green-600';
   }
-  if (task.priority === 'Low') {
-    textColor = 'rgb(75, 177, 68)';
-    bgColor = 'rgb(209, 255, 207)';
+  if (task.priority == 'Medium') {
+    priorityColor = 'bg-orange-100';
+    priorityTextColor = 'text-orange-400';
   }
-  if (task.priority === 'Medium') {
-    textColor = '#d2711d';
-    bgColor = 'rgb(253, 221, 170)';
-    // bgColor = '#ffaf6a';
+  if (task.priority == 'High') {
+    priorityColor = 'bg-red-100';
+    priorityTextColor = 'text-red-400';
   }
-  // fbffab;
-  const categoryIcon = () => {
-    if (task.category === 'Work Order') return <BiWrench />;
-    if (task.category === 'Task') return <BiTask />;
-    if (task.category === 'Equipment Report') return <BiPackage />;
-  };
 
   return (
-    <div className="goal">
-      <h3>{task.text}</h3>
-      <p
-        className="priority"
-        style={{ backgroundColor: `${bgColor}`, color: `${textColor}` }}
-      >
-        {task.priority}
-      </p>
-      <div className="task-info">
-        {/* <BiCategory /> */}
-        {categoryIcon()}
-        <p>{task.category}</p>
-      </div>
-      <div className="task-info">
-        <BiCalendar />
-        <p>{new Date(task.createdAt).toLocaleString('en-US').split(',')[0]}</p>
+    //  priority, status, title, date, description,
+    <div className="flex flex-col">
+      <h3 className="text-base font-black mt-2 mb-2">{task.text}</h3>
+      <div className="flex gap-3">
+        <p
+          className={`${priorityColor} bg- px-2 py-[2px] text-sm font-semibold rounded-[4px]`}
+        >
+          {task.priority}
+        </p>
+        <p className="bg-zinc-200 px-2 py-[2px] text-sm font-semibold rounded-[4px]">
+          {task.taskStatus}
+        </p>
       </div>
 
-      <div className="task-button">
-        <button onClick={() => dispatch(deleteTask(task._id))}>
-          <BiCheck />
-          Complete
-          {/* {task.completed === true ? 'Done' : 'Not Done'} */}
-        </button>
+      <p className="text-zinc-500 leading-snug mt-2 md:max-w-2xl">
+        {task.description}
+      </p>
+
+      <div className="text-sm flex gap-1 mt-3 ">
+        <p className="text-zinc-500">
+          {new Date(task.createdAt).toLocaleString('default', {
+            month: 'long',
+          })}
+        </p>
+        <p className="text-zinc-500">
+          {new Date(task.createdAt).toLocaleString('default', {
+            day: 'numeric',
+          })}
+        </p>
       </div>
-      {/* <button
-        onClick={() => dispatch(deleteTask(task._id))}
-        className="priority"
-      >
-        X
-      </button> */}
     </div>
   );
 }
