@@ -20,7 +20,7 @@ function TaskItem({ task }) {
 
   return (
     //  priority, status, title, date, description,
-    <div className="flex flex-col">
+    <div className="flex flex-col md:hover:bg-zinc-100 cursor-pointer px-3 rounded-md pb-2">
       <h3 className="text-base font-black mt-2 mb-2">{task.text}</h3>
       <div className="flex gap-3">
         <p

@@ -15,17 +15,19 @@ import ItemBox from '../components/ItemBox';
 function Dashboard() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [currentItem, setCurrentItem] = useState(null);
   const { user } = useSelector((state) => state.auth);
   const { tasks, isLoading, isError, message } = useSelector(
     (state) => state.tasks
   );
   const [toggleModal, setToggleModal] = useState(false);
   const handleOpen = (taskID) => {
-    let task = tasks.filter((task) => task._id === taskID);
-
+    setCurrentItem(tasks.filter((task) => task._id === taskID));
     setToggleModal(true);
   };
   const handleClose = () => {
+    setCurrentItem(null);
+
     setToggleModal(false);
   };
   // const [category, setCategory] = useState('All');
@@ -80,7 +82,12 @@ function Dashboard() {
           <DashboardCounts />
         </section>
 
-        <FormModal toggleModal={toggleModal} handleClose={handleClose} />
+        <FormModal
+          setCurrentItem={setCurrentItem}
+          toggleModal={toggleModal}
+          handleClose={handleClose}
+          currentItem={currentItem}
+        />
       </section>
     </>
   );

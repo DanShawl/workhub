@@ -18,7 +18,7 @@ function DashboardHeader({ handleOpen }) {
         <p className="text-sm text-zinc-500 ">{getDate()}</p>
       </div>
       <button
-        className=" mt-6 flex justify-center items-center gap-1 font-extrabold bg-[#6870fa] rounded-[3px] w-full py-3 text-white md:w-28 md:mt-0"
+        className=" mt-6 flex justify-center items-center gap-1 font-extrabold bg-[#6870fa] rounded-[3px] w-full py-3 text-white md:w-28 md:mt-0 hover:bg-[#5058e5]"
         onClick={handleOpen}
       >
         {/* <BiPlus className="text-1xl" /> */}
