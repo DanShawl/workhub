@@ -1,9 +1,57 @@
 import React from 'react';
 
-function DashboardCounts() {
+function DashboardCounts({ setCurrentStatus, tasks }) {
+  // tasks.filter((task) => task.category === 'Task').length
   return (
-    <div className="flex justify-around md:flex-col md:justify-between md:w-60 md:sticky md:top-40 md:right-0 md:h-[200px] md:items-start font-semibold text-[#4a4a4a]">
-      <div className="flex flex-col justify-center items-center md:flex-row md:justify-between md:gap-4 md:px-6">
+    <div className="flex justify-between md:flex-col md:justify-between md:w-60 md:sticky md:top-40 md:right-0 md:h-[200px] md:items-start font-semibold text-[#4a4a4a] flex-wrap mx-6 gap-3">
+      <div
+        className=" py-2 px-3 rounded-md bg-zinc-100 flex-1 min-w-fit"
+        onClick={() => setCurrentStatus('Not Started')}
+      >
+        <div>
+          <p className="text-2xl mb-1">
+            {tasks.filter((task) => task.taskStatus === 'Not Started').length}{' '}
+            <span className="text-base">tasks</span>
+          </p>
+        </div>
+        <div className="text-[#6870fa]">Not Started</div>
+      </div>
+      <div
+        className=" py-2 px-3 rounded-md bg-zinc-100 flex-1 min-w-fit"
+        onClick={() => setCurrentStatus('In Progress')}
+      >
+        <div>
+          <p className="text-2xl mb-1">
+            {tasks.filter((task) => task.taskStatus === 'In Progress').length}{' '}
+            <span className="text-base">tasks</span>
+          </p>
+        </div>
+        <div className="text-[#6870fa]">In Progress</div>
+      </div>
+      <div
+        className=" py-2 px-3 rounded-md bg-zinc-100 flex-1 min-w-fit"
+        onClick={() => setCurrentStatus('Completed')}
+      >
+        <div>
+          <p className="text-2xl mb-1">
+            {tasks.filter((task) => task.taskStatus === 'Completed').length}{' '}
+            <span className="text-base">tasks</span>
+          </p>
+        </div>
+        <div className="text-[#6870fa]">Completed</div>
+      </div>
+      <div
+        className=" py-2 px-3 rounded-md bg-zinc-100 flex-1 min-w-fit"
+        onClick={() => setCurrentStatus('All')}
+      >
+        <div>
+          <p className="text-2xl mb-1">
+            {tasks.length} <span className="text-base">tasks</span>
+          </p>
+        </div>
+        <div className="text-[#6870fa]">All</div>
+      </div>
+      {/* <div className="flex flex-col justify-center items-center md:flex-row md:justify-between md:gap-4 md:px-6">
         <div className=" w-10 h-10 rounded-full bg-slate-200 flex justify-center items-center mb-2 md:mb-0">
           3
         </div>
@@ -22,7 +70,7 @@ function DashboardCounts() {
           2
         </div>
         Completed
-      </div>
+      </div> */}
     </div>
   );
 }

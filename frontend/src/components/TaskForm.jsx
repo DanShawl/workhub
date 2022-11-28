@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createTask, deleteTask } from '../features/tasks/taskSlice';
-import { BiRadioCircleMarked } from 'react-icons/bi';
 
 function TaskForm({ handleClose, currentItem, setCurrentItem }) {
   const [text, setText] = useState(
@@ -27,9 +26,6 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
     setCurrentItem(null);
     setText('');
   };
-  // console.log(currentItem);
-
-  // Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum corrupti illum consequuntur nam, impedit aut error a explicabo quae maxime.
 
   {
     /* <option value="Work Order">Work Order</option>
@@ -115,102 +111,7 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
         </div>
       </form>
     </section>
-    // <section className="form form-sticky">
-    //   <form onSubmit={onFormSubmit} className="task-form">
-    //     <div className="form-group task-inputs">
-    //       <input
-    //         type="text"
-    //         placeholder="Enter a task, work order, etc..."
-    //         name="text"
-    //         id="text"
-    //         value={text}
-    //         onChange={(e) => setText(e.target.value)}
-    //       />
-    //       {/* <label htmlFor="category-select">Category</label> */}
-    //       <select
-    //         name="category"
-    //         id="category-select"
-    //         value={category}
-    //         onChange={(e) => selectCategory(e.target.value)}
-    //       >
-    //         <option value="" disabled>
-    //           Select a category
-    //         </option>
-    //         <option value="Work Order">Work Order</option>
-    //         <option value="Task">Task</option>
-    //         <option value="Equipment Report">Equipment Report</option>
-    //       </select>
-    //       {/* <label htmlFor="priority-select">Priority</label> */}
-    //       <select
-    //         name="priority"
-    //         id="priority-select"
-    //         value={priority}
-    //         onChange={(e) => selectPriority(e.target.value)}
-    //       >
-    //         <option value="" disabled>
-    //           Select a priority level
-    //         </option>
-    //         <option value="Low">Low</option>
-    //         <option value="Medium">Medium</option>
-    //         <option value="High">High</option>
-    //       </select>
-    //     </div>
-    //     <div className="form-group">
-    //       <button className="btn btn-block btn-task" type="submit">
-    //         Add Task
-    //       </button>
-    //     </div>
-    //   </form>
-    // </section>
   );
 }
 
 export default TaskForm;
-
-// {/* <section className="form form-sticky">
-//       <form onSubmit={onFormSubmit} className="task-form">
-//         <div className="form-group task-inputs">
-//           <input
-//             type="text"
-//             placeholder="Enter a task, work order, etc..."
-//             name="text"
-//             id="text"
-//             value={text}
-//             onChange={(e) => setText(e.target.value)}
-//           />
-//           {/* <label htmlFor="category-select">Category</label> */}
-//           <select
-//             name="category"
-//             id="category-select"
-//             value={category}
-//             onChange={(e) => selectCategory(e.target.value)}
-//           >
-//             <option value="" disabled>
-//               Select a category
-//             </option>
-//             <option value="Work Order">Work Order</option>
-//             <option value="Task">Task</option>
-//             <option value="Equipment Report">Equipment Report</option>
-//           </select>
-//           {/* <label htmlFor="priority-select">Priority</label> */}
-//           <select
-//             name="priority"
-//             id="priority-select"
-//             value={priority}
-//             onChange={(e) => selectPriority(e.target.value)}
-//           >
-//             <option value="" disabled>
-//               Select a priority level
-//             </option>
-//             <option value="Low">Low</option>
-//             <option value="Medium">Medium</option>
-//             <option value="High">High</option>
-//           </select>
-//         </div>
-//         <div className="form-group">
-//           <button className="btn btn-block btn-task" type="submit">
-//             Add Task
-//           </button>
-//         </div>
-//       </form>
-//     </section> */}

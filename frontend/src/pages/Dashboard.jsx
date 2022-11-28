@@ -1,12 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import TaskForm from '../components/TaskForm';
 import Spinner from '../components/Spinner';
 import { getTasks, reset } from '../features/tasks/taskSlice';
-import TaskItem from '../components/TaskItem';
-import CategoryCount from '../components/CategoryCount';
-
 import DashboardHeader from '../components/DashboardHeader';
 import DashboardCounts from '../components/DashboardCounts';
 import FormModal from '../components/FormModal';
@@ -15,6 +11,7 @@ import ItemBox from '../components/ItemBox';
 function Dashboard() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [currentStatus, setCurrentStatus] = useState('All');
   const [currentItem, setCurrentItem] = useState(null);
   const { user } = useSelector((state) => state.auth);
   const { tasks, isLoading, isError, message } = useSelector(
@@ -37,8 +34,6 @@ function Dashboard() {
       console.log(message);
     }
 
-    // dispatch(getTasks());
-
     if (!user) {
       navigate('/login');
     }
@@ -57,31 +52,43 @@ function Dashboard() {
   // bg-[#4cceac]
   // bg-[#6870fa]
 
+  console.log(currentStatus);
+
   return (
     <>
       <section className="md:ml-60 py-16 md:pt-0 md:w-[calc(100%-240px)]">
-        {/* [calc(100%-${divWidth}px)] */}
-        <DashboardHeader
-          // type={}
-          // submitFunction={}
-
-          handleOpen={handleOpen}
-        />
+        <DashboardHeader handleOpen={handleOpen} />
         <section className=" flex flex-col-reverse md:flex-row md:relative">
           <div className=" mt-9 md:mt-0 md:border-r-2 border-zinc-200 md:max-w-[80%] md:min-w-[80%]">
             {tasks.length > 0 ? (
-              tasks
-                .map((task) => (
-                  <ItemBox task={task} key={task._id} handleOpen={handleOpen} />
-                ))
-                .reverse()
+              currentStatus !== 'All' ? (
+                tasks
+                  .filter((task) => task.taskStatus === currentStatus)
+                  .map((task) => (
+                    <ItemBox
+                      task={task}
+                      key={task._id}
+                      handleOpen={handleOpen}
+                    />
+                  ))
+                  .reverse()
+              ) : (
+                tasks
+                  .map((task) => (
+                    <ItemBox
+                      task={task}
+                      key={task._id}
+                      handleOpen={handleOpen}
+                    />
+                  ))
+                  .reverse()
+              )
             ) : (
               <h1>You have no tasks</h1>
             )}
           </div>
-          <DashboardCounts />
+          <DashboardCounts setCurrentStatus={setCurrentStatus} tasks={tasks} />
         </section>
-
         <FormModal
           setCurrentItem={setCurrentItem}
           toggleModal={toggleModal}
