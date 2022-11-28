@@ -23,7 +23,13 @@ function Header() {
   };
 
   return (
-    <header className="bg-white md:h-screen w-screen md:w-60 fixed top-0 left-0 md:border-r-2 border-zinc-200 md:block">
+    <header
+      className={
+        !user
+          ? 'bg-white w-screen fixed top-0 left-0 md:border-b-2 border-zinc-200 md:flex md:justify-between md:items-center'
+          : 'bg-white md:h-screen w-screen md:w-60 fixed top-0 left-0 md:border-r-2 border-zinc-200 md:block'
+      }
+    >
       <div
         className={`flex items-center h-14 p-3 justify-between ${
           !toggleNav && 'border-b border-zinc-200 md:border-0'
@@ -46,7 +52,13 @@ function Header() {
           </button>
         )}
       </div>
-      <nav className=" bg-white fixed top-14 right-0 w-full px-3 md:w-60 md:left-0 border-r-2 border-zinc-200 md:h-[100%]">
+      <nav
+        className={
+          !user
+            ? 'bg-white'
+            : ' bg-white fixed top-14 right-0 w-full px-3 md:w-60 md:left-0 border-r-2 border-zinc-200 md:h-[100%]'
+        }
+      >
         {user ? (
           <>
             <ul
@@ -61,17 +73,17 @@ function Header() {
                 </button>
               </li>
               <li className="">
-                <button className="flex items-center gap-3 hover:bg-zinc-100 w-full rounded-sm md:px-3">
+                <button className="flex items-center gap-3 hover:bg-zinc-100 w-full rounded-sm md:px-3 hidden">
                   <BiBuildings className="text-2xl" /> Work Orders
                 </button>
               </li>
               <li className="">
-                <button className="flex items-center gap-3 hover:bg-zinc-100 w-full rounded-sm md:px-3">
+                <button className="flex items-center gap-3 hover:bg-zinc-100 w-full rounded-sm md:px-3 hidden">
                   <BiCalendar className="text-2xl" /> Schedule
                 </button>
               </li>
               <li className="">
-                <button className="flex items-center gap-3 hover:bg-zinc-100 w-full rounded-sm md:px-3">
+                <button className="flex items-center gap-3 hover:bg-zinc-100 w-full rounded-sm md:px-3 hidden">
                   <BiUserCircle className="text-2xl" /> Contacts
                 </button>
               </li>
@@ -86,12 +98,29 @@ function Header() {
             </ul>
           </>
         ) : (
-          <ul>
+          <ul
+            className={
+              (toggleNav ? 'left-0 flex-1' : '-left-full ') +
+              ' transition-left fixed bottom-0 top-14 w-full items-center space-y-3  bg-white px-5 pt-8 font-semibold leading-3 text-[#4a4a4a] duration-500 sm:pt-12  md:static md:w-auto  md:px-0 md:bg-white md:flex md:items-center md:space-y-0 md:pt-0 md:space-x-4 md:mr-6'
+            }
+          >
             <li>
-              <Link to="/login">Login</Link>
+              <Link
+                to="/login"
+                className="text-[#6870fa] flex justify-center items-center gap-1 font-extrabold hover:text-[#5058e5]"
+                onClick={() => setToggleNav(!toggleNav)}
+              >
+                Login
+              </Link>
             </li>
             <li>
-              <Link to="/register">Register</Link>
+              <Link
+                to="/register"
+                className="flex justify-center items-center gap-1 font-extrabold bg-[#6870fa] rounded-[3px] text-white md:w-fit md:px-4 hover:bg-[#5058e5]"
+                onClick={() => setToggleNav(!toggleNav)}
+              >
+                Register
+              </Link>
             </li>
           </ul>
         )}

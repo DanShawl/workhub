@@ -3,9 +3,9 @@ import React from 'react';
 function DashboardCounts({ setCurrentStatus, tasks }) {
   // tasks.filter((task) => task.category === 'Task').length
   return (
-    <div className="flex justify-between md:flex-col md:justify-between md:w-60 md:sticky md:top-40 md:right-0 md:h-[200px] md:items-start font-semibold text-[#4a4a4a] flex-wrap mx-6 gap-3">
+    <div className="flex justify-between md:flex-col md:justify-between md:w-60 md:sticky md:top-40 md:mt-8 md:right-0 md:h-[200px] md:items-start font-semibold text-[#4a4a4a] flex-wrap mx-6 gap-3 md:flex-nowrap">
       <div
-        className=" py-2 px-3 rounded-md bg-zinc-100 flex-1 min-w-fit"
+        className=" py-2 px-3 rounded-md bg-zinc-100 flex-1 min-w-fit md:w-full hover:bg-zinc-200 cursor-pointer"
         onClick={() => setCurrentStatus('Not Started')}
       >
         <div>
@@ -17,7 +17,7 @@ function DashboardCounts({ setCurrentStatus, tasks }) {
         <div className="text-[#6870fa]">Not Started</div>
       </div>
       <div
-        className=" py-2 px-3 rounded-md bg-zinc-100 flex-1 min-w-fit"
+        className=" py-2 px-3 rounded-md bg-zinc-100 flex-1 min-w-fit md:w-full hover:bg-zinc-200 cursor-pointer"
         onClick={() => setCurrentStatus('In Progress')}
       >
         <div>
@@ -29,7 +29,7 @@ function DashboardCounts({ setCurrentStatus, tasks }) {
         <div className="text-[#6870fa]">In Progress</div>
       </div>
       <div
-        className=" py-2 px-3 rounded-md bg-zinc-100 flex-1 min-w-fit"
+        className=" py-2 px-3 rounded-md bg-zinc-100 flex-1 min-w-fit md:w-full hover:bg-zinc-200 cursor-pointer"
         onClick={() => setCurrentStatus('Completed')}
       >
         <div>
@@ -41,7 +41,7 @@ function DashboardCounts({ setCurrentStatus, tasks }) {
         <div className="text-[#6870fa]">Completed</div>
       </div>
       <div
-        className=" py-2 px-3 rounded-md bg-zinc-100 flex-1 min-w-fit"
+        className=" py-2 px-3 rounded-md bg-zinc-100 flex-1 min-w-fit md:w-full hover:bg-zinc-200 cursor-pointer"
         onClick={() => setCurrentStatus('All')}
       >
         <div>

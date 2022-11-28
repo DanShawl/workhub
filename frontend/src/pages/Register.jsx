@@ -62,11 +62,13 @@ function Register() {
 
   return (
     <>
-      <div className="login-register">
-        <section className="heading login-register-heading">
-          <div className="heading-info">
-            <h1>Easily manage your day-to-day facility management tasks.</h1>
-            <p>
+      <div className="md:ml-60 py-16 md:pt-0 md:w-[calc(100%-240px)] md:h-screen md:flex md:justify-center md:items-center">
+        <section className=" px-4 py-14 md:flex-1 md:max-w-2xl lg:max-w-4xl md:pr-10">
+          <div className="">
+            <h1 className=" text-4xl md:text-6xl md:leading-[1.05]">
+              Easily manage your day-to-day facility management tasks.
+            </h1>
+            <p className="md:text-2xl text-zinc-600">
               With WorkHub's easy-to-use and simplified facility management
               software, you'll have all of your tasks, work orders, and
               equipment reports in one place.
@@ -74,16 +76,16 @@ function Register() {
           </div>
         </section>
 
-        <section className="form login-form">
-          <div className="heading-form">
+        <section className=" px-4 flex-1 md:border-l md:border-zinc-200 md:max-w-lg lg:max-w-xl md:pl-12 lg:mr-20">
+          <div className="hidden md:block">
             <h1>Register</h1>
-            <p>Please create an account.</p>
+            <p>Create an account.</p>
           </div>
           <form onSubmit={onFormSubmit}>
             <div className="form-group">
               <input
                 type="text"
-                className="form-control"
+                className=" border-zinc-200 border w-full px-2 py-3 rounded-md my-2"
                 id="name"
                 name="name"
                 value={name}
@@ -94,7 +96,7 @@ function Register() {
             <div className="form-group">
               <input
                 type="email"
-                className="form-control"
+                className=" border-zinc-200 border w-full px-2 py-3 rounded-md my-2"
                 id="email"
                 name="email"
                 value={email}
@@ -105,7 +107,7 @@ function Register() {
             <div className="form-group">
               <input
                 type="password"
-                className="form-control"
+                className=" border-zinc-200 border w-full px-2 py-3 rounded-md my-2"
                 id="password"
                 name="password"
                 value={password}
@@ -116,7 +118,7 @@ function Register() {
             <div className="form-group">
               <input
                 type="password"
-                className="form-control"
+                className=" border-zinc-200 border w-full px-2 py-3 rounded-md my-2"
                 id="confirmPassword"
                 name="confirmPassword"
                 value={confirmPassword}
@@ -125,8 +127,11 @@ function Register() {
               />
             </div>
             <div className="form-group">
-              <button type="submit" className="btn btn-block">
-                Register
+              <button
+                type="submit"
+                className=" my-2 flex justify-center items-center gap-1 font-extrabold bg-[#6870fa] rounded-[3px] w-full py-3 text-white md:w-fit md:px-4 md:mt-2 hover:bg-[#5058e5]"
+              >
+                Register Now
               </button>
             </div>
           </form>
