@@ -51,26 +51,6 @@ function DashboardCounts({ setCurrentStatus, tasks }) {
         </div>
         <div className="text-[#6870fa]">All</div>
       </div>
-      {/* <div className="flex flex-col justify-center items-center md:flex-row md:justify-between md:gap-4 md:px-6">
-        <div className=" w-10 h-10 rounded-full bg-slate-200 flex justify-center items-center mb-2 md:mb-0">
-          3
-        </div>
-        Not Started
-      </div>
-      <div className="flex flex-col justify-center items-center md:flex-row md:justify-between md:gap-4 md:px-6">
-        <div className=" w-10 h-10 rounded-full bg-slate-200 flex justify-center items-center mb-2 md:mb-0">
-          {' '}
-          1
-        </div>
-        In Progress
-      </div>
-      <div className="flex flex-col justify-center items-center md:flex-row md:justify-between md:gap-4 md:px-6">
-        <div className=" w-10 h-10 rounded-full bg-slate-200 flex justify-center items-center mb-2 md:mb-0">
-          {' '}
-          2
-        </div>
-        Completed
-      </div> */}
     </div>
   );
 }

@@ -27,7 +27,6 @@ function Dashboard() {
 
     setToggleModal(false);
   };
-  // const [category, setCategory] = useState('All');
 
   useEffect(() => {
     if (isError) {
@@ -51,8 +50,6 @@ function Dashboard() {
   }
   // bg-[#4cceac]
   // bg-[#6870fa]
-
-  console.log(currentStatus);
 
   return (
     <>
