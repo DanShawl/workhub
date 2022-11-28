@@ -1,25 +1,16 @@
-import { useDispatch } from 'react-redux';
-import { deleteTask } from '../features/tasks/taskSlice';
-
 function TaskItem({ task }) {
-  const dispatch = useDispatch();
   let priorityColor;
-  let priorityTextColor;
-  if (task.priority == 'Low') {
+  if (task.priority === 'Low') {
     priorityColor = 'bg-green-100';
-    priorityTextColor = 'text-green-600';
   }
-  if (task.priority == 'Medium') {
+  if (task.priority === 'Medium') {
     priorityColor = 'bg-orange-100';
-    priorityTextColor = 'text-orange-400';
   }
-  if (task.priority == 'High') {
+  if (task.priority === 'High') {
     priorityColor = 'bg-red-100';
-    priorityTextColor = 'text-red-400';
   }
 
   return (
-    //  priority, status, title, date, description,
     <div className="flex flex-col md:hover:bg-zinc-100 cursor-pointer px-3 rounded-md pb-2">
       <h3 className="text-base font-black mt-2 mb-2">{task.text}</h3>
       <div className="flex gap-3">

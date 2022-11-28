@@ -9,7 +9,7 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
   const [description, setDescription] = useState(
     currentItem.length > 0 ? currentItem[0].description : ''
   );
-  const [category, selectCategory] = useState('Task');
+  const category = 'Task';
   const [priority, selectPriority] = useState(
     currentItem.length > 0 ? currentItem[0].priority : ''
   );
@@ -26,14 +26,6 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
     setCurrentItem(null);
     setText('');
   };
-
-  {
-    /* <option value="Work Order">Work Order</option>
-              <option value="Task">Task</option>
-              <option value="Equipment Report">Equipment Report</option> 
-              
-              */
-  }
 
   return (
     <section>

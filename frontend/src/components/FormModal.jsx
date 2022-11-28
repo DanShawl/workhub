@@ -17,11 +17,3 @@ function FormModal({ toggleModal, handleClose, currentItem, setCurrentItem }) {
 }
 
 export default FormModal;
-
-{
-  /* <div className="fixed inset-0 bg-opacity-30 bg-black backdrop-blur-sm flex justify-center items-end z-50 md:justify-end md:items-center">
-      <div className="bg-white w-full px-4 py-4 md:h-screen md:w-96">
-        <TaskForm handleClose={handleClose} />
-      </div>
-    </div> */
-}
