@@ -1,5 +1,5 @@
 import React from 'react';
-import { BiPlus, BiPlusCircle } from 'react-icons/bi';
+import { BiPlus } from 'react-icons/bi';
 
 const getDate = () => {
   let newDate = new Date();
