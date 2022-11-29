@@ -26,8 +26,8 @@ function Header() {
     <header
       className={
         !user
-          ? 'bg-white w-screen fixed top-0 left-0 md:border-b-2 border-zinc-200 md:flex md:justify-between md:items-center'
-          : 'bg-white md:h-screen w-screen md:w-60 fixed top-0 left-0 md:border-r-2 border-zinc-200 md:block'
+          ? 'bg-[#f8f8f8] w-screen fixed top-0 left-0 md:border-b-2 border-zinc-200 md:flex md:justify-between md:items-center'
+          : 'bg-[#f8f8f8] md:h-screen w-screen md:w-60 fixed top-0 left-0 md:border-r-2 border-zinc-200 md:block'
       }
     >
       <div
@@ -35,7 +35,9 @@ function Header() {
           !toggleNav && 'border-b border-zinc-200 md:border-0'
         }`}
       >
-        <Link to="/">WorkHub</Link>
+        <Link to="/">
+          Work<span className=" italic font-bold">Hub</span>
+        </Link>
         {toggleNav ? (
           <button
             className="md:hidden"
@@ -55,8 +57,8 @@ function Header() {
       <nav
         className={
           !user
-            ? 'bg-white'
-            : ' bg-white fixed top-14 right-0 w-full px-3 md:w-60 md:left-0 border-r-2 border-zinc-200 md:h-[100%]'
+            ? 'bg-[#f8f8f8]'
+            : ' bg-[#f8f8f8] fixed top-14 right-0 w-full px-3 md:pr-0 md:w-60 md:left-0 border-r-2 border-zinc-200 md:h-[100%]'
         }
       >
         {user ? (
@@ -64,11 +66,11 @@ function Header() {
             <ul
               className={
                 (toggleNav ? 'left-0 flex-1' : '-left-full ') +
-                ' transition-left fixed bottom-0 top-14 w-full items-center space-y-3  bg-white px-5 pt-8 font-semibold leading-3 text-[#4a4a4a] duration-500 sm:pt-12  md:static md:w-auto md:space-y-2  md:px-0 lg:pt-8 md:bg-white'
+                ' transition-left fixed bottom-0 top-14 w-full items-center space-y-3  bg-[#f8f8f8] px-5 pt-8 font-semibold leading-3 text-[#4a4a4a] duration-500 sm:pt-12  md:static md:w-auto md:space-y-2  md:px-0 lg:pt-8 md:bg-[#f8f8f8]'
               }
             >
               <li className="">
-                <button className="flex items-center gap-3 hover:bg-zinc-100 w-full rounded-sm md:px-3">
+                <button className="flex items-center hover:text-[#de5b34] gap-3 w-full md:pl-3 md:border-r-2 border-[#f16232]">
                   <BiTask className="text-2xl" /> Facility Tasks
                 </button>
               </li>

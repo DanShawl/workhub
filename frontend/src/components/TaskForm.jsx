@@ -40,7 +40,7 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
             value={text}
             // currentItem ? currentItem[0].text :
             onChange={(e) => setText(e.target.value)}
-            className="w-full text-xl font-semibold p-1"
+            className="w-full text-xl font-semibold p-1 border-b border-zinc-200 focus:border-[#f16232] focus:border-b-2 outline-none"
           />
           <div className="flex justify-between text-sm gap-4">
             <select
@@ -85,17 +85,18 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
             rows="8"
             className="w-full p-2 bg-zinc-100 rounded-md"
           ></textarea>
-          <div className="flex justify-between gap-4">
+          <div className="flex justify-end gap-4">
             <button
-              className="font-extrabold rounded-[3px] w-full py-3 text-black bg-zinc-200 hover:bg-zinc-300"
+              className="font-extrabold rounded-[3px] py-2 text-[#4a4a4a] hover:bg-zinc-100 text-sm px-4"
               onClick={handleClose}
             >
               Close
             </button>
             <button
-              className="font-extrabold bg-[#6870fa] rounded-[3px] w-full py-3 text-white hover:bg-[#5058e5]"
+              className="font-extrabold rounded-[3px] py-2 text-white hover:bg-[#de5b34] text-sm px-4  bg-[#f16232]"
               type="submit"
               // onClick={handleClose}
+              // bg-[#ff5722]
             >
               Add Task
             </button>

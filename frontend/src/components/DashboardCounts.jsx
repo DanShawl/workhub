@@ -5,7 +5,7 @@ function DashboardCounts({ setCurrentStatus, tasks }) {
   return (
     <div className="flex justify-between md:flex-col md:justify-between md:w-60 md:sticky md:top-40 md:mt-8 md:right-0 md:h-[200px] md:items-start font-semibold text-[#4a4a4a] flex-wrap mx-6 gap-3 md:flex-nowrap">
       <div
-        className=" py-2 px-3 rounded-md bg-zinc-100 flex-1 min-w-fit md:w-full hover:bg-zinc-200 cursor-pointer"
+        className=" py-2 px-3 rounded-sm bg-white border-zinc-200 border flex-1 min-w-[40%] md:w-full hover:bg-[#f8f8f8] cursor-pointer"
         onClick={() => setCurrentStatus('Not Started')}
       >
         <div>
@@ -14,10 +14,10 @@ function DashboardCounts({ setCurrentStatus, tasks }) {
             <span className="text-base">tasks</span>
           </p>
         </div>
-        <div className="text-[#6870fa]">Not Started</div>
+        <div className="text-[#f16232] text-sm">Not Started</div>
       </div>
       <div
-        className=" py-2 px-3 rounded-md bg-zinc-100 flex-1 min-w-fit md:w-full hover:bg-zinc-200 cursor-pointer"
+        className=" py-2 px-3 rounded-sm bg-white border-zinc-200 border flex-1 min-w-fit md:w-full hover:bg-[#f8f8f8] cursor-pointer"
         onClick={() => setCurrentStatus('In Progress')}
       >
         <div>
@@ -26,10 +26,10 @@ function DashboardCounts({ setCurrentStatus, tasks }) {
             <span className="text-base">tasks</span>
           </p>
         </div>
-        <div className="text-[#6870fa]">In Progress</div>
+        <div className="text-[#f16232] text-sm">In Progress</div>
       </div>
       <div
-        className=" py-2 px-3 rounded-md bg-zinc-100 flex-1 min-w-fit md:w-full hover:bg-zinc-200 cursor-pointer"
+        className=" py-2 px-3 rounded-sm bg-white border-zinc-200 border flex-1 min-w-fit md:w-full hover:bg-[#f8f8f8] cursor-pointer"
         onClick={() => setCurrentStatus('Completed')}
       >
         <div>
@@ -38,10 +38,10 @@ function DashboardCounts({ setCurrentStatus, tasks }) {
             <span className="text-base">tasks</span>
           </p>
         </div>
-        <div className="text-[#6870fa]">Completed</div>
+        <div className="text-[#f16232] text-sm">Completed</div>
       </div>
       <div
-        className=" py-2 px-3 rounded-md bg-zinc-100 flex-1 min-w-fit md:w-full hover:bg-zinc-200 cursor-pointer"
+        className=" py-2 px-3 rounded-sm bg-white border-zinc-200 border flex-1 min-w-fit md:w-full hover:bg-[#f8f8f8] cursor-pointer"
         onClick={() => setCurrentStatus('All')}
       >
         <div>
@@ -49,7 +49,7 @@ function DashboardCounts({ setCurrentStatus, tasks }) {
             {tasks.length} <span className="text-base">tasks</span>
           </p>
         </div>
-        <div className="text-[#6870fa]">All</div>
+        <div className="text-[#f16232] text-sm">All</div>
       </div>
     </div>
   );

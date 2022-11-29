@@ -12,7 +12,7 @@ function TaskItem({ task }) {
 
   return (
     <div className="flex flex-col md:hover:bg-zinc-100 cursor-pointer px-3 rounded-md pb-2">
-      <h3 className="text-base font-black mt-2 mb-2">{task.text}</h3>
+      <h3 className="text-base font-bold mt-2 mb-2">{task.text}</h3>
       <div className="flex gap-3">
         <p
           className={`${priorityColor} bg- px-2 py-[2px] text-sm font-semibold rounded-[4px]`}
@@ -29,12 +29,12 @@ function TaskItem({ task }) {
       </p>
 
       <div className="text-sm flex gap-1 mt-3 ">
-        <p className="text-zinc-500">
+        <p className="text-[#f16232]">
           {new Date(task.createdAt).toLocaleString('default', {
             month: 'long',
           })}
         </p>
-        <p className="text-zinc-500">
+        <p className="text-[#f16232]">
           {new Date(task.createdAt).toLocaleString('default', {
             day: 'numeric',
           })}

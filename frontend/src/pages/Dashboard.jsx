@@ -56,7 +56,7 @@ function Dashboard() {
       <section className="md:ml-60 py-16 md:pt-0 md:w-[calc(100%-240px)]">
         <DashboardHeader handleOpen={handleOpen} />
         <section className=" flex flex-col-reverse md:flex-row md:relative">
-          <div className=" mt-9 md:mt-0 md:border-r-2 border-zinc-200 md:max-w-[80%] md:min-w-[80%]">
+          <div className=" mt-9 md:mt-0 md:border-r-2 border-zinc-200 md:max-w-[80%] md:min-w-[80%] bg-white">
             {tasks.length > 0 ? (
               currentStatus !== 'All' ? (
                 tasks
