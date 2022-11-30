@@ -66,7 +66,7 @@ function Header() {
             <ul
               className={
                 (toggleNav ? 'left-0 flex-1' : '-left-full ') +
-                ' transition-left fixed bottom-0 top-14 w-full items-center space-y-3  bg-[#f8f8f8] px-5 pt-8 font-semibold leading-3 text-[#4a4a4a] duration-500 sm:pt-12  md:static md:w-auto md:space-y-2  md:px-0 lg:pt-8 md:bg-[#f8f8f8]'
+                ' transition-left fixed bottom-0 top-14 w-full items-center space-y-3  bg-[#f8f8f8] px-5 pt-8 font-semibold leading-3 text-[#202124] duration-500 sm:pt-12  md:static md:w-auto md:space-y-2  md:px-0 lg:pt-8 md:bg-[#f8f8f8]'
               }
             >
               <li className="">
@@ -103,13 +103,13 @@ function Header() {
           <ul
             className={
               (toggleNav ? 'left-0 flex-1' : '-left-full ') +
-              ' transition-left fixed bottom-0 top-14 w-full items-center space-y-3  bg-white px-5 pt-8 font-semibold leading-3 text-[#4a4a4a] duration-500 sm:pt-12  md:static md:w-auto  md:px-0 md:bg-white md:flex md:items-center md:space-y-0 md:pt-0 md:space-x-4 md:mr-6'
+              ' transition-left fixed bottom-0 top-14 w-full items-center space-y-3  bg-white px-5 pt-8 font-semibold leading-3 text-[#4a4a4a] duration-500 sm:pt-12  md:static md:w-auto  md:px-0 md:bg-[#f8f8f8] md:flex md:items-center md:space-y-0 md:pt-0 md:space-x-4 md:mr-6'
             }
           >
             <li>
               <Link
                 to="/login"
-                className="text-[#6870fa] flex justify-center items-center gap-1 font-extrabold hover:text-[#5058e5]"
+                className="text-[#f16232] flex justify-center items-center gap-1 font-extrabold hover:text-[#de5b34] hover:bg-[#e4e4e4] md:px-2 rounded-sm"
                 onClick={() => setToggleNav(!toggleNav)}
               >
                 Login
@@ -118,7 +118,7 @@ function Header() {
             <li>
               <Link
                 to="/register"
-                className="flex justify-center items-center gap-1 font-extrabold bg-[#6870fa] rounded-[3px] text-white md:w-fit md:px-4 hover:bg-[#5058e5]"
+                className="flex justify-center items-center gap-1 font-extrabold bg-[#f16232] rounded-[3px] text-white md:w-fit md:px-4 hover:bg-[#de5b34]"
                 onClick={() => setToggleNav(!toggleNav)}
               >
                 Register
