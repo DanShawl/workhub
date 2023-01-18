@@ -12,7 +12,7 @@ const getDate = () => {
 
 function DashboardHeader({ handleOpen }) {
   return (
-    <section className="flex justify-between items-center py-6 md:justify-start md:gap-8 md:items-center md:pt-7 md:pb-8 md:w-full md:border-b-2 md:border-zinc-200 pl-6 pr-6 md:pr-10 md:sticky top-0 bg-white z-50 ">
+    <section className="flex justify-between items-center py-6 md:justify-start md:gap-8 md:items-center md:pt-20 md:pb-8 md:w-full md:border-b-2 md:border-zinc-200 pl-6 pr-6 md:pr-10 md:sticky top-0 bg-white z-20 ">
       {/* <h1>Welcome {user && user.name}</h1> */}
       <div className=" text-left">
         <h1 className=" text-2xl md:text-2xl mb-0 pb-2 text-[#202124]">
