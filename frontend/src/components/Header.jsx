@@ -6,10 +6,10 @@ import { useState } from 'react';
 import {
   BiMenu,
   BiX,
-  BiTask,
-  BiCalendar,
-  BiBuildings,
-  BiUserCircle,
+  // BiTask,
+  // BiCalendar,
+  // BiBuildings,
+  // BiUserCircle,
 } from 'react-icons/bi';
 function Header() {
   const navigate = useNavigate();
@@ -129,8 +129,7 @@ function Header() {
   );
 }
 
-{
-  /* <ul
+/* <ul
               className={
                 (toggleNav ? 'left-0 flex-1' : '-left-full ') +
                 ' transition-left fixed bottom-0 top-14 w-full items-center space-y-3  bg-[#f8f8f8] px-5 pt-8 font-semibold leading-3 text-[#202124] duration-500 sm:pt-12  md:static md:w-auto md:space-y-2  md:px-0 lg:pt-8 md:bg-[#f8f8f8]'
@@ -165,6 +164,5 @@ function Header() {
                 </button>
               </li>
             </ul> */
-}
 
 export default Header;
