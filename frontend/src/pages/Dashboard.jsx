@@ -54,7 +54,9 @@ function Dashboard() {
 
   return (
     <>
-      <DashboardSideBar />
+      <section className="md:pt-0">
+        <DashboardSideBar />
+      </section>
       <section className="md:ml-60 py-16 md:pt-0 md:w-[calc(100%-240px)]">
         <DashboardHeader handleOpen={handleOpen} />
         <section className=" flex flex-col-reverse md:flex-row md:relative">
