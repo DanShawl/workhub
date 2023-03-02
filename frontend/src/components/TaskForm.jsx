@@ -93,7 +93,7 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
               Close
             </button>
             <button
-              className="font-extrabold rounded-[3px] py-2 text-white hover:bg-[#de5b34] text-sm px-4  bg-[#f16232]"
+              className="font-extrabold rounded-[3px] py-2 text-white text-sm px-4  bg-[#202124] hover:bg-[#0c0c0c]"
               type="submit"
               // onClick={handleClose}
               // bg-[#ff5722]
@@ -106,5 +106,6 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
     </section>
   );
 }
-
+// bg-[#f16232]
+// hover:bg-[#de5b34]
 export default TaskForm;

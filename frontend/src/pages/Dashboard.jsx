@@ -7,6 +7,7 @@ import DashboardHeader from '../components/DashboardHeader';
 import DashboardCounts from '../components/DashboardCounts';
 import FormModal from '../components/FormModal';
 import ItemBox from '../components/ItemBox';
+import DashboardSideBar from '../components/DashboardSideBar';
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -53,6 +54,7 @@ function Dashboard() {
 
   return (
     <>
+      <DashboardSideBar />
       <section className="md:ml-60 py-16 md:pt-0 md:w-[calc(100%-240px)]">
         <DashboardHeader handleOpen={handleOpen} />
         <section className=" flex flex-col-reverse md:flex-row md:relative">
