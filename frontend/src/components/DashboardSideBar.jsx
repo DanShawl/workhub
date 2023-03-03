@@ -25,7 +25,7 @@ const DashboardSideBar = () => {
     navigate('/');
   };
   return (
-    <div className="bg-zinc-800 w-screen md:h-screen md:max-w-fit fixed top-0 left-0 md:flex md:flex-col md:justify-between md:items-center z-50 md:py-5">
+    <div className="bg-zinc-800 w-screen md:h-screen md:max-w-fit fixed top-0 left-0 md:flex md:flex-col md:justify-between md:items-center z-50 md:py-5 text-sm">
       <div className={`flex items-center h-14 p-3 justify-between`}>
         <Link to="/" className=" text-white">
           W<span className=" italic font-bold text-[#f16232]">H</span>
