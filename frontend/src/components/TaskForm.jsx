@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createTask, deleteTask } from '../features/tasks/taskSlice';
 
-import { BsFillCircleFill } from 'react-icons/bs';
-
+// import { BsFillCircleFill } from 'react-icons/bs';
+// import { BiCheck, BiLoaderAlt, BiX, BiEdit } from 'react-icons/bi';
 function TaskForm({ handleClose, currentItem, setCurrentItem }) {
   const [text, setText] = useState(
     currentItem.length > 0 ? currentItem[0].text : ''
@@ -29,67 +29,21 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
     setText('');
   };
 
-  const [priorityColor, setPriorityColor] = useState(null);
-
-  // console.log(priority === 'Low');
-
-  // useEffect(() => {
-  //   console.log(priorityColor);
-  //   if (priority === 'Low') {
-  //     console.log('low');
-  //     setPriorityColor('green-400');
-  //   }
-  //   if (priority === 'Medium') {
-  //     setPriorityColor('orange-400');
-  //     console.log('medium');
-  //   }
-  //   if (priority === 'High') {
-  //     setPriorityColor('red-400');
-  //     console.log('high');
-  //   }
-  // }, [priority]);
-
   const [active, setActive] = useState(true);
-
-  // const toggleTask = (taskPriority) => {
-  //   selectPriority(taskPriority);
-  //   console.log(priority);
-  // };
 
   useEffect(() => {
     console.log(priority);
     setActive(true);
+    // if (priority && active === true) {
+    //   setActive(!active);
+    // }
   }, [priority]);
-
-  const toggleTask = (taskPriority) => {
-    selectPriority(taskPriority);
-    setActive(!active);
-    console.log(priority);
-  };
-
-  // const toggleTask = (e) => {
-  //   //   // e.persist();
-  //   selectPriority(e.target.value);
-  //   //   // if (active === true && priority !== e.target.value) {
-  //   //   //   selectPriority(e.target.value);
-  //   //   // } else {
-  //   //   //   selectPriority(e.target.value);
-  //   //   //   setActive(!active);
-  //   //   // }
-  //   //   console.log(priority);
-  // };
-
-  // console.log(priorityColor);
-  // const onPriorityClick = (e, color) => {
-  //   console.log(e.target.value);
-  //   selectPriority(e.target.value);
-  //   setPriorityColor(color);
-  //   console.log(priorityColor);
-  // };
 
   return (
     <section>
-      <h2 className="text-sm pl-1">Add a Task</h2>
+      <h2 className="text-sm pl-1">
+        {currentItem.length > 0 ? 'Update a Task' : 'Create a Task'}
+      </h2>
       <form onSubmit={onFormSubmit}>
         <div className="flex flex-col gap-4">
           <input
@@ -292,18 +246,18 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
           ></textarea>
           <div className="flex justify-end gap-4">
             <button
-              className="font-extrabold rounded-[3px] py-2 text-[#4a4a4a] hover:bg-zinc-100 text-sm px-4"
+              className="font-semibold rounded-[3px] py-2 text-gray-500 hover:bg-zinc-100 text-sm px-4"
               onClick={handleClose}
             >
-              Close
+              Cancel
             </button>
             <button
-              className="font-extrabold rounded-[3px] py-2 text-white text-sm px-4  bg-zinc-800 hover:bg-[#0c0c0c]"
+              className="font-semibold rounded-sm py-2 text-white text-sm px-4  bg-[#f16232] hover:bg-[#cf5126]"
               type="submit"
               // onClick={handleClose}
               // bg-[#ff5722]
             >
-              Add Task
+              {currentItem.length > 0 ? 'Update Task' : 'Create Task'}
             </button>
           </div>
         </div>
@@ -311,6 +265,4 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
     </section>
   );
 }
-// bg-[#f16232]
-// hover:bg-[#de5b34]
 export default TaskForm;

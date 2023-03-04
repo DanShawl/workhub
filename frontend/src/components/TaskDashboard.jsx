@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getTasks, reset } from '../features/tasks/taskSlice';
 
 import ItemBox from './ItemBox';
-import { BiChevronRight } from 'react-icons/bi';
+import { BiChevronRight, BiListPlus } from 'react-icons/bi';
 import Spinner from '../components/Spinner';
 import FormModal from './FormModal';
 
@@ -47,30 +47,51 @@ const TaskDashboard = () => {
     };
   }, [user, navigate, isError, message, dispatch]);
 
-  console.log(tasks);
+  const getDate = () => {
+    let newDate = new Date();
+    let date = newDate.getDate();
+    let month = newDate.toLocaleString('default', { month: 'long' });
+    let year = newDate.getFullYear();
 
+    return ` ${month} ${date}, ${year}`;
+  };
   if (isLoading) {
     return <Spinner />;
   }
   return (
     <>
       <div className=" mt-14 md:mt-0 bg-gray-200 md:ml-[167px] h-screen flex flex-col text-sm md:w-screen">
-        <section className="md:max-w-fit md:ml-[200px]">
-          <div className=" mx-6 mt-6">
-            <div className="flex items-center gap-x-2 text-gray-500 font-medium mb-2">
-              <span className=" hover:underline hover:underline-offset-4 cursor-pointer decoration-[#f16232]">
-                Dashboard
-              </span>{' '}
-              <BiChevronRight />{' '}
-              <span className=" hover:underline hover:underline-offset-4 cursor-pointer decoration-[#f16232]">
-                Facility Tasks
-              </span>{' '}
-              <BiChevronRight /> {currentTaskStatus}
+        <section className=" md:ml-[200px]">
+          <div className=" mx-6 mt-6 flex items-center justify-between gap-x-4">
+            <div>
+              <div className="flex items-center gap-x-2 text-gray-500 font-medium mb-2">
+                <span className=" hover:underline hover:underline-offset-4 cursor-pointer decoration-[#f16232]">
+                  Dashboard
+                </span>{' '}
+                <BiChevronRight />{' '}
+                <span className=" hover:underline hover:underline-offset-4 cursor-pointer decoration-[#f16232]">
+                  Facility Tasks
+                </span>{' '}
+                <BiChevronRight /> {currentTaskStatus}
+              </div>
+              <div className="">
+                <h1 className="font-bold text-2xl mb-0 pb-1 text-[#202124]">
+                  Facility Tasks
+                </h1>
+                <p>{getDate()}</p>
+              </div>
             </div>
-            <h1 className="font-bold text-2xl mb-0 pb-1 text-[#202124]">
-              Facility Tasks
-            </h1>
-            <p>March 10, 2023</p>
+            <div className="fixed bottom-4 right-4 md:relative">
+              <button
+                className=" hover:bg-[#cf5126] rounded-full md:rounded-sm text-white font-semibold bg-[#f16232] flex items-center justify-between gap-x-2 px-4 py-4 md:py-2 z-49"
+                onClick={handleOpen}
+              >
+                <p className="text-white font-semibold hidden md:block">
+                  Create Task
+                </p>
+                <BiListPlus className=" text-lg" />
+              </button>
+            </div>
           </div>
           <div className="md:fixed top-0 left-[167px] md:bg-zinc-50 md:h-screen">
             <ul className=" overflow-x-scroll flex md:flex-col font-semibold md:font-normal">
@@ -83,7 +104,7 @@ const TaskDashboard = () => {
                 onClick={() => setCurrentTaskStatus('All')}
               >
                 All Tasks{' '}
-                <div className=" w-4 h-4 text-white rounded-full flex items-center justify-center bg-neutral-500 text-xs ml-1 md:bg-zinc-200 md:text-[#4a4a4a] font-semibold">
+                <div className=" w-4 h-4 rounded-full flex items-center justify-center bg-zinc-300 text-xs ml-1 md:bg-zinc-200 text-zinc-800 font-semibold">
                   {tasks.length}
                 </div>
               </li>
@@ -96,7 +117,7 @@ const TaskDashboard = () => {
                 onClick={() => setCurrentTaskStatus('Not Started')}
               >
                 Not Started
-                <div className=" w-4 h-4 text-white rounded-full flex items-center justify-center bg-neutral-500 text-xs ml-1 md:bg-zinc-200 md:text-[#4a4a4a] font-semibold">
+                <div className=" w-4 h-4 rounded-full flex items-center justify-center bg-zinc-300 text-xs ml-1 md:bg-zinc-200 text-zinc-800 font-semibold">
                   {
                     tasks.filter((task) => task.taskStatus === 'Not Started')
                       .length
@@ -112,7 +133,7 @@ const TaskDashboard = () => {
                 onClick={() => setCurrentTaskStatus('In Progress')}
               >
                 In Progress
-                <div className=" w-4 h-4 text-white rounded-full flex items-center justify-center bg-neutral-500 text-xs ml-1 md:bg-zinc-200 md:text-[#4a4a4a] font-semibold">
+                <div className=" w-4 h-4 rounded-full flex items-center justify-center bg-zinc-300 text-xs ml-1 md:bg-zinc-200 text-zinc-800 font-semibold">
                   {
                     tasks.filter((task) => task.taskStatus === 'In Progress')
                       .length
@@ -128,7 +149,7 @@ const TaskDashboard = () => {
                 onClick={() => setCurrentTaskStatus('Completed')}
               >
                 Completed
-                <div className=" w-4 h-4 text-white rounded-full flex items-center justify-center bg-neutral-500 text-xs ml-1 md:bg-zinc-200 md:text-[#4a4a4a] font-semibold">
+                <div className=" w-4 h-4 rounded-full flex items-center justify-center bg-zinc-300 text-xs ml-1 md:bg-zinc-200 text-zinc-800 font-semibold">
                   {
                     tasks.filter((task) => task.taskStatus === 'Completed')
                       .length
@@ -139,15 +160,7 @@ const TaskDashboard = () => {
           </div>
         </section>
         <section className="md:ml-[200px] md:bg-gray-200 bg-zinc-50">
-          {/* <div className=" mx-6 mt-4 p-4 bg-gray-200 border-[#f1623274] border-2 rounded-sm">
-            You have{' '}
-            {currentTaskStatus !== 'All'
-              ? tasks.filter((task) => task.taskStatus === currentTaskStatus)
-                  .length
-              : tasks.length}{' '}
-            under the category {currentTaskStatus}.
-          </div> */}
-          <div className=" m-6 md:grid grid-cols-3 -order-last gap-6">
+          <div className=" m-6 md:grid grid-cols-3 gap-6">
             {tasks.length > 0 ? (
               currentTaskStatus !== 'All' ? (
                 tasks

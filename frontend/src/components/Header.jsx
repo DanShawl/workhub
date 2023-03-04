@@ -3,14 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout, reset } from '../features/auth/authSlice';
 import { useState } from 'react';
-import {
-  BiMenu,
-  BiX,
-  // BiTask,
-  // BiCalendar,
-  // BiBuildings,
-  // BiUserCircle,
-} from 'react-icons/bi';
+import { BiMenu, BiX } from 'react-icons/bi';
 function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -82,15 +75,6 @@ function Header() {
                   Logout
                 </Link>
               </li>
-              {/* <li>
-                <Link
-                  to="/register"
-                  className="flex justify-center items-center gap-1 font-extrabold bg-[#f16232] rounded-[3px] text-white md:w-fit md:px-4 hover:bg-[#de5b34]"
-                  onClick={() => setToggleNav(!toggleNav)}
-                >
-                  Register
-                </Link>
-              </li> */}
             </ul>
           </>
         ) : (

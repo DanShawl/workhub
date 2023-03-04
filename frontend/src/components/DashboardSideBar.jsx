@@ -3,16 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout, reset } from '../features/auth/authSlice';
 import { useState } from 'react';
-import {
-  BiMenu,
-  BiTask,
-  BiX,
-  // BiTask,
-  // BiCalendar,
-  BiBuildings,
-  BiUserCircle,
-  // bg-gray-800
-} from 'react-icons/bi';
+import { BiMenu, BiTask, BiX, BiBuildings, BiUserCircle } from 'react-icons/bi';
 const DashboardSideBar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -48,11 +39,6 @@ const DashboardSideBar = () => {
       </div>
 
       <nav
-        // className={
-        //   !user
-        //     ? 'bg-[#f8f8f8]'
-        //     : ' bg-[#f8f8f8] fixed top-14 right-0 w-full px-3 md:pr-0 md:w-60 md:left-0 border-r-2 border-zinc-200 md:h-[100%]'
-        // }
         className={
           ' md:static z-50 fixed right-0 w-full md:pr-0 md:left-0 md:h-[100%] md:w-full flex-1'
         }
@@ -101,37 +87,9 @@ const DashboardSideBar = () => {
                 Logout
               </Link>
             </li>
-            {/* <li>
-                <Link
-                  to="/register"
-                  className="flex justify-center items-center gap-1 font-extrabold bg-[#f16232] rounded-[3px] text-white md:w-fit md:px-4 hover:bg-[#de5b34]"
-                  onClick={() => setToggleNav(!toggleNav)}
-                >
-                  Register
-                </Link>
-              </li> */}
           </ul>
         </>
       </nav>
-      {/* <Link
-        to="/login"
-        className=" text-[#f16232] flex justify-center items-center gap-1 font-extrabold hover:text-[#de5b34] hover:bg-[#e4e4e4] md:px-3 rounded-sm"
-        onClick={onLogout}
-      >
-        Logout
-      </Link> */}
-
-      {/* <nav>
-        <h1>WorkHub</h1>
-     
-        <ul>
-          <li>Facility Tasks</li>
-          <li>Work Orders</li>
-          <li>Contacts</li>
-        </ul>
-      </nav>
-
-      <button>Logout</button> */}
     </div>
   );
 };
