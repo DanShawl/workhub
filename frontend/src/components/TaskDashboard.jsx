@@ -6,6 +6,7 @@ import { getTasks, reset } from '../features/tasks/taskSlice';
 import ItemBox from './ItemBox';
 import { BiChevronRight } from 'react-icons/bi';
 import Spinner from '../components/Spinner';
+import FormModal from './FormModal';
 
 const TaskDashboard = () => {
   const navigate = useNavigate();
@@ -17,10 +18,18 @@ const TaskDashboard = () => {
 
   const [currentTask, setCurrentTask] = useState(null);
   const [currentTaskStatus, setCurrentTaskStatus] = useState('All');
+  const [toggleModal, setToggleModal] = useState(false);
 
   const handleOpen = (taskID) => {
     setCurrentTask(tasks.filter((task) => task._id === taskID));
+    setToggleModal(true);
   };
+
+  const handleClose = () => {
+    setCurrentTask(null);
+    setToggleModal(false);
+  };
+
   useEffect(() => {
     if (isError) {
       console.log(message);
@@ -56,7 +65,7 @@ const TaskDashboard = () => {
               <span className=" hover:underline hover:underline-offset-4 cursor-pointer decoration-[#f16232]">
                 Facility Tasks
               </span>{' '}
-              <BiChevronRight /> All Tasks
+              <BiChevronRight /> {currentTaskStatus}
             </div>
             <h1 className="font-bold text-2xl mb-0 pb-1 text-[#202124]">
               Facility Tasks
@@ -70,45 +79,74 @@ const TaskDashboard = () => {
                   currentTaskStatus === 'All'
                     ? 'md:bg-[#f1623237] border-[#f16232] text-[#4a4a4a]'
                     : 'border-zinc-50 text-gray-500'
-                } cursor-pointer md:border-r-4 md:border-b-0 border-b-4 hover:border-[#f16232] px-6 min-w-fit py-3 md:w-[200px]`}
+                } cursor-pointer md:border-r-4 md:border-b-0 border-b-4 hover:border-[#f16232] px-6 min-w-fit py-3 md:w-[200px] flex items-center md:justify-between`}
                 onClick={() => setCurrentTaskStatus('All')}
               >
-                All Tasks
+                All Tasks{' '}
+                <div className=" w-4 h-4 text-white rounded-full flex items-center justify-center bg-neutral-500 text-xs ml-1 md:bg-zinc-200 md:text-[#4a4a4a] font-semibold">
+                  {tasks.length}
+                </div>
               </li>
               <li
                 className={` ${
                   currentTaskStatus === 'Not Started'
                     ? 'md:bg-[#f1623237] border-[#f16232] text-[#4a4a4a]'
                     : 'border-zinc-50 text-gray-500'
-                } cursor-pointer md:border-r-4 md:border-b-0 border-b-4 hover:border-[#f16232]  px-6 min-w-fit py-3 md:w-[200px]`}
+                } cursor-pointer md:border-r-4 md:border-b-0 border-b-4 hover:border-[#f16232]  px-6 min-w-fit py-3 md:w-[200px] flex items-center md:justify-between`}
                 onClick={() => setCurrentTaskStatus('Not Started')}
               >
                 Not Started
+                <div className=" w-4 h-4 text-white rounded-full flex items-center justify-center bg-neutral-500 text-xs ml-1 md:bg-zinc-200 md:text-[#4a4a4a] font-semibold">
+                  {
+                    tasks.filter((task) => task.taskStatus === 'Not Started')
+                      .length
+                  }
+                </div>
               </li>
               <li
                 className={` ${
                   currentTaskStatus === 'In Progress'
                     ? 'md:bg-[#f1623237] border-[#f16232] text-[#4a4a4a]'
                     : 'border-zinc-50 text-gray-500'
-                } cursor-pointer md:border-r-4 md:border-b-0 border-b-4 hover:border-[#f16232]  px-6 min-w-fit py-3 md:w-[200px]`}
+                } cursor-pointer md:border-r-4 md:border-b-0 border-b-4 hover:border-[#f16232]  px-6 min-w-fit py-3 md:w-[200px] flex items-center md:justify-between`}
                 onClick={() => setCurrentTaskStatus('In Progress')}
               >
                 In Progress
+                <div className=" w-4 h-4 text-white rounded-full flex items-center justify-center bg-neutral-500 text-xs ml-1 md:bg-zinc-200 md:text-[#4a4a4a] font-semibold">
+                  {
+                    tasks.filter((task) => task.taskStatus === 'In Progress')
+                      .length
+                  }
+                </div>
               </li>
               <li
                 className={` ${
                   currentTaskStatus === 'Completed'
                     ? 'md:bg-[#f1623237] border-[#f16232] text-[#4a4a4a]'
                     : 'border-zinc-50 text-gray-500'
-                } cursor-pointer md:border-r-4 md:border-b-0 border-b-4 hover:border-[#f16232]  px-6 min-w-fit py-3 md:w-[200px]`}
+                } cursor-pointer md:border-r-4 md:border-b-0 border-b-4 hover:border-[#f16232]  px-6 min-w-fit py-3 md:w-[200px] flex items-center md:justify-between`}
                 onClick={() => setCurrentTaskStatus('Completed')}
               >
                 Completed
+                <div className=" w-4 h-4 text-white rounded-full flex items-center justify-center bg-neutral-500 text-xs ml-1 md:bg-zinc-200 md:text-[#4a4a4a] font-semibold">
+                  {
+                    tasks.filter((task) => task.taskStatus === 'Completed')
+                      .length
+                  }
+                </div>
               </li>
             </ul>
           </div>
         </section>
         <section className="md:ml-[200px] md:bg-gray-200 bg-zinc-50">
+          {/* <div className=" mx-6 mt-4 p-4 bg-gray-200 border-[#f1623274] border-2 rounded-sm">
+            You have{' '}
+            {currentTaskStatus !== 'All'
+              ? tasks.filter((task) => task.taskStatus === currentTaskStatus)
+                  .length
+              : tasks.length}{' '}
+            under the category {currentTaskStatus}.
+          </div> */}
           <div className=" m-6 md:grid grid-cols-3 -order-last gap-6">
             {tasks.length > 0 ? (
               currentTaskStatus !== 'All' ? (
@@ -131,6 +169,12 @@ const TaskDashboard = () => {
             )}
           </div>
         </section>
+        <FormModal
+          setCurrentItem={setCurrentTask}
+          toggleModal={toggleModal}
+          handleClose={handleClose}
+          currentItem={currentTask}
+        />
       </div>
     </>
   );
