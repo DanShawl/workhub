@@ -159,7 +159,7 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             cols="30"
-            rows="8"
+            rows="4"
             className="w-full py-3 px-4 bg-gray-50 rounded-md"
           ></textarea>
           <div className="flex justify-end gap-4 mb-4 md:mb-0">

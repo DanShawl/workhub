@@ -60,7 +60,7 @@ const TaskDashboard = () => {
   }
   return (
     <>
-      <div className=" mt-14 md:mt-0 bg-gray-100 md:bg-gray-200 md:ml-[167px] h-screen flex flex-col text-sm md:w-screen">
+      <div className=" mt-14 md:mt-0 bg-gray-200 md:bg-gray-200 md:ml-[167px] h-screen flex flex-col text-sm md:w-screen">
         <section className=" md:ml-[200px]">
           <div className=" mx-6 mt-6 flex items-center justify-between gap-x-4">
             <div>
@@ -98,8 +98,8 @@ const TaskDashboard = () => {
               <li
                 className={` ${
                   currentTaskStatus === 'All'
-                    ? 'md:bg-[#f1623237] border-[#ff7445] text-gray-800'
-                    : 'border-zinc-50 text-gray-500'
+                    ? 'md:bg-[#faad8c3d] border-[#ff7445] text-gray-800'
+                    : 'border-gray-200 md:border-zinc-50 text-gray-500'
                 } cursor-pointer md:border-r-4 md:border-b-0 border-b-4 hover:border-[#ff7445] px-6 min-w-fit py-3 md:w-[200px] flex items-center md:justify-between md:font-medium`}
                 onClick={() => setCurrentTaskStatus('All')}
               >
@@ -111,8 +111,8 @@ const TaskDashboard = () => {
               <li
                 className={` ${
                   currentTaskStatus === 'Not Started'
-                    ? 'md:bg-[#f1623237] border-[#ff7445] text-gray-800'
-                    : 'border-zinc-50 text-gray-500'
+                    ? 'md:bg-[#faad8c3d] border-[#ff7445] text-gray-800'
+                    : 'border-gray-200 md:border-zinc-50 text-gray-500'
                 } cursor-pointer md:border-r-4 md:border-b-0 border-b-4 hover:border-[#ff7445]  px-6 min-w-fit py-3 md:w-[200px] flex items-center md:justify-between md:font-medium`}
                 onClick={() => setCurrentTaskStatus('Not Started')}
               >
@@ -127,8 +127,8 @@ const TaskDashboard = () => {
               <li
                 className={` ${
                   currentTaskStatus === 'In Progress'
-                    ? 'md:bg-[#f1623237] border-[#ff7445] text-gray-800'
-                    : 'border-zinc-50 text-gray-500'
+                    ? 'md:bg-[#faad8c3d] border-[#ff7445] text-gray-800'
+                    : ' border-gray-200 md:border-zinc-50 text-gray-500'
                 } cursor-pointer md:border-r-4 md:border-b-0 border-b-4 hover:border-[#ff7445]  px-6 min-w-fit py-3 md:w-[200px] flex items-center md:justify-between md:font-medium`}
                 onClick={() => setCurrentTaskStatus('In Progress')}
               >
@@ -143,8 +143,8 @@ const TaskDashboard = () => {
               <li
                 className={` ${
                   currentTaskStatus === 'Completed'
-                    ? 'md:bg-[#f1623237] border-[#ff7445] text-gray-800'
-                    : 'border-zinc-50 text-gray-500'
+                    ? 'md:bg-[#faad8c3d] border-[#ff7445] text-gray-800'
+                    : 'border-gray-200 md:border-zinc-50 text-gray-500'
                 } cursor-pointer md:border-r-4 md:border-b-0 border-b-4 hover:border-[#ff7445]  px-6 min-w-fit py-3 md:w-[200px] flex items-center md:justify-between md:font-medium`}
                 onClick={() => setCurrentTaskStatus('Completed')}
               >
@@ -159,7 +159,7 @@ const TaskDashboard = () => {
             </ul>
           </div>
         </section>
-        <section className="md:ml-[200px] md:bg-gray-200 bg-white">
+        <section className="md:ml-[200px] md:bg-gray-200 bg-gray-200">
           <div className=" m-6 md:grid grid-cols-3 gap-6">
             {tasks.length > 0 ? (
               currentTaskStatus !== 'All' ? (
