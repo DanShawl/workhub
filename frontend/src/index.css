@@ -22,6 +22,7 @@ code {
 
 @import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@300;400;500;600;700&family=Figtree:wght@300;400;500;600;700;800&family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&display=swap');
 /* 
 font-family: 'DM Sans', sans-serif;
 font-family: 'Tilt Warp', cursive;
@@ -75,6 +76,7 @@ h3 {
 }
 
 h1 {
+  font-family: 'Outfit', sans-serif;
   /* font-family: 'Catamaran', sans-serif; */
   /* font-family: 'Figtree', sans-serif; */
   /* font-family: 'Manrope', sans-serif; */

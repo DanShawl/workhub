@@ -16,9 +16,9 @@ function TaskItem({ task }) {
     <div className="flex flex-col  cursor-pointer pb-4 md:relative md:h-full">
       <div className="flex items-center mb-4">
         <BsFillCircleFill className={`${priorityColor} text-[0.3rem]`} />
-        <h1 className="mb-0 ml-2 font-bold text-gray-800 text-base md:text-sm">
+        <h2 className="mb-0 ml-2 font-bold text-gray-800 text-base md:text-sm">
           {task.text}
-        </h1>
+        </h2>
       </div>
       <div className="border-b border-zinc-400 md:border-zinc-300 pb-4 flex gap-x-8 flex-wrap">
         <div>

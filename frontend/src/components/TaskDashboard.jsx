@@ -81,9 +81,9 @@ const TaskDashboard = () => {
                 <p className="text-gray-800 font-semibold">{getDate()}</p>
               </div>
             </div>
-            <div className="fixed bottom-4 right-4 md:relative">
+            <div className="fixed bottom-6 right-4 md:relative">
               <button
-                className=" hover:bg-[#cf5126] rounded-full md:rounded-sm text-white font-semibold bg-[#f16232] flex items-center justify-between gap-x-2 px-4 py-4 md:py-2 z-49 md:shadow-sm shadow-lg"
+                className=" hover:bg-[#cf5126] rounded-full md:rounded-sm text-white font-semibold bg-[#f16232] flex items-center justify-between gap-x-2 p-5 md:p-4 md:py-2 z-49 md:shadow-sm shadow-2xl shadow-zinc-800"
                 onClick={handleOpen}
               >
                 <p className="text-white font-semibold hidden md:block">
@@ -100,7 +100,7 @@ const TaskDashboard = () => {
                   currentTaskStatus === 'All'
                     ? 'md:bg-[#f1623237] border-[#f16232] text-gray-800'
                     : 'border-zinc-50 text-gray-500'
-                } cursor-pointer md:border-r-4 md:border-b-0 border-b-4 hover:border-[#f16232] px-6 min-w-fit py-3 md:w-[200px] flex items-center md:justify-between`}
+                } cursor-pointer md:border-r-4 md:border-b-0 border-b-4 hover:border-[#f16232] px-6 min-w-fit py-3 md:w-[200px] flex items-center md:justify-between md:font-medium`}
                 onClick={() => setCurrentTaskStatus('All')}
               >
                 All Tasks{' '}
@@ -113,7 +113,7 @@ const TaskDashboard = () => {
                   currentTaskStatus === 'Not Started'
                     ? 'md:bg-[#f1623237] border-[#f16232] text-gray-800'
                     : 'border-zinc-50 text-gray-500'
-                } cursor-pointer md:border-r-4 md:border-b-0 border-b-4 hover:border-[#f16232]  px-6 min-w-fit py-3 md:w-[200px] flex items-center md:justify-between`}
+                } cursor-pointer md:border-r-4 md:border-b-0 border-b-4 hover:border-[#f16232]  px-6 min-w-fit py-3 md:w-[200px] flex items-center md:justify-between md:font-medium`}
                 onClick={() => setCurrentTaskStatus('Not Started')}
               >
                 Not Started
@@ -129,7 +129,7 @@ const TaskDashboard = () => {
                   currentTaskStatus === 'In Progress'
                     ? 'md:bg-[#f1623237] border-[#f16232] text-gray-800'
                     : 'border-zinc-50 text-gray-500'
-                } cursor-pointer md:border-r-4 md:border-b-0 border-b-4 hover:border-[#f16232]  px-6 min-w-fit py-3 md:w-[200px] flex items-center md:justify-between`}
+                } cursor-pointer md:border-r-4 md:border-b-0 border-b-4 hover:border-[#f16232]  px-6 min-w-fit py-3 md:w-[200px] flex items-center md:justify-between md:font-medium`}
                 onClick={() => setCurrentTaskStatus('In Progress')}
               >
                 In Progress
@@ -145,7 +145,7 @@ const TaskDashboard = () => {
                   currentTaskStatus === 'Completed'
                     ? 'md:bg-[#f1623237] border-[#f16232] text-gray-800'
                     : 'border-zinc-50 text-gray-500'
-                } cursor-pointer md:border-r-4 md:border-b-0 border-b-4 hover:border-[#f16232]  px-6 min-w-fit py-3 md:w-[200px] flex items-center md:justify-between`}
+                } cursor-pointer md:border-r-4 md:border-b-0 border-b-4 hover:border-[#f16232]  px-6 min-w-fit py-3 md:w-[200px] flex items-center md:justify-between md:font-medium`}
                 onClick={() => setCurrentTaskStatus('Completed')}
               >
                 Completed

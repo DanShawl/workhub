@@ -168,13 +168,13 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
           ></textarea>
           <div className="flex justify-end gap-4 mb-4 md:mb-0">
             <button
-              className="font-semibold rounded-[3px] py-2 text-gray-500 hover:bg-zinc-100 text-sm px-4"
+              className="font-semibold rounded-[3px] py-3 text-gray-500 hover:bg-zinc-100 text-sm px-5"
               onClick={handleClose}
             >
               Cancel
             </button>
             <button
-              className="font-semibold rounded-sm py-2 text-white text-sm px-4  bg-[#f16232] hover:bg-[#cf5126]"
+              className="font-semibold rounded-sm py-3 text-white text-sm px-5  bg-[#f16232] hover:bg-[#cf5126]"
               type="submit"
               // onClick={handleClose}
               // bg-[#ff5722]
