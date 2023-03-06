@@ -7,7 +7,7 @@ import { BiMenu, BiTask, BiX, BiBuildings, BiUserCircle } from 'react-icons/bi';
 const DashboardSideBar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.auth);
+  // const { user } = useSelector((state) => state.auth);
   const [toggleNav, setToggleNav] = useState(false);
   const onLogout = () => {
     setToggleNav(!toggleNav);
