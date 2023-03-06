@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { createTask, deleteTask } from '../features/tasks/taskSlice';
 
 // import { BsFillCircleFill } from 'react-icons/bs';
-import { BiCheck, BiLoaderAlt, BiX, BiEdit } from 'react-icons/bi';
+import { BiCheck, BiLoaderAlt, BiX } from 'react-icons/bi';
 function TaskForm({ handleClose, currentItem, setCurrentItem }) {
   const [text, setText] = useState(
     currentItem.length > 0 ? currentItem[0].text : ''
