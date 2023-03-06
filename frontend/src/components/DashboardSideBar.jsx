@@ -5,19 +5,24 @@ import { logout, reset } from '../features/auth/authSlice';
 import { useState } from 'react';
 import { BiMenu, BiTask, BiX } from 'react-icons/bi';
 // BiBuildings, BiUserCircle
+
 const DashboardSideBar = () => {
+  // const { user } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  // const { user } = useSelector((state) => state.auth);
   const [toggleNav, setToggleNav] = useState(false);
+
+  //  Logs current user with logout dispatch function
   const onLogout = () => {
     setToggleNav(!toggleNav);
     dispatch(logout());
     dispatch(reset());
     navigate('/');
   };
+
   return (
     <div className="bg-zinc-800 w-screen md:h-screen md:max-w-fit fixed top-0 left-0 md:flex md:flex-col md:justify-between md:items-center z-50 md:py-5 text-sm">
+      {/* ----------- Sidebar: Logo/Menu Icons ----------- */}
       <div className={`flex items-center h-14 p-3 justify-between`}>
         <Link to="/" className=" text-white">
           W<span className=" italic font-bold text-[#f16232]">H</span>
@@ -38,6 +43,8 @@ const DashboardSideBar = () => {
           </button>
         )}
       </div>
+
+      {/* ----------- Sidebar: Categories (Will add Work Orders/Contacts/Asset Management) ----------- */}
 
       <nav
         className={

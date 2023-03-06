@@ -8,7 +8,10 @@ import { BiChevronRight, BiListPlus, BiRightArrowAlt } from 'react-icons/bi';
 import Spinner from '../components/Spinner';
 import FormModal from './FormModal';
 
+/* ----------- Dashboard for Tasks: Component of main Dashboard Page ----------- */
+
 const TaskDashboard = () => {
+  //  Functions for getting user/task data
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
@@ -16,20 +19,22 @@ const TaskDashboard = () => {
     (state) => state.tasks
   );
 
+  //  State for tasks/modal
   const [currentTask, setCurrentTask] = useState(null);
   const [currentTaskStatus, setCurrentTaskStatus] = useState('All');
   const [toggleModal, setToggleModal] = useState(false);
 
+  //  Functions for handling modal information
   const handleOpen = (taskID) => {
     setCurrentTask(tasks.filter((task) => task._id === taskID));
     setToggleModal(true);
   };
-
   const handleClose = () => {
     setCurrentTask(null);
     setToggleModal(false);
   };
 
+  //  Checking for user/errors
   useEffect(() => {
     if (isError) {
       console.log(message);
@@ -47,6 +52,7 @@ const TaskDashboard = () => {
     };
   }, [user, navigate, isError, message, dispatch]);
 
+  //  Function for current date
   const getDate = () => {
     let newDate = new Date();
     let date = newDate.getDate();
@@ -55,12 +61,14 @@ const TaskDashboard = () => {
 
     return ` ${month} ${date}, ${year}`;
   };
+
   if (isLoading) {
     return <Spinner />;
   }
   return (
     <>
       <div className=" mt-14 md:mt-0 bg-gray-200 md:bg-gray-200 md:ml-[167px] h-screen flex flex-col text-sm md:w-screen">
+        {/* ----------- Task Dashboard Header/Sidebar: contains header info and task sorting ----------- */}
         <section className=" md:ml-[200px]">
           <div className=" mx-6 mt-6 flex items-center justify-between gap-x-4">
             <div>
@@ -93,6 +101,8 @@ const TaskDashboard = () => {
               </button>
             </div>
           </div>
+
+          {/* ----------- Task Sidebar: Sorting by status ----------- */}
           <div className="md:fixed top-0 left-[167px] md:bg-zinc-50 md:h-screen">
             <ul className=" overflow-x-scroll flex md:flex-col font-semibold md:font-normal">
               <li
@@ -159,6 +169,8 @@ const TaskDashboard = () => {
             </ul>
           </div>
         </section>
+
+        {/* ----------- Task Grid: Contains task items sorted by status ----------- */}
         <section className="md:ml-[200px] md:bg-gray-200 bg-gray-200">
           <div className=" m-6 sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* md:grid grid-cols-3 */}

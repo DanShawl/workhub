@@ -5,40 +5,44 @@ import { toast } from 'react-toastify';
 import { login, reset } from '../features/auth/authSlice';
 import Spinner from '../components/Spinner';
 import WorkhubDemo from '../assets/Workhub-sample-image.png';
-// public\assets\Workhub-sample-image.png
+
+/* ----------- Login Page: User login inputs ----------- */
+
 function Login() {
+  //  State items for login form data
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
-
   const { email, password } = formData;
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  //  State items from redux
   const { user, isLoading, isSuccess, isError, message } = useSelector(
     (state) => state.auth
   );
 
+  //  Side effect to redirect user to dashboard on successful login
   useEffect(() => {
     if (isError) {
       toast.error(message);
     }
-
     if (isSuccess || user) {
       navigate('/');
     }
-
     dispatch(reset());
   }, [user, message, isError, isSuccess, navigate, dispatch]);
 
+  //  Setting formData with form input
   const onFormChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
   };
+  //  Sends user data from formData to authorize via login function
   const onFormSubmit = (e) => {
     e.preventDefault();
     const userData = {

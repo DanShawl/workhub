@@ -1,20 +1,14 @@
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-// import { logout, reset } from '../features/auth/authSlice';
 import { useState } from 'react';
 import { BiMenu, BiX } from 'react-icons/bi';
 
+{
+  /* ----------- Header: login/register pages ----------- */
+}
 function Header() {
-  // const navigate = useNavigate();
-  // const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
   const [toggleNav, setToggleNav] = useState(false);
-  // const onLogout = () => {
-  //   setToggleNav(!toggleNav);
-  //   dispatch(logout());
-  //   dispatch(reset());
-  //   navigate('/');
-  // };
 
   return (
     <header
@@ -24,6 +18,8 @@ function Header() {
           : 'bg-[#f8f8f8] w-screen fixed top-0 left-0 md:border-b-2 border-zinc-200 md:flex justify-between md:items-center md:w-full z-50 md:px-10'
       } `}
     >
+      {/* ----------- Header: Logo/Menu Icons ----------- */}
+
       <div
         className={`flex items-center h-14 p-3 justify-between ${
           !toggleNav && 'border-b border-zinc-200 md:border-0'
@@ -48,15 +44,17 @@ function Header() {
           </button>
         )}
       </div>
+
+      {/* ----------- Navbar: Links to login/register pages ----------- */}
       <nav
+        className={
+          ' md:static z-50 bg-[#f8f8f8] fixed top-14 right-0 w-full px-3 md:pr-0 md:h-[100%] md:w-fit md:flex nd:justify-between flex-1'
+        }
         // className={
         //   !user
         //     ? 'bg-[#f8f8f8]'
         //     : ' bg-[#f8f8f8] fixed top-14 right-0 w-full px-3 md:pr-0 md:w-60 md:left-0 border-r-2 border-zinc-200 md:h-[100%]'
         // }
-        className={
-          ' md:static z-50 bg-[#f8f8f8] fixed top-14 right-0 w-full px-3 md:pr-0 md:h-[100%] md:w-fit md:flex nd:justify-between flex-1'
-        }
       >
         <ul
           className={

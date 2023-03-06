@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createTask, deleteTask } from '../features/tasks/taskSlice';
-
-// import { BsFillCircleFill } from 'react-icons/bs';
 import { BiCheck, BiLoaderAlt, BiX, BiListPlus, BiTrash } from 'react-icons/bi';
+
+/* ----------- Task Form: CRUD operations for task items ----------- */
+
 function TaskForm({ handleClose, currentItem, setCurrentItem }) {
+  //  State items for each piece of data in a "Task"
   const [text, setText] = useState(
     currentItem.length > 0 ? currentItem[0].text : ''
   );
@@ -18,8 +20,11 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
   const [taskStatus, selectTaskStatus] = useState(
     currentItem.length > 0 ? currentItem[0].taskStatus : ''
   );
+  const [active, setActive] = useState(true);
+
   const dispatch = useDispatch();
 
+  //  Function for creating / updating task items following form submit
   const onFormSubmit = (e) => {
     e.preventDefault();
     dispatch(createTask({ text, category, priority, taskStatus, description }));
@@ -29,6 +34,7 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
     setText('');
   };
 
+  //  Function for deleting task items
   const onDelete = () => {
     dispatch(deleteTask(currentItem[0]._id));
     handleClose();
@@ -36,10 +42,8 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
     setText('');
   };
 
-  const [active, setActive] = useState(true);
-
+  //  Side effect setting active true when priority or task status changes
   useEffect(() => {
-    console.log(priority);
     setActive(true);
     // if (priority && active === true) {
     //   setActive(!active);
@@ -52,6 +56,7 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
         {currentItem.length > 0 ? 'Update a Task' : 'Create a Task'}
       </h2>
       <form onSubmit={onFormSubmit}>
+        {/* ----------- Task Title Input ----------- */}
         <div className="flex flex-col gap-4">
           <input
             type="text"
@@ -63,6 +68,7 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
             onChange={(e) => setText(e.target.value)}
             className="w-full text-xl font-semibold p-1 border-b border-zinc-200 focus:border-[#ff7445] focus:border-b-2 outline-none"
           />
+          {/* ----------- Task Priority Input ----------- */}
           <div className=" mt-4">
             <h2 className="mb-4 text-gray-800">What is the priority level?</h2>
             <div className="flex flex-grow justify-between gap-4 text-gray-800">
@@ -107,6 +113,8 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
               />
             </div>
           </div>
+
+          {/* ----------- Task Status Input ----------- */}
           <div className=" mt-4">
             <h2 className="mb-4 text-gray-800">
               What is the status of the task?
@@ -159,6 +167,7 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
             </div>
           </div>
 
+          {/* ----------- Task Description Input ----------- */}
           <textarea
             name="description"
             id="description"
@@ -169,6 +178,8 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
             rows="4"
             className="w-full py-3 px-4 bg-gray-50 rounded-md"
           ></textarea>
+
+          {/* ----------- Create/Update / Delete Buttons ----------- */}
           <div
             className={
               currentItem.length > 0

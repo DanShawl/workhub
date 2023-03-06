@@ -6,7 +6,10 @@ import { register, reset } from '../features/auth/authSlice';
 import Spinner from '../components/Spinner';
 import WorkhubDemo from '../assets/Workhub-sample-image.png';
 
+/* ----------- Register Page: User login inputs ----------- */
+
 function Register() {
+  //  State items for register form data
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -19,10 +22,12 @@ function Register() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  //  State items from redux
   const { user, isLoading, isSuccess, isError, message } = useSelector(
     (state) => state.auth
   );
 
+  //  Side effect to redirect user to dashboard on successful login
   useEffect(() => {
     if (isError) {
       toast.error(message);
@@ -35,12 +40,15 @@ function Register() {
     dispatch(reset());
   }, [user, message, isError, isSuccess, navigate, dispatch]);
 
+  //  Setting formData with form input
   const onFormChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
   };
+
+  //  Sends user data to authorize via register function / checks password confirmation
   const onFormSubmit = (e) => {
     e.preventDefault();
 
