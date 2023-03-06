@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 // import { logout, reset } from '../features/auth/authSlice';
 import { useState } from 'react';
 import { BiMenu, BiX } from 'react-icons/bi';
