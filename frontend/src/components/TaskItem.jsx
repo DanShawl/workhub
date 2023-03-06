@@ -20,7 +20,7 @@ function TaskItem({ task }) {
           {task.text}
         </h2>
       </div>
-      <div className="border-b border-zinc-400 md:border-zinc-300 pb-4 flex gap-x-8 flex-wrap">
+      <div className="border-b border-zinc-200 md:border-zinc-300 pb-4 flex gap-x-8 flex-wrap">
         <div>
           <p className="text-xs font-bold flex gap-1 text-zinc-400">
             Date Created

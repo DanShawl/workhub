@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { createTask, deleteTask } from '../features/tasks/taskSlice';
 
 // import { BsFillCircleFill } from 'react-icons/bs';
-import { BiCheck, BiLoaderAlt, BiX, BiListPlus } from 'react-icons/bi';
+import { BiCheck, BiLoaderAlt, BiX, BiListPlus, BiTrash } from 'react-icons/bi';
 function TaskForm({ handleClose, currentItem, setCurrentItem }) {
   const [text, setText] = useState(
     currentItem.length > 0 ? currentItem[0].text : ''
@@ -24,6 +24,13 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
     e.preventDefault();
     dispatch(createTask({ text, category, priority, taskStatus, description }));
     if (currentItem.length !== 0) dispatch(deleteTask(currentItem[0]._id));
+    handleClose();
+    setCurrentItem(null);
+    setText('');
+  };
+
+  const onDelete = () => {
+    dispatch(deleteTask(currentItem[0]._id));
     handleClose();
     setCurrentItem(null);
     setText('');
@@ -162,22 +169,31 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
             rows="4"
             className="w-full py-3 px-4 bg-gray-50 rounded-md"
           ></textarea>
-          <div className="flex justify-end gap-4 mb-4 md:mb-0">
+          <div className="flex justify-between mb-4 md:mb-0 pl-1">
             <button
-              className="font-semibold rounded-md py-3 text-gray-500 hover:bg-zinc-100 text-sm px-5"
-              onClick={handleClose}
+              type="button"
+              onClick={onDelete}
+              className="rounded-full py-3 text-gray-500 hover:bg-zinc-100 text-lg px-3"
             >
-              Cancel
+              <BiTrash />
             </button>
-            <button
-              className="font-semibold rounded-md py-3 text-white text-sm px-5 md:px-4 md:py-2 bg-[#ff7445] hover:bg-[#cf5126] shadow-md flex items-center gap-x-2"
-              type="submit"
-              // onClick={handleClose}
-              // bg-[#ff5722]
-            >
-              {currentItem.length > 0 ? 'Update Task' : 'Create Task'}
-              <BiListPlus className=" text-lg" />
-            </button>
+            <div className="flex justify-end gap-4">
+              <button
+                className="font-semibold rounded-md py-3 text-gray-500 hover:bg-zinc-100 text-sm px-5"
+                onClick={handleClose}
+              >
+                Cancel
+              </button>
+              <button
+                className="font-semibold rounded-md py-3 text-white text-sm px-5 md:px-4 md:py-2 bg-[#ff7445] hover:bg-[#cf5126] shadow-md flex items-center gap-x-2"
+                type="submit"
+                // onClick={handleClose}
+                // bg-[#ff5722]
+              >
+                {currentItem.length > 0 ? 'Update Task' : 'Create Task'}
+                <BiListPlus className=" text-lg" />
+              </button>
+            </div>
           </div>
         </div>
       </form>
