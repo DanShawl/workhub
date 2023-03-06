@@ -169,11 +169,21 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
             rows="4"
             className="w-full py-3 px-4 bg-gray-50 rounded-md"
           ></textarea>
-          <div className="flex justify-between mb-4 md:mb-0 pl-1">
+          <div
+            className={
+              currentItem.length > 0
+                ? 'flex justify-between mb-4 md:mb-0 pl-1'
+                : 'flex justify-end mb-4 md:mb-0 pl-1'
+            }
+          >
             <button
               type="button"
               onClick={onDelete}
-              className="rounded-full py-3 text-gray-500 hover:bg-zinc-100 text-lg px-3"
+              className={
+                currentItem.length > 0
+                  ? `rounded-full py-3 text-gray-500 hover:bg-zinc-100 text-lg px-3`
+                  : 'hidden'
+              }
             >
               <BiTrash />
             </button>

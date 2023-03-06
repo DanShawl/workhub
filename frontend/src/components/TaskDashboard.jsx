@@ -81,7 +81,7 @@ const TaskDashboard = () => {
                 <p className="text-gray-800 font-semibold">{getDate()}</p>
               </div>
             </div>
-            <div className="fixed bottom-6 right-4 md:relative">
+            <div className="fixed bottom-6 right-4 lg:relative z-40">
               <button
                 className=" hover:bg-[#cf5126] rounded-full md:rounded-md text-white font-semibold bg-[#ff7445] flex items-center justify-between gap-x-2 p-5 md:p-4 md:py-2 z-49 md:shadow-sm shadow-2xl shadow-zinc-800"
                 onClick={handleOpen}
@@ -160,7 +160,8 @@ const TaskDashboard = () => {
           </div>
         </section>
         <section className="md:ml-[200px] md:bg-gray-200 bg-gray-200">
-          <div className=" m-6 md:grid grid-cols-3 gap-6">
+          <div className=" m-6 sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* md:grid grid-cols-3 */}
             {tasks.length > 0 ? (
               currentTaskStatus !== 'All' ? (
                 tasks

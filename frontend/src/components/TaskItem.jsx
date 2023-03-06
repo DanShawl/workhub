@@ -23,7 +23,7 @@ function TaskItem({ task }) {
       <div className="border-b border-zinc-200 md:border-zinc-300 pb-4 flex gap-x-8 flex-wrap">
         <div>
           <p className="text-xs font-bold flex gap-1 text-zinc-400">
-            Date Created
+            Created/Updated
           </p>
           <div className=" text-sm font-semibold flex gap-x-1">
             <p className="text-gray-800">
