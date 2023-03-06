@@ -53,7 +53,7 @@ const DashboardSideBar = () => {
             <li className=" w-full md:border-r-4 md:hover:border-[#f16232] md:border-transparent">
               <Link
                 to="/"
-                className=" flex items-center gap-x-2 text-zinc-800 font-bold md:font-semibold md:text-gray-400 py-3 pr-10 pl-5 hover:text-gray-100 "
+                className=" flex items-center gap-x-2 text-zinc-800 font-bold md:font-semibold md:text-gray-400 py-1 md:py-3 pr-10 pl-5 hover:text-gray-100 "
               >
                 <BiTask />
                 Facility Tasks
@@ -62,7 +62,7 @@ const DashboardSideBar = () => {
             <li className=" w-full md:border-r-4 md:hover:border-[#f16232] md:border-transparent">
               <Link
                 to="/"
-                className=" flex items-center gap-x-2 text-zinc-800 font-bold md:font-semibold md:text-gray-400 py-3 pr-10 pl-5 hover:text-gray-100"
+                className=" flex items-center gap-x-2 text-zinc-800 font-bold md:font-semibold md:text-gray-400 py-1 md:py-3 pr-10 pl-5 hover:text-gray-100"
               >
                 <BiBuildings />
                 Work Orders
@@ -71,7 +71,7 @@ const DashboardSideBar = () => {
             <li className=" w-full md:border-r-4 md:hover:border-[#f16232] md:border-transparent">
               <Link
                 to="/"
-                className=" flex items-center gap-x-2 text-zinc-800 font-bold md:font-semibold md:text-gray-400 py-3 pr-10 pl-5 hover:text-gray-100"
+                className=" flex items-center gap-x-2 text-zinc-800 font-bold md:font-semibold md:text-gray-400 py-1 md:py-3 pr-10 pl-5 hover:text-gray-100"
               >
                 <BiUserCircle />
                 Contacts

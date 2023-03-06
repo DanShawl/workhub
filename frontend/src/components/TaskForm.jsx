@@ -58,7 +58,7 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
           />
           <div className="text-[#4a4a4a]">
             <h2>What is the priority level?</h2>
-            <div className="flex flex-grow justify-between gap-4">
+            <div className="flex flex-grow justify-between gap-4 text-gray-800">
               <input
                 type="button"
                 name="priority"
@@ -66,12 +66,12 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
                 id="priority-select"
                 value={'Low'}
                 onClick={() => selectPriority('Low')}
-                className={` cursor-pointer hover:bg-zinc-300 bg-zinc-200 flex-1 py-2 rounded-md flex items-center justify-center border-2 ${
+                className={` cursor-pointer hover:bg-zinc-300 bg-gray-100 flex-1 py-2 rounded-md flex items-center justify-center border-2 ${
                   active && priority === 'Low'
                     ? // ? 'border-green-300 bg-[#51ae4c76] hover:bg-[#51ae4c76]'
-                      'border-[#6f6e6e2a] hover:bg-[#6f6e6e93] bg-[#6f6e6e93]'
-                    : 'border-zinc-200'
-                } font-semibold`}
+                      'border-[#6f6e6e2a] hover:bg-gray-300 bg-gray-300'
+                    : 'border-gray-100'
+                } font-bold`}
               />
               <input
                 type="button"
@@ -80,12 +80,12 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
                 id="priority-select"
                 value={'Medium'}
                 onClick={() => selectPriority('Medium')}
-                className={` cursor-pointer hover:bg-zinc-300 bg-zinc-200 flex-1 py-2 rounded-md flex items-center justify-center border-2 ${
+                className={` cursor-pointer hover:bg-zinc-300 bg-gray-100 flex-1 py-2 rounded-md flex items-center justify-center border-2 ${
                   active && priority === 'Medium'
                     ? // ? 'border-[#faf55c] bg-[#c3be4181] hover:bg-[#c3be4181]'
-                      'border-[#6f6e6e2a] hover:bg-[#6f6e6e93] bg-[#6f6e6e93]'
-                    : 'border-zinc-200'
-                } font-semibold`}
+                      'border-[#6f6e6e2a] hover:bg-gray-300 bg-gray-300'
+                    : 'border-gray-100'
+                } font-bold`}
               />
               <input
                 type="button"
@@ -94,12 +94,12 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
                 id="priority-select"
                 value={'High'}
                 onClick={() => selectPriority('High')}
-                className={` cursor-pointer hover:bg-zinc-300 bg-zinc-200 flex-1 py-2 rounded-md flex items-center justify-center border-2 ${
+                className={` cursor-pointer hover:bg-zinc-300 bg-gray-100 flex-1 py-2 rounded-md flex items-center justify-center border-2 ${
                   active && priority === 'High'
                     ? // ? 'border-[#dd7575] bg-[#d75b5b83] hover:bg-[#ad414153]'
-                      'border-[#6f6e6e2a] hover:bg-[#6f6e6e93] bg-[#6f6e6e93]'
-                    : 'border-zinc-200'
-                } font-semibold`}
+                      'border-[#6f6e6e2a] hover:bg-gray-300 bg-gray-300'
+                    : 'border-gray-100'
+                } font-bold`}
               />
             </div>
           </div>
@@ -223,7 +223,7 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
               value={taskStatus}
               // currentItem ? currentItem[0].taskStatus :
               onChange={(e) => selectTaskStatus(e.target.value)}
-              className=" border border-zinc-200 p-2 w-full rounded-md text-zinc-500"
+              className=" border border-zinc-200 p-2 w-full rounded-md text-gray-800 font-semibold"
             >
               <option value="" disabled>
                 Status

@@ -16,7 +16,9 @@ function TaskItem({ task }) {
     <div className="flex flex-col  cursor-pointer pb-4 md:relative md:h-full">
       <div className="flex items-center mb-4">
         <BsFillCircleFill className={`${priorityColor} text-[0.3rem]`} />
-        <h1 className="mb-0 ml-2 font-bold">{task.text}</h1>
+        <h1 className="mb-0 ml-2 font-bold text-gray-800 text-base md:text-sm">
+          {task.text}
+        </h1>
       </div>
       <div className="border-b border-zinc-400 md:border-zinc-300 pb-4 flex gap-x-8 flex-wrap">
         <div>
@@ -24,13 +26,13 @@ function TaskItem({ task }) {
             Date Created
           </p>
           <div className=" text-sm font-semibold flex gap-x-1">
-            <p className="text-zinc-600">
+            <p className="text-gray-800">
               {new Date(task.createdAt).toLocaleString('default', {
                 month: 'long',
               })}{' '}
               {''}
             </p>
-            <p className="text-zinc-600">
+            <p className="text-gray-800">
               {new Date(task.createdAt).toLocaleString('default', {
                 day: 'numeric',
               })}
@@ -52,7 +54,7 @@ function TaskItem({ task }) {
           </p>
         </div>
         <p className="text-xs font-bold flex gap-1 text-zinc-400">Notes</p>
-        <p className=" text-sm font-semibold text-zinc-600 leading-snug md:max-w-2xl">
+        <p className=" text-sm font-semibold text-gray-800 leading-snug md:max-w-2xl">
           {task.description}
         </p>
       </div>
