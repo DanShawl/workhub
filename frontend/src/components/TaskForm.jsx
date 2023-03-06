@@ -201,7 +201,7 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
               />
             </div>
           </div> */}
-          <div className="flex justify-between text-sm gap-4">
+          <div className="mt-4 flex flex-col text-sm">
             {/* <select
               name="priority"
               id="priority-select"
@@ -217,6 +217,7 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
               <option value="Medium">Medium</option>
               <option value="High">High</option>
             </select> */}
+            <h2>What is the current status of the task?</h2>
             <select
               name="taskStatus"
               id="status-select"
@@ -244,7 +245,7 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
             rows="8"
             className="w-full p-2 bg-zinc-100 rounded-md"
           ></textarea>
-          <div className="flex justify-end gap-4">
+          <div className="flex justify-end gap-4 mb-4 md:mb-0">
             <button
               className="font-semibold rounded-[3px] py-2 text-gray-500 hover:bg-zinc-100 text-sm px-4"
               onClick={handleClose}

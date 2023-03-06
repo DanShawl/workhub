@@ -54,7 +54,7 @@ function TaskItem({ task }) {
           </p>
         </div>
         <p className="text-xs font-bold flex gap-1 text-zinc-400">Notes</p>
-        <p className=" text-sm font-semibold text-gray-800 leading-snug md:max-w-2xl">
+        <p className=" text-sm font-medium text-gray-800 leading-snug md:max-w-2xl">
           {task.description}
         </p>
       </div>
