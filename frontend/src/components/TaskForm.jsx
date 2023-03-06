@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { createTask, deleteTask } from '../features/tasks/taskSlice';
 
 // import { BsFillCircleFill } from 'react-icons/bs';
-import { BiCheck, BiLoaderAlt, BiX } from 'react-icons/bi';
+import { BiCheck, BiLoaderAlt, BiX, BiListPlus } from 'react-icons/bi';
 function TaskForm({ handleClose, currentItem, setCurrentItem }) {
   const [text, setText] = useState(
     currentItem.length > 0 ? currentItem[0].text : ''
@@ -54,10 +54,10 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
             value={text}
             // currentItem ? currentItem[0].text :
             onChange={(e) => setText(e.target.value)}
-            className="w-full text-xl font-semibold p-1 border-b border-zinc-200 focus:border-[#f16232] focus:border-b-2 outline-none"
+            className="w-full text-xl font-semibold p-1 border-b border-zinc-200 focus:border-[#ff7445] focus:border-b-2 outline-none"
           />
-          <div className="text-[#4a4a4a] mt-4">
-            <h2 className="mb-4">What is the priority level?</h2>
+          <div className=" mt-4">
+            <h2 className="mb-4 text-gray-800">What is the priority level?</h2>
             <div className="flex flex-grow justify-between gap-4 text-gray-800">
               <input
                 type="button"
@@ -68,9 +68,7 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
                 onClick={() => selectPriority('Low')}
                 className={` cursor-pointer hover:bg-zinc-300 bg-gray-100 flex-1 py-2 rounded-md flex items-center justify-center border ${
                   active && priority === 'Low'
-                    ? // ? 'border-green-300 bg-[#51ae4c76] hover:bg-[#51ae4c76]'
-                      // 'border-[#6f6e6e2a] hover:bg-gray-300 bg-gray-300'
-                      'border-[#f16232] hover:bg-[#fbcdbe] bg-[#fbcdbe]'
+                    ? 'border-[#ff7445] hover:bg-[#faad8c3d] bg-[#faad8c3d]'
                     : 'border-gray-100 text-gray-500'
                 } font-bold`}
               />
@@ -83,9 +81,7 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
                 onClick={() => selectPriority('Medium')}
                 className={` cursor-pointer hover:bg-zinc-300 bg-gray-100 flex-1 py-2 rounded-md flex items-center justify-center border ${
                   active && priority === 'Medium'
-                    ? // ? 'border-[#faf55c] bg-[#c3be4181] hover:bg-[#c3be4181]'
-                      // 'border-[#6f6e6e2a] hover:bg-gray-300 bg-gray-300'
-                      'border-[#f16232] hover:bg-[#fbcdbe] bg-[#fbcdbe]'
+                    ? 'border-[#ff7445] hover:bg-[#faad8c3d] bg-[#faad8c3d]'
                     : 'border-gray-100 text-gray-500'
                 } font-bold`}
               />
@@ -98,24 +94,24 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
                 onClick={() => selectPriority('High')}
                 className={` cursor-pointer hover:bg-zinc-300 bg-gray-100 flex-1 py-2 rounded-md flex items-center justify-center border ${
                   active && priority === 'High'
-                    ? // ? 'border-[#dd7575] bg-[#d75b5b83] hover:bg-[#ad414153]'
-                      // 'border-[#6f6e6e2a] hover:bg-gray-300 bg-gray-300'
-                      'border-[#f16232] hover:bg-[#fbcdbe] bg-[#fbcdbe]'
+                    ? 'border-[#ff7445] hover:bg-[#faad8c3d] bg-[#faad8c3d]'
                     : 'border-gray-100 text-gray-500'
                 } font-bold`}
               />
             </div>
           </div>
-          <div className="text-[#4a4a4a] mt-4">
-            <h2 className="mb-4">What is the status of the task?</h2>
+          <div className=" mt-4">
+            <h2 className="mb-4 text-gray-800">
+              What is the status of the task?
+            </h2>
             <div className="flex justify-around gap-4 text-gray-800">
               <div className="flex flex-col justify-center items-center gap-y-2 flex-1">
                 <button
                   type="button"
                   onClick={() => selectTaskStatus('Not Started')}
-                  className={` cursor-pointer hover:bg-zinc-300 bg-gray-100 max-h-fit h-10 w-10 rounded-full flex items-center justify-center border ${
+                  className={` cursor-pointer hover:bg-zinc-300 bg-gray-100 h-10 w-10 rounded-full flex items-center justify-center border ${
                     active && taskStatus === 'Not Started'
-                      ? 'border-[#f16232] hover:bg-[#fbcdbe] bg-[#fbcdbe]'
+                      ? 'border-[#ff7445] hover:bg-[#faad8c3d] bg-[#faad8c3d]'
                       : 'border-gray-100 text-gray-500'
                   } font-bold`}
                 >
@@ -128,9 +124,9 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
                 <button
                   type="button"
                   onClick={() => selectTaskStatus('In Progress')}
-                  className={` cursor-pointer hover:bg-zinc-300 bg-gray-100 max-h-fit h-10 w-10 rounded-full flex items-center justify-center border ${
+                  className={` cursor-pointer hover:bg-zinc-300 bg-gray-100 h-10 w-10 rounded-full flex items-center justify-center border ${
                     active && taskStatus === 'In Progress'
-                      ? 'border-[#f16232] hover:bg-[#fbcdbe] bg-[#fbcdbe]'
+                      ? 'border-[#ff7445] hover:bg-[#faad8c3d] bg-[#faad8c3d]'
                       : 'border-gray-100 text-gray-500'
                   } font-bold`}
                 >
@@ -143,9 +139,9 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
                 <button
                   type="button"
                   onClick={() => selectTaskStatus('Completed')}
-                  className={` cursor-pointer hover:bg-zinc-300 bg-gray-100 max-h-fit h-10 w-10 rounded-full flex items-center justify-center border ${
+                  className={` cursor-pointer hover:bg-zinc-300 bg-gray-100 h-10 w-10 rounded-full flex items-center justify-center border ${
                     active && taskStatus === 'Completed'
-                      ? 'border-[#f16232] hover:bg-[#fbcdbe] bg-[#fbcdbe]'
+                      ? 'border-[#ff7445] hover:bg-[#faad8c3d] bg-[#faad8c3d]'
                       : 'border-gray-100 text-gray-500'
                   } font-bold`}
                 >
@@ -164,22 +160,23 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
             onChange={(e) => setDescription(e.target.value)}
             cols="30"
             rows="8"
-            className="w-full p-2 bg-zinc-100 rounded-md"
+            className="w-full py-3 px-4 bg-gray-50 rounded-md"
           ></textarea>
           <div className="flex justify-end gap-4 mb-4 md:mb-0">
             <button
-              className="font-semibold rounded-[3px] py-3 text-gray-500 hover:bg-zinc-100 text-sm px-5"
+              className="font-semibold rounded-md py-3 text-gray-500 hover:bg-zinc-100 text-sm px-5"
               onClick={handleClose}
             >
               Cancel
             </button>
             <button
-              className="font-semibold rounded-sm py-3 text-white text-sm px-5  bg-[#f16232] hover:bg-[#cf5126]"
+              className="font-semibold rounded-md py-3 text-white text-sm px-5 md:px-4 md:py-2 bg-[#ff7445] hover:bg-[#cf5126] shadow-md flex items-center gap-x-2"
               type="submit"
               // onClick={handleClose}
               // bg-[#ff5722]
             >
               {currentItem.length > 0 ? 'Update Task' : 'Create Task'}
+              <BiListPlus className=" text-lg" />
             </button>
           </div>
         </div>

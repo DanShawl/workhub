@@ -65,11 +65,11 @@ const TaskDashboard = () => {
           <div className=" mx-6 mt-6 flex items-center justify-between gap-x-4">
             <div>
               <div className="flex items-center gap-x-2 text-gray-500 font-medium mb-2">
-                <span className=" hover:underline hover:underline-offset-4 cursor-pointer decoration-[#f16232]">
+                <span className=" hover:underline hover:underline-offset-4 cursor-pointer decoration-[#ff7445]">
                   Dashboard
                 </span>{' '}
                 <BiChevronRight />{' '}
-                <span className=" hover:underline hover:underline-offset-4 cursor-pointer decoration-[#f16232]">
+                <span className=" hover:underline hover:underline-offset-4 cursor-pointer decoration-[#ff7445]">
                   Facility Tasks
                 </span>{' '}
                 <BiChevronRight /> {currentTaskStatus}
@@ -83,7 +83,7 @@ const TaskDashboard = () => {
             </div>
             <div className="fixed bottom-6 right-4 md:relative">
               <button
-                className=" hover:bg-[#cf5126] rounded-full md:rounded-sm text-white font-semibold bg-[#f16232] flex items-center justify-between gap-x-2 p-5 md:p-4 md:py-2 z-49 md:shadow-sm shadow-2xl shadow-zinc-800"
+                className=" hover:bg-[#cf5126] rounded-full md:rounded-md text-white font-semibold bg-[#ff7445] flex items-center justify-between gap-x-2 p-5 md:p-4 md:py-2 z-49 md:shadow-sm shadow-2xl shadow-zinc-800"
                 onClick={handleOpen}
               >
                 <p className="text-white font-semibold hidden md:block">
@@ -98,9 +98,9 @@ const TaskDashboard = () => {
               <li
                 className={` ${
                   currentTaskStatus === 'All'
-                    ? 'md:bg-[#f1623237] border-[#f16232] text-gray-800'
+                    ? 'md:bg-[#f1623237] border-[#ff7445] text-gray-800'
                     : 'border-zinc-50 text-gray-500'
-                } cursor-pointer md:border-r-4 md:border-b-0 border-b-4 hover:border-[#f16232] px-6 min-w-fit py-3 md:w-[200px] flex items-center md:justify-between md:font-medium`}
+                } cursor-pointer md:border-r-4 md:border-b-0 border-b-4 hover:border-[#ff7445] px-6 min-w-fit py-3 md:w-[200px] flex items-center md:justify-between md:font-medium`}
                 onClick={() => setCurrentTaskStatus('All')}
               >
                 All Tasks{' '}
@@ -111,9 +111,9 @@ const TaskDashboard = () => {
               <li
                 className={` ${
                   currentTaskStatus === 'Not Started'
-                    ? 'md:bg-[#f1623237] border-[#f16232] text-gray-800'
+                    ? 'md:bg-[#f1623237] border-[#ff7445] text-gray-800'
                     : 'border-zinc-50 text-gray-500'
-                } cursor-pointer md:border-r-4 md:border-b-0 border-b-4 hover:border-[#f16232]  px-6 min-w-fit py-3 md:w-[200px] flex items-center md:justify-between md:font-medium`}
+                } cursor-pointer md:border-r-4 md:border-b-0 border-b-4 hover:border-[#ff7445]  px-6 min-w-fit py-3 md:w-[200px] flex items-center md:justify-between md:font-medium`}
                 onClick={() => setCurrentTaskStatus('Not Started')}
               >
                 Not Started
@@ -127,9 +127,9 @@ const TaskDashboard = () => {
               <li
                 className={` ${
                   currentTaskStatus === 'In Progress'
-                    ? 'md:bg-[#f1623237] border-[#f16232] text-gray-800'
+                    ? 'md:bg-[#f1623237] border-[#ff7445] text-gray-800'
                     : 'border-zinc-50 text-gray-500'
-                } cursor-pointer md:border-r-4 md:border-b-0 border-b-4 hover:border-[#f16232]  px-6 min-w-fit py-3 md:w-[200px] flex items-center md:justify-between md:font-medium`}
+                } cursor-pointer md:border-r-4 md:border-b-0 border-b-4 hover:border-[#ff7445]  px-6 min-w-fit py-3 md:w-[200px] flex items-center md:justify-between md:font-medium`}
                 onClick={() => setCurrentTaskStatus('In Progress')}
               >
                 In Progress
@@ -143,9 +143,9 @@ const TaskDashboard = () => {
               <li
                 className={` ${
                   currentTaskStatus === 'Completed'
-                    ? 'md:bg-[#f1623237] border-[#f16232] text-gray-800'
+                    ? 'md:bg-[#f1623237] border-[#ff7445] text-gray-800'
                     : 'border-zinc-50 text-gray-500'
-                } cursor-pointer md:border-r-4 md:border-b-0 border-b-4 hover:border-[#f16232]  px-6 min-w-fit py-3 md:w-[200px] flex items-center md:justify-between md:font-medium`}
+                } cursor-pointer md:border-r-4 md:border-b-0 border-b-4 hover:border-[#ff7445]  px-6 min-w-fit py-3 md:w-[200px] flex items-center md:justify-between md:font-medium`}
                 onClick={() => setCurrentTaskStatus('Completed')}
               >
                 Completed

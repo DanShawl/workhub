@@ -33,7 +33,7 @@ const DashboardSideBar = () => {
             className="md:hidden"
             onClick={() => setToggleNav(!toggleNav)}
           >
-            <BiMenu className="text-2xl text-white" />
+            <BiMenu className=" text-3xl text-white" />
           </button>
         )}
       </div>
