@@ -1,9 +1,7 @@
 import React from 'react';
 import TaskItem from './TaskItem';
 
-{
-  /* ----------- General Purpose Item Component ----------- */
-}
+/* ----------- General Purpose Item Component ----------- */
 function ItemBox({ task, handleOpen }) {
   return (
     <section

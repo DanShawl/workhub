@@ -3,9 +3,7 @@ import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { BiMenu, BiX } from 'react-icons/bi';
 
-{
-  /* ----------- Header: login/register pages ----------- */
-}
+/* ----------- Header: login/register pages ----------- */
 function Header() {
   const { user } = useSelector((state) => state.auth);
   const [toggleNav, setToggleNav] = useState(false);

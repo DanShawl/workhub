@@ -1,9 +1,7 @@
 import React from 'react';
 import TaskForm from './TaskForm';
 
-{
-  /* ----------- General Purpose Form Modal: Create and update tasks ----------- */
-}
+/* ----------- General Purpose Form Modal: Create and update tasks ----------- */
 function FormModal({ toggleModal, handleClose, currentItem, setCurrentItem }) {
   if (!toggleModal) return null;
   return (
