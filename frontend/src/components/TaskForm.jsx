@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { createTask, deleteTask } from '../features/tasks/taskSlice';
 
 // import { BsFillCircleFill } from 'react-icons/bs';
-// import { BiCheck, BiLoaderAlt, BiX, BiEdit } from 'react-icons/bi';
+import { BiCheck, BiLoaderAlt, BiX, BiEdit } from 'react-icons/bi';
 function TaskForm({ handleClose, currentItem, setCurrentItem }) {
   const [text, setText] = useState(
     currentItem.length > 0 ? currentItem[0].text : ''
@@ -37,7 +37,7 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
     // if (priority && active === true) {
     //   setActive(!active);
     // }
-  }, [priority]);
+  }, [priority, taskStatus]);
 
   return (
     <section>
@@ -56,8 +56,8 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
             onChange={(e) => setText(e.target.value)}
             className="w-full text-xl font-semibold p-1 border-b border-zinc-200 focus:border-[#f16232] focus:border-b-2 outline-none"
           />
-          <div className="text-[#4a4a4a]">
-            <h2>What is the priority level?</h2>
+          <div className="text-[#4a4a4a] mt-4">
+            <h2 className="mb-4">What is the priority level?</h2>
             <div className="flex flex-grow justify-between gap-4 text-gray-800">
               <input
                 type="button"
@@ -66,11 +66,12 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
                 id="priority-select"
                 value={'Low'}
                 onClick={() => selectPriority('Low')}
-                className={` cursor-pointer hover:bg-zinc-300 bg-gray-100 flex-1 py-2 rounded-md flex items-center justify-center border-2 ${
+                className={` cursor-pointer hover:bg-zinc-300 bg-gray-100 flex-1 py-2 rounded-md flex items-center justify-center border ${
                   active && priority === 'Low'
                     ? // ? 'border-green-300 bg-[#51ae4c76] hover:bg-[#51ae4c76]'
-                      'border-[#6f6e6e2a] hover:bg-gray-300 bg-gray-300'
-                    : 'border-gray-100'
+                      // 'border-[#6f6e6e2a] hover:bg-gray-300 bg-gray-300'
+                      'border-[#f16232] hover:bg-[#fbcdbe] bg-[#fbcdbe]'
+                    : 'border-gray-100 text-gray-500'
                 } font-bold`}
               />
               <input
@@ -80,11 +81,12 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
                 id="priority-select"
                 value={'Medium'}
                 onClick={() => selectPriority('Medium')}
-                className={` cursor-pointer hover:bg-zinc-300 bg-gray-100 flex-1 py-2 rounded-md flex items-center justify-center border-2 ${
+                className={` cursor-pointer hover:bg-zinc-300 bg-gray-100 flex-1 py-2 rounded-md flex items-center justify-center border ${
                   active && priority === 'Medium'
                     ? // ? 'border-[#faf55c] bg-[#c3be4181] hover:bg-[#c3be4181]'
-                      'border-[#6f6e6e2a] hover:bg-gray-300 bg-gray-300'
-                    : 'border-gray-100'
+                      // 'border-[#6f6e6e2a] hover:bg-gray-300 bg-gray-300'
+                      'border-[#f16232] hover:bg-[#fbcdbe] bg-[#fbcdbe]'
+                    : 'border-gray-100 text-gray-500'
                 } font-bold`}
               />
               <input
@@ -94,145 +96,64 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
                 id="priority-select"
                 value={'High'}
                 onClick={() => selectPriority('High')}
-                className={` cursor-pointer hover:bg-zinc-300 bg-gray-100 flex-1 py-2 rounded-md flex items-center justify-center border-2 ${
+                className={` cursor-pointer hover:bg-zinc-300 bg-gray-100 flex-1 py-2 rounded-md flex items-center justify-center border ${
                   active && priority === 'High'
                     ? // ? 'border-[#dd7575] bg-[#d75b5b83] hover:bg-[#ad414153]'
-                      'border-[#6f6e6e2a] hover:bg-gray-300 bg-gray-300'
-                    : 'border-gray-100'
+                      // 'border-[#6f6e6e2a] hover:bg-gray-300 bg-gray-300'
+                      'border-[#f16232] hover:bg-[#fbcdbe] bg-[#fbcdbe]'
+                    : 'border-gray-100 text-gray-500'
                 } font-bold`}
               />
             </div>
           </div>
-          {/* <div className="text-[#4a4a4a]">
-            <h2>What is the task status?</h2>
-            <div className="flex flex-grow justify-between gap-4">
-              <input
-                type="button"
-                name="priority"
-                placeholder="Low"
-                id="priority-select"
-                value={'Low'}
-                onClick={() => selectPriority('Low')}
-                className={` cursor-pointer hover:bg-zinc-300 bg-zinc-200 flex-1 py-2 rounded-md flex items-center justify-center border-2 ${
-                  active && priority === 'Low'
-                    ? // ? 'border-green-300 bg-[#51ae4c76] hover:bg-[#51ae4c76]'
-                      'border-[#6f6e6e2a] hover:bg-[#6f6e6e93] bg-[#6f6e6e93]'
-                    : 'border-zinc-200'
-                } font-semibold`}
-              />
-              <input
-                type="button"
-                name="priority"
-                placeholder="Medium"
-                id="priority-select"
-                value={'Medium'}
-                onClick={() => selectPriority('Medium')}
-                className={` cursor-pointer hover:bg-zinc-300 bg-zinc-200 flex-1 py-2 rounded-md flex items-center justify-center border-2 ${
-                  active && priority === 'Medium'
-                    ? // ? 'border-[#faf55c] bg-[#c3be4181] hover:bg-[#c3be4181]'
-                      'border-[#6f6e6e2a] hover:bg-[#6f6e6e93] bg-[#6f6e6e93]'
-                    : 'border-zinc-200'
-                } font-semibold`}
-              />
-              <input
-                type="button"
-                name="priority"
-                placeholder="High"
-                id="priority-select"
-                value={'High'}
-                onClick={() => selectPriority('High')}
-                className={` cursor-pointer hover:bg-zinc-300 bg-zinc-200 flex-1 py-2 rounded-md flex items-center justify-center border-2 ${
-                  active && priority === 'High'
-                    ? // ? 'border-[#dd7575] bg-[#d75b5b83] hover:bg-[#ad414153]'
-                      'border-[#6f6e6e2a] hover:bg-[#6f6e6e93] bg-[#6f6e6e93]'
-                    : 'border-zinc-200'
-                } font-semibold`}
-              />
+          <div className="text-[#4a4a4a] mt-4">
+            <h2 className="mb-4">What is the status of the task?</h2>
+            <div className="flex justify-around gap-4 text-gray-800">
+              <div className="flex flex-col justify-center items-center gap-y-2 flex-1">
+                <button
+                  type="button"
+                  onClick={() => selectTaskStatus('Not Started')}
+                  className={` cursor-pointer hover:bg-zinc-300 bg-gray-100 max-h-fit h-10 w-10 rounded-full flex items-center justify-center border ${
+                    active && taskStatus === 'Not Started'
+                      ? 'border-[#f16232] hover:bg-[#fbcdbe] bg-[#fbcdbe]'
+                      : 'border-gray-100 text-gray-500'
+                  } font-bold`}
+                >
+                  <BiX />
+                </button>
+                <p className=" font-medium">Not Started</p>
+              </div>
+
+              <div className="flex flex-col justify-center items-center gap-y-2 flex-1">
+                <button
+                  type="button"
+                  onClick={() => selectTaskStatus('In Progress')}
+                  className={` cursor-pointer hover:bg-zinc-300 bg-gray-100 max-h-fit h-10 w-10 rounded-full flex items-center justify-center border ${
+                    active && taskStatus === 'In Progress'
+                      ? 'border-[#f16232] hover:bg-[#fbcdbe] bg-[#fbcdbe]'
+                      : 'border-gray-100 text-gray-500'
+                  } font-bold`}
+                >
+                  <BiLoaderAlt />
+                </button>
+                <p className=" font-medium">In Progress</p>
+              </div>
+
+              <div className="flex flex-col justify-center items-center gap-y-2 flex-1">
+                <button
+                  type="button"
+                  onClick={() => selectTaskStatus('Completed')}
+                  className={` cursor-pointer hover:bg-zinc-300 bg-gray-100 max-h-fit h-10 w-10 rounded-full flex items-center justify-center border ${
+                    active && taskStatus === 'Completed'
+                      ? 'border-[#f16232] hover:bg-[#fbcdbe] bg-[#fbcdbe]'
+                      : 'border-gray-100 text-gray-500'
+                  } font-bold`}
+                >
+                  <BiCheck />
+                </button>
+                <p className=" font-medium">Completed</p>
+              </div>
             </div>
-          </div> */}
-          {/* <div>
-            <h2>What is the task status?</h2>
-            <div className="flex flex-grow justify-between gap-4">
-              <input
-                type="button"
-                name="taskStatus"
-                placeholder="Low"
-                id="status-select"
-                value={'Not Started'}
-                // onClick={(e) => selectPriority(e.target.value)}
-                // onClick={onPriorityClick(e, 'green-400')}
-                // className={` bg-zinc-200 flex-1 py-2 rounded-md flex items-center justify-center border-2 ${
-                //   'border-' + priorityColor
-                // } font-semibold`}
-                onClick={(e) => toggleButton(e)}
-                className={` bg-zinc-200 flex-1 py-2 rounded-md flex items-center justify-center border-2 ${
-                  active && priority === 'Low'
-                    ? 'border-green-400'
-                    : 'border-zinc-200'
-                } font-semibold`}
-              />
-              <input
-                type="button"
-                name="taskStatus"
-                placeholder="Medium"
-                id="status-select"
-                value={'In Progress'}
-                // onClick={(e) => selectPriority(e.target.value)}
-                onClick={(e) => toggleButton(e)}
-                className={` bg-zinc-200 flex-1 py-2 rounded-md flex items-center justify-center border-2 ${
-                  active && priority === 'Medium'
-                    ? 'border-orange-400'
-                    : 'border-zinc-200'
-                } font-semibold`}
-              />
-              <input
-                type="button"
-                name="taskStatus"
-                placeholder="High"
-                id="status-select"
-                value={'Completed'}
-                // onClick={(e) => selectPriority(e.target.value)}
-                onClick={(e) => toggleButton(e)}
-                className={` bg-zinc-200 flex-1 py-2 rounded-md flex items-center justify-center border-2 ${
-                  active && priority === 'High'
-                    ? 'border-red-400'
-                    : 'border-zinc-200'
-                } font-semibold`}
-              />
-            </div>
-          </div> */}
-          <div className="mt-4 flex flex-col text-sm">
-            {/* <select
-              name="priority"
-              id="priority-select"
-              value={priority}
-              // currentItem ? currentItem[0].priority :
-              onChange={(e) => selectPriority(e.target.value)}
-              className=" border border-zinc-200 p-2 w-full rounded-md text-zinc-500"
-            >
-              <option value="" disabled>
-                Priority
-              </option>
-              <option value="Low">Low</option>
-              <option value="Medium">Medium</option>
-              <option value="High">High</option>
-            </select> */}
-            <h2>What is the current status of the task?</h2>
-            <select
-              name="taskStatus"
-              id="status-select"
-              value={taskStatus}
-              // currentItem ? currentItem[0].taskStatus :
-              onChange={(e) => selectTaskStatus(e.target.value)}
-              className=" border border-zinc-200 p-2 w-full rounded-md text-gray-800 font-semibold"
-            >
-              <option value="" disabled>
-                Status
-              </option>
-              <option value="Not Started">Not Started</option>
-              <option value="In Progress">In Progress</option>
-              <option value="Completed">Completed</option>
-            </select>
           </div>
 
           <textarea
