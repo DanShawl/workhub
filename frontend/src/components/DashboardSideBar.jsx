@@ -3,7 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { logout, reset } from '../features/auth/authSlice';
 import { useState } from 'react';
-import { BiMenu, BiTask, BiX, BiBuildings, BiUserCircle } from 'react-icons/bi';
+import { BiMenu, BiTask, BiX } from 'react-icons/bi';
+// BiBuildings, BiUserCircle
 const DashboardSideBar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();

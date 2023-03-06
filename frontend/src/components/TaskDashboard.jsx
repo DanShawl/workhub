@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getTasks, reset } from '../features/tasks/taskSlice';
 
 import ItemBox from './ItemBox';
-import { BiChevronRight, BiListPlus } from 'react-icons/bi';
+import { BiChevronRight, BiListPlus, BiRightArrowAlt } from 'react-icons/bi';
 import Spinner from '../components/Spinner';
 import FormModal from './FormModal';
 
@@ -179,7 +179,18 @@ const TaskDashboard = () => {
                 ))
               )
             ) : (
-              <h1>You have no tasks.</h1>
+              <div className="">
+                <h1 className="flex gap-x-1">
+                  You have no tasks.{' '}
+                  <button
+                    className=" decoration-[#ff7445] underline underline-offset-4 flex items-center gap-x hover:text-[#ff7445]"
+                    onClick={handleOpen}
+                  >
+                    Create a task now.
+                    <BiRightArrowAlt className="text-[#ff7445] text-lg" />
+                  </button>
+                </h1>
+              </div>
             )}
           </div>
         </section>

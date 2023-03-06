@@ -10,12 +10,12 @@ function Header() {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
   const [toggleNav, setToggleNav] = useState(false);
-  const onLogout = () => {
-    setToggleNav(!toggleNav);
-    dispatch(logout());
-    dispatch(reset());
-    navigate('/');
-  };
+  // const onLogout = () => {
+  //   setToggleNav(!toggleNav);
+  //   dispatch(logout());
+  //   dispatch(reset());
+  //   navigate('/');
+  // };
 
   return (
     <header
@@ -56,13 +56,13 @@ function Header() {
         //     : ' bg-[#f8f8f8] fixed top-14 right-0 w-full px-3 md:pr-0 md:w-60 md:left-0 border-r-2 border-zinc-200 md:h-[100%]'
         // }
         className={
-          ' md:static z-50 bg-[#f8f8f8] fixed top-14 right-0 w-full px-3 md:pr-0 md:h-[100%] md:w-full md:flex nd:justify-between flex-1'
+          ' md:static z-50 bg-[#f8f8f8] fixed top-14 right-0 w-full px-3 md:pr-0 md:h-[100%] md:w-fit md:flex nd:justify-between flex-1'
         }
       >
         <ul
           className={
             (toggleNav ? 'left-0 flex-1' : '-left-full ') +
-            ' transition-left fixed bottom-0 top-14 w-full items-center space-y-3  bg-white px-5 pt-8 font-semibold leading-3 text-[#4a4a4a] duration-500 sm:pt-12 md:static md:w-full  md:px-0 md:bg-[#f8f8f8] md:flex md:items-center md:space-y-0 md:pt-0 md:space-x-4 md:mr-6'
+            ' transition-left fixed bottom-0 top-14 w-full md:w-fit items-center space-y-3  bg-white px-5 pt-8 font-semibold leading-3 text-[#4a4a4a] duration-500 sm:pt-12 md:static  md:px-0 md:bg-[#f8f8f8] md:flex md:items-center md:space-y-0 md:pt-0 md:space-x-4'
           }
         >
           <li>
