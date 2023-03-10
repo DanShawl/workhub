@@ -1,7 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createTask, deleteTask } from '../features/tasks/taskSlice';
-import { BiCheck, BiLoaderAlt, BiX, BiTrash } from 'react-icons/bi';
+import {
+  BiCheck,
+  BiRevision,
+  BiX,
+  BiTrash,
+  BiRadioCircle,
+  BiRadioCircleMarked,
+} from 'react-icons/bi';
 
 /* ----------- Task Form: CRUD operations for task items ----------- */
 
@@ -64,7 +71,19 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
       <form onSubmit={onFormSubmit}>
         {/* ----------- Task Title Input ----------- */}
         <div className="flex flex-col gap-2">
-          <input
+          <div>
+            <label className="mt-4 text-gray-500 font-semibold">Title</label>
+            <input
+              type="text"
+              placeholder="Work Order title"
+              name="text"
+              id="text"
+              value={text}
+              // currentItem ? currentItem[0].text :
+              onChange={(e) => setText(e.target.value)}
+              className=" mt-1 w-full border-gray-300 py-1 px-2 border bg-gray-50 rounded-md outline-none font-medium text-gray-600"
+            />
+            {/* <input
             type="text"
             placeholder="Task title"
             name="text"
@@ -73,28 +92,29 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
             // currentItem ? currentItem[0].text :
             onChange={(e) => setText(e.target.value)}
             className="w-full text-xl font-semibold p-1 border-b border-zinc-200 focus:border-[#ff7445] focus:border-b-2 outline-none"
-          />
+          /> */}
+          </div>
 
           {/* ----------- Task Description Input ----------- */}
-          <div>
-            <h2 className="mt-4 text-gray-500">Description</h2>
+          <div className="mt-3">
+            <label className="text-gray-500 font-semibold">Description</label>
             <textarea
               name="description"
               id="description"
-              placeholder="Enter a description"
+              placeholder="Work Order description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               cols="30"
-              rows="8"
-              className="w-full py-3 px-4 bg-gray-100 rounded-sm outline-0"
+              rows="6"
+              className=" mt-1 w-full py-2 px-2 border-gray-300 border bg-gray-50 rounded-md outline-none font-medium resize-none text-gray-600"
             ></textarea>
           </div>
 
           {/* ----------- Task Priority Input ----------- */}
 
           <div className=" mt-4">
-            <h2 className="mb-4 text-gray-500">Priority</h2>
-            <div className="flex flex-grow justify-between text-gray-800">
+            <label className="text-gray-500 font-semibold">Priority</label>
+            <div className="mt-1 flex flex-grow gap-x-2 md:gap-x-0 justify-between text-gray-600 text-xs border-gray-300 md:border rounded-md">
               <input
                 type="button"
                 name="priority"
@@ -102,10 +122,10 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
                 id="priority-select"
                 value={'Low'}
                 onClick={() => selectPriority('Low')}
-                className={` cursor-pointer hover:bg-zinc-300 bg-gray-100 flex-1 py-2 rounded-l-md flex items-center justify-center border ${
+                className={` cursor-pointer hover:bg-gray-100 bg-gray-50 flex-1 py-2 rounded-md md:rounded-l-md md:rounded-r-none flex items-center justify-center border ${
                   active && priority === 'Low'
                     ? 'border-[#ff7445] hover:bg-[#faad8c3d] bg-[#faad8c3d]'
-                    : 'border-gray-100 text-gray-500'
+                    : 'border-gray-300 md:border-gray-50 text-gray-500'
                 } font-semibold`}
               />
               <input
@@ -115,10 +135,10 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
                 id="priority-select"
                 value={'Medium'}
                 onClick={() => selectPriority('Medium')}
-                className={` cursor-pointer hover:bg-zinc-300 bg-gray-100 flex-1 py-2 flex items-center justify-center border ${
+                className={` cursor-pointer hover:bg-gray-100 bg-gray-50 flex-1 py-2 rounded-md md:rounded-none flex items-center justify-center border ${
                   active && priority === 'Medium'
                     ? 'border-[#ff7445] hover:bg-[#faad8c3d] bg-[#faad8c3d]'
-                    : 'border-gray-100 text-gray-500'
+                    : 'border-gray-300 md:border-gray-50 text-gray-500'
                 } font-semibold`}
               />
               <input
@@ -128,25 +148,111 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
                 id="priority-select"
                 value={'High'}
                 onClick={() => selectPriority('High')}
-                className={` cursor-pointer hover:bg-zinc-300 bg-gray-100 flex-1 py-2 rounded-r-md flex items-center justify-center border ${
+                className={` cursor-pointer hover:bg-gray-100 bg-gray-50 flex-1 py-2 rounded-md md:rounded-r-md md:rounded-l-none flex items-center justify-center border ${
                   active && priority === 'High'
                     ? 'border-[#ff7445] hover:bg-[#faad8c3d] bg-[#faad8c3d]'
-                    : 'border-gray-100 text-gray-500'
+                    : 'border-gray-300 md:border-gray-50 text-gray-500'
                 } font-semibold`}
               />
             </div>
           </div>
 
           {/* ----------- Task Status Input ----------- */}
-          <div className=" mt-4 mb-8">
-            <h2 className="mb-4 text-gray-500">Status</h2>
-            <div className="flex justify-around gap-4 text-gray-800">
+          <div className=" mt-4 mb-12">
+            <label className="mb-4 text-gray-500 font-semibold">Status</label>
+            <div className=" mt-1 border-gray-300 border rounded-md bg-gray-50">
+              <button
+                className={` px-4 py-2 flex justify-between items-center w-full border-b border-gray-300 hover:bg-gray-100 rounded-t-md ${
+                  active && taskStatus === 'Open' && 'bg-gray-100'
+                }`}
+                type="button"
+                onClick={() => selectTaskStatus('Open')}
+              >
+                <div className="flex items-center gap-x-4">
+                  <BiX
+                    className={`text-xl ${
+                      active && taskStatus === 'Open'
+                        ? 'text-[#e54949]'
+                        : 'text-gray-600'
+                    } `}
+                  />
+                  <div className="text-left">
+                    <h4 className="text-gray-600 font-semibold">Open</h4>
+                    <p className=" text-xs text-gray-500">
+                      Work order has not been started.
+                    </p>
+                  </div>
+                </div>
+                {active && taskStatus === 'Open' ? (
+                  <BiRadioCircleMarked className="text-[#ff7445] text-xl" />
+                ) : (
+                  <BiRadioCircle className="text-xl text-gray-600" />
+                )}
+              </button>
+              <button
+                className={` px-4 py-2 flex justify-between items-center w-full border-b border-gray-300 hover:bg-gray-100 ${
+                  active && taskStatus === 'In Progress' && 'bg-gray-100'
+                }`}
+                type="button"
+                onClick={() => selectTaskStatus('In Progress')}
+              >
+                <div className="flex items-center gap-x-4">
+                  <BiRevision
+                    className={`text-xl ${
+                      active && taskStatus === 'In Progress'
+                        ? 'text-[#ff7445]'
+                        : 'text-gray-600'
+                    } `}
+                  />
+                  <div className="text-left">
+                    <h4 className="text-gray-600 font-semibold">In Progress</h4>
+                    <p className=" text-xs text-gray-500">
+                      Work order is currently in progress.
+                    </p>
+                  </div>
+                </div>
+                {active && taskStatus === 'In Progress' ? (
+                  <BiRadioCircleMarked className="text-[#ff7445] text-xl" />
+                ) : (
+                  <BiRadioCircle className="text-xl text-gray-600" />
+                )}
+              </button>
+              <button
+                className={` px-4 py-2 flex justify-between items-center w-full hover:bg-gray-100 rounded-b-md"
+                 ${active && taskStatus === 'Closed' && 'bg-gray-100'}`}
+                type="button"
+                onClick={() => selectTaskStatus('Closed')}
+              >
+                <div className="flex items-center gap-x-4">
+                  <BiCheck
+                    className={`text-xl ${
+                      active && taskStatus === 'Closed'
+                        ? 'text-[#54af3f]'
+                        : 'text-gray-600'
+                    } `}
+                  />
+                  <div className="text-left">
+                    <h4 className="text-gray-600 font-semibold">Closed</h4>
+                    <p className=" text-xs text-gray-500">
+                      Work order has been completed or cancelled.
+                    </p>
+                  </div>
+                </div>
+                {active && taskStatus === 'Closed' ? (
+                  <BiRadioCircleMarked className="text-[#ff7445] text-xl" />
+                ) : (
+                  <BiRadioCircle className="text-xl text-gray-600" />
+                )}
+              </button>
+            </div>
+
+            {/* <div className="flex justify-around gap-4 text-gray-800">
               <div className="flex flex-col justify-center items-center gap-y-2 flex-1">
                 <button
                   type="button"
-                  onClick={() => selectTaskStatus('Not Started')}
+                  onClick={() => selectTaskStatus('Open')}
                   className={` cursor-pointer hover:bg-zinc-300 bg-gray-100 h-10 w-10 rounded-full flex items-center justify-center border ${
-                    active && taskStatus === 'Not Started'
+                    active && taskStatus === 'Open'
                       ? 'border-[#ff7445] hover:bg-[#faad8c3d] bg-[#faad8c3d]'
                       : 'border-gray-100 text-gray-500'
                   } font-bold`}
@@ -166,7 +272,7 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
                       : 'border-gray-100 text-gray-500'
                   } font-bold`}
                 >
-                  <BiLoaderAlt />
+                  
                 </button>
                 <p className=" font-medium">In Progress</p>
               </div>
@@ -174,9 +280,9 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
               <div className="flex flex-col justify-center items-center gap-y-2 flex-1">
                 <button
                   type="button"
-                  onClick={() => selectTaskStatus('Completed')}
+                  onClick={() => selectTaskStatus('Closed')}
                   className={` cursor-pointer hover:bg-zinc-300 bg-gray-100 h-10 w-10 rounded-full flex items-center justify-center border ${
-                    active && taskStatus === 'Completed'
+                    active && taskStatus === 'Closed'
                       ? 'border-[#ff7445] hover:bg-[#faad8c3d] bg-[#faad8c3d]'
                       : 'border-gray-100 text-gray-500'
                   } font-bold`}
@@ -185,7 +291,7 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
                 </button>
                 <p className=" font-medium">Closed</p>
               </div>
-            </div>
+            </div> */}
           </div>
 
           {/* ----------- Create/Update / Delete Buttons ----------- */}
