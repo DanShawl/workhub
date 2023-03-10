@@ -223,7 +223,6 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
                 {currentItem.length > 0
                   ? 'Update Work Order'
                   : 'Create Work Order'}
-                {/* <BiListPlus className=" text-lg" /> */}
               </button>
             </div>
           </div>
