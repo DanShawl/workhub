@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createTask, deleteTask } from '../features/tasks/taskSlice';
-import { BiCheck, BiLoaderAlt, BiX, BiListPlus, BiTrash } from 'react-icons/bi';
+import { BiCheck, BiLoaderAlt, BiX, BiTrash } from 'react-icons/bi';
 
 /* ----------- Task Form: CRUD operations for task items ----------- */
 
@@ -51,13 +51,19 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
   }, [priority, taskStatus]);
 
   return (
-    <section>
-      <h2 className="text-sm pl-1">
-        {currentItem.length > 0 ? 'Update a Task' : 'Create a Task'}
+    <section className=" relative">
+      <h2 className="text-sm pl-1 text-center md:mb-8">
+        {currentItem.length > 0 ? 'Update Work Order' : 'Create Work Order'}
       </h2>
+      <button
+        className=" absolute p-1 rounded-full -top-1 -right-1 text-xl text-[#4a4a4a] hover:bg-gray-100"
+        onClick={handleClose}
+      >
+        <BiX />
+      </button>
       <form onSubmit={onFormSubmit}>
         {/* ----------- Task Title Input ----------- */}
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-2">
           <input
             type="text"
             placeholder="Task title"
@@ -68,10 +74,27 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
             onChange={(e) => setText(e.target.value)}
             className="w-full text-xl font-semibold p-1 border-b border-zinc-200 focus:border-[#ff7445] focus:border-b-2 outline-none"
           />
+
+          {/* ----------- Task Description Input ----------- */}
+          <div>
+            <h2 className="mt-4 text-gray-500">Description</h2>
+            <textarea
+              name="description"
+              id="description"
+              placeholder="Enter a description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              cols="30"
+              rows="8"
+              className="w-full py-3 px-4 bg-gray-100 rounded-sm outline-0"
+            ></textarea>
+          </div>
+
           {/* ----------- Task Priority Input ----------- */}
+
           <div className=" mt-4">
-            <h2 className="mb-4 text-gray-800">What is the priority level?</h2>
-            <div className="flex flex-grow justify-between gap-4 text-gray-800">
+            <h2 className="mb-4 text-gray-500">Priority</h2>
+            <div className="flex flex-grow justify-between text-gray-800">
               <input
                 type="button"
                 name="priority"
@@ -79,11 +102,11 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
                 id="priority-select"
                 value={'Low'}
                 onClick={() => selectPriority('Low')}
-                className={` cursor-pointer hover:bg-zinc-300 bg-gray-100 flex-1 py-2 rounded-md flex items-center justify-center border ${
+                className={` cursor-pointer hover:bg-zinc-300 bg-gray-100 flex-1 py-2 rounded-l-md flex items-center justify-center border ${
                   active && priority === 'Low'
                     ? 'border-[#ff7445] hover:bg-[#faad8c3d] bg-[#faad8c3d]'
                     : 'border-gray-100 text-gray-500'
-                } font-bold`}
+                } font-semibold`}
               />
               <input
                 type="button"
@@ -92,11 +115,11 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
                 id="priority-select"
                 value={'Medium'}
                 onClick={() => selectPriority('Medium')}
-                className={` cursor-pointer hover:bg-zinc-300 bg-gray-100 flex-1 py-2 rounded-md flex items-center justify-center border ${
+                className={` cursor-pointer hover:bg-zinc-300 bg-gray-100 flex-1 py-2 flex items-center justify-center border ${
                   active && priority === 'Medium'
                     ? 'border-[#ff7445] hover:bg-[#faad8c3d] bg-[#faad8c3d]'
                     : 'border-gray-100 text-gray-500'
-                } font-bold`}
+                } font-semibold`}
               />
               <input
                 type="button"
@@ -105,20 +128,18 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
                 id="priority-select"
                 value={'High'}
                 onClick={() => selectPriority('High')}
-                className={` cursor-pointer hover:bg-zinc-300 bg-gray-100 flex-1 py-2 rounded-md flex items-center justify-center border ${
+                className={` cursor-pointer hover:bg-zinc-300 bg-gray-100 flex-1 py-2 rounded-r-md flex items-center justify-center border ${
                   active && priority === 'High'
                     ? 'border-[#ff7445] hover:bg-[#faad8c3d] bg-[#faad8c3d]'
                     : 'border-gray-100 text-gray-500'
-                } font-bold`}
+                } font-semibold`}
               />
             </div>
           </div>
 
           {/* ----------- Task Status Input ----------- */}
-          <div className=" mt-4">
-            <h2 className="mb-4 text-gray-800">
-              What is the status of the task?
-            </h2>
+          <div className=" mt-4 mb-8">
+            <h2 className="mb-4 text-gray-500">Status</h2>
             <div className="flex justify-around gap-4 text-gray-800">
               <div className="flex flex-col justify-center items-center gap-y-2 flex-1">
                 <button
@@ -132,7 +153,7 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
                 >
                   <BiX />
                 </button>
-                <p className=" font-medium">Not Started</p>
+                <p className=" font-medium">Open</p>
               </div>
 
               <div className="flex flex-col justify-center items-center gap-y-2 flex-1">
@@ -162,22 +183,10 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
                 >
                   <BiCheck />
                 </button>
-                <p className=" font-medium">Completed</p>
+                <p className=" font-medium">Closed</p>
               </div>
             </div>
           </div>
-
-          {/* ----------- Task Description Input ----------- */}
-          <textarea
-            name="description"
-            id="description"
-            placeholder="Enter a description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            cols="30"
-            rows="4"
-            className="w-full py-3 px-4 bg-gray-50 rounded-md"
-          ></textarea>
 
           {/* ----------- Create/Update / Delete Buttons ----------- */}
           <div
@@ -211,8 +220,10 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
                 // onClick={handleClose}
                 // bg-[#ff5722]
               >
-                {currentItem.length > 0 ? 'Update Task' : 'Create Task'}
-                <BiListPlus className=" text-lg" />
+                {currentItem.length > 0
+                  ? 'Update Work Order'
+                  : 'Create Work Order'}
+                {/* <BiListPlus className=" text-lg" /> */}
               </button>
             </div>
           </div>

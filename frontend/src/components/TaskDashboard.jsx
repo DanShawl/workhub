@@ -78,13 +78,13 @@ const TaskDashboard = () => {
                 </span>{' '}
                 <BiChevronRight />{' '}
                 <span className=" hover:underline hover:underline-offset-4 cursor-pointer decoration-[#ff7445]">
-                  Facility Tasks
+                  Work Orders
                 </span>{' '}
                 <BiChevronRight /> {currentTaskStatus}
               </div>
               <div className="">
                 <h1 className="font-semibold text-xl md:text-2xl mb-0 pb-1 text-gray-800">
-                  Facility Tasks
+                  Work Orders
                 </h1>
                 <p className="text-gray-800 font-semibold">{getDate()}</p>
               </div>
@@ -95,7 +95,7 @@ const TaskDashboard = () => {
                 onClick={handleOpen}
               >
                 <p className="text-white font-semibold hidden md:block">
-                  Create Task
+                  Create Work Order
                 </p>
                 <BiListPlus className=" text-lg" />
               </button>
