@@ -1,6 +1,6 @@
 const asyncHandler = require('express-async-handler');
 const Contact = require('../models/contactModel');
-// const User = require('../models/userModel');
+const User = require('../models/userModel');
 
 //  @desc     Get contacts
 //  @route    GET /api/contacts
@@ -19,6 +19,7 @@ const setContact = asyncHandler(async (req, res) => {
   }
 
   const contact = await Contact.create({
+    user: req.user.id,
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     phoneNumber: req.body.phoneNumber,
@@ -41,6 +42,16 @@ const updateContact = asyncHandler(async (req, res) => {
     throw new Error('Contact not found.');
   }
 
+  if (!req.user) {
+    res.status(401);
+    throw new Error('User not found.');
+  }
+
+  if (contact.user.toString() !== req.user.id) {
+    res.status(401);
+    throw new Error('User not authorized.');
+  }
+
   const updatedContact = await Contact.findByIdAndUpdate(
     req.params.id,
     req.body,
@@ -61,6 +72,16 @@ const deleteContact = asyncHandler(async (req, res) => {
   if (!contact) {
     res.status(400);
     throw new Error('Contact not found.');
+  }
+
+  if (!req.user) {
+    res.status(401);
+    throw new Error('User not found.');
+  }
+
+  if (contact.user.toString() !== req.user.id) {
+    res.status(401);
+    throw new Error('User not authorized.');
   }
 
   await contact.remove();
