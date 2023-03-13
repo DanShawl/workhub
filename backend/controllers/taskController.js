@@ -14,10 +14,6 @@ const getTasks = asyncHandler(async (req, res) => {
 //  @route    POST /api/tasks
 //  @access   Private
 const setTask = asyncHandler(async (req, res) => {
-  // if (!req.body.text) {
-  //   res.status(400);
-  //   throw new Error('Please add text field.');
-  // }
   if (!req.body.text) {
     res.status(400);
     throw new Error('Please add all fields.');

@@ -15,9 +15,10 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use('/api/work-orders', require('./routes/workOrderRoutes'));
+// app.use('/api/work-orders', require('./routes/workOrderRoutes'));
 app.use('/api/tasks', require('./routes/taskRoutes'));
 app.use('/api/users', require('./routes/userRoutes'));
+app.use('/api/contacts', require('./routes/contactRoutes'));
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../frontend/build')));
