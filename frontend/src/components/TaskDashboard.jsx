@@ -86,7 +86,7 @@ const TaskDashboard = () => {
                 <h1 className="font-semibold text-xl md:text-2xl mb-0 pb-1 text-gray-800">
                   Work Orders
                 </h1>
-                <p className="text-gray-800 font-semibold">{getDate()}</p>
+                <p className="text-gray-500 font-semibold">{getDate()}</p>
               </div>
             </div>
             <div className="fixed bottom-6 right-4 lg:relative z-40">
