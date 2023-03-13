@@ -65,25 +65,31 @@ const TaskDashboard = () => {
   if (isLoading) {
     return <Spinner />;
   }
+
+  // bg-[#ff7445]
+  // bg-[#ff7043]
+
+  // bg-gray-200
+  // bg-[#f9f9f9]
   return (
     <>
-      <div className=" mt-14 md:mt-0 bg-gray-200 md:bg-gray-200 md:ml-[167px] h-screen flex flex-col text-sm md:w-screen">
+      <div className=" mt-14 md:mt-0 bg-gray-200 md:bg-[#e9e9e9] md:ml-[167px] h-screen flex flex-col text-sm md:w-screen">
         {/* ----------- Task Dashboard Header/Sidebar: contains header info and task sorting ----------- */}
         <section className=" md:ml-[200px]">
           <div className=" mx-6 mt-6 flex items-center justify-between gap-x-4">
             <div>
               <div className="flex items-center gap-x-2 text-gray-500 font-medium mb-2">
-                <span className=" hover:underline hover:underline-offset-4 cursor-pointer decoration-[#ff7445]">
+                <span className=" text-[#fa8b66] hover:underline hover:underline-offset-4 cursor-pointer decoration-[#ff7445]">
                   Dashboard
                 </span>{' '}
                 <BiChevronRight />{' '}
-                <span className=" hover:underline hover:underline-offset-4 cursor-pointer decoration-[#ff7445]">
+                <span className=" text-[#fa8b66] hover:underline hover:underline-offset-4 cursor-pointer decoration-[#ff7445]">
                   Work Orders
                 </span>{' '}
                 <BiChevronRight /> {currentTaskStatus}
               </div>
               <div className="">
-                <h1 className="font-semibold text-xl md:text-2xl mb-0 pb-1 text-gray-800">
+                <h1 className="font-semibold text-3xl mb-0 pb-1 text-gray-800">
                   Work Orders
                 </h1>
                 <p className="text-gray-500 font-semibold">{getDate()}</p>
@@ -109,12 +115,12 @@ const TaskDashboard = () => {
                 className={` ${
                   currentTaskStatus === 'All'
                     ? 'md:bg-[#faad8c3d] border-[#ff7445] text-gray-800'
-                    : 'border-gray-200 md:border-zinc-50 text-gray-500'
-                } cursor-pointer md:border-r-4 md:border-b-0 border-b-4 hover:border-[#ff7445] px-6 min-w-fit py-3 md:w-[200px] flex items-center md:justify-between md:font-medium`}
+                    : 'border-gray-500 md:border-zinc-50 text-gray-500'
+                } cursor-pointer md:border-r-4 md:border-b-0 border-b-2 hover:border-[#ff7445] px-6 min-w-fit py-3 md:w-[200px] flex items-center md:justify-between md:font-medium`}
                 onClick={() => setCurrentTaskStatus('All')}
               >
                 All Tasks{' '}
-                <div className=" w-4 h-4 rounded-full flex items-center justify-center bg-zinc-300 text-xs ml-1 md:bg-zinc-200 text-zinc-800 font-semibold">
+                <div className=" w-4 h-4 rounded-full flex items-center justify-center text-[#ff7445] text-xs ml-1 font-semibold">
                   {tasks.length}
                 </div>
               </li>
@@ -122,12 +128,12 @@ const TaskDashboard = () => {
                 className={` ${
                   currentTaskStatus === 'Not Started'
                     ? 'md:bg-[#faad8c3d] border-[#ff7445] text-gray-800'
-                    : 'border-gray-200 md:border-zinc-50 text-gray-500'
-                } cursor-pointer md:border-r-4 md:border-b-0 border-b-4 hover:border-[#ff7445]  px-6 min-w-fit py-3 md:w-[200px] flex items-center md:justify-between md:font-medium`}
+                    : 'border-gray-500 md:border-zinc-50 text-gray-500'
+                } cursor-pointer md:border-r-4 md:border-b-0 border-b-2 hover:border-[#ff7445]  px-6 min-w-fit py-3 md:w-[200px] flex items-center md:justify-between md:font-medium`}
                 onClick={() => setCurrentTaskStatus('Not Started')}
               >
                 Not Started
-                <div className=" w-4 h-4 rounded-full flex items-center justify-center bg-zinc-300 text-xs ml-1 md:bg-zinc-200 text-zinc-800 font-semibold">
+                <div className=" w-4 h-4 rounded-full flex items-center justify-center text-xs ml-1 text-[#ff7445] font-semibold">
                   {
                     tasks.filter((task) => task.taskStatus === 'Not Started')
                       .length
@@ -138,12 +144,12 @@ const TaskDashboard = () => {
                 className={` ${
                   currentTaskStatus === 'In Progress'
                     ? 'md:bg-[#faad8c3d] border-[#ff7445] text-gray-800'
-                    : ' border-gray-200 md:border-zinc-50 text-gray-500'
-                } cursor-pointer md:border-r-4 md:border-b-0 border-b-4 hover:border-[#ff7445]  px-6 min-w-fit py-3 md:w-[200px] flex items-center md:justify-between md:font-medium`}
+                    : ' border-gray-500 md:border-zinc-50 text-gray-500'
+                } cursor-pointer md:border-r-4 md:border-b-0 border-b-2 hover:border-[#ff7445]  px-6 min-w-fit py-3 md:w-[200px] flex items-center md:justify-between md:font-medium`}
                 onClick={() => setCurrentTaskStatus('In Progress')}
               >
                 In Progress
-                <div className=" w-4 h-4 rounded-full flex items-center justify-center bg-zinc-300 text-xs ml-1 md:bg-zinc-200 text-zinc-800 font-semibold">
+                <div className=" w-4 h-4 rounded-full flex items-center justify-center text-xs ml-1 text-[#ff7445] font-semibold">
                   {
                     tasks.filter((task) => task.taskStatus === 'In Progress')
                       .length
@@ -154,12 +160,12 @@ const TaskDashboard = () => {
                 className={` ${
                   currentTaskStatus === 'Completed'
                     ? 'md:bg-[#faad8c3d] border-[#ff7445] text-gray-800'
-                    : 'border-gray-200 md:border-zinc-50 text-gray-500'
-                } cursor-pointer md:border-r-4 md:border-b-0 border-b-4 hover:border-[#ff7445]  px-6 min-w-fit py-3 md:w-[200px] flex items-center md:justify-between md:font-medium`}
+                    : 'border-gray-500 md:border-zinc-50 text-gray-500'
+                } cursor-pointer md:border-r-4 md:border-b-0 border-b-2 hover:border-[#ff7445]  px-6 min-w-fit py-3 md:w-[200px] flex items-center md:justify-between md:font-medium`}
                 onClick={() => setCurrentTaskStatus('Completed')}
               >
                 Completed
-                <div className=" w-4 h-4 rounded-full flex items-center justify-center bg-zinc-300 text-xs ml-1 md:bg-zinc-200 text-zinc-800 font-semibold">
+                <div className=" w-4 h-4 rounded-full flex items-center justify-center  text-xs ml-1 text-[#ff7445] font-semibold">
                   {
                     tasks.filter((task) => task.taskStatus === 'Completed')
                       .length
@@ -171,7 +177,7 @@ const TaskDashboard = () => {
         </section>
 
         {/* ----------- Task Grid: Contains task items sorted by status ----------- */}
-        <section className="md:ml-[200px] md:bg-gray-200 bg-gray-200">
+        <section className="md:ml-[200px] md:bg-[#e9e9e9] bg-gray-200">
           <div className=" m-6 sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* md:grid grid-cols-3 */}
             {tasks.length > 0 ? (

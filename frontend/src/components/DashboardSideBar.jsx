@@ -19,9 +19,10 @@ const DashboardSideBar = () => {
     dispatch(reset());
     navigate('/');
   };
-
+  // bg-zinc-800
+  // bg-[#1a2225]
   return (
-    <div className="bg-zinc-800 w-screen md:h-screen md:max-w-fit fixed top-0 left-0 md:flex md:flex-col md:justify-between md:items-center z-50 md:py-5 text-sm">
+    <div className="bg-[#1a2225] w-screen md:h-screen md:max-w-fit fixed top-0 left-0 md:flex md:flex-col md:justify-between md:items-center z-50 md:py-5 text-sm">
       {/* ----------- Sidebar: Logo/Menu Icons ----------- */}
       <div className={`flex items-center h-14 p-3 justify-between`}>
         <Link to="/" className=" text-white">
@@ -55,7 +56,7 @@ const DashboardSideBar = () => {
           <ul
             className={
               (toggleNav ? 'left-0 flex-1' : '-left-full ') +
-              ' transition-left fixed bottom-0 top-14 w-full items-center space-y-3 px-5 pt-8 font-semibold leading-3 bg-zinc-100  md:bg-zinc-800 duration-500 sm:pt-12 z-50 md:px-0 md:static md:flex md:flex-col md:items-start md:space-y-0 md:pt-0  md:justify-start '
+              ' transition-left fixed bottom-0 top-14 w-full items-center space-y-3 px-5 pt-8 font-semibold leading-3 bg-zinc-100  md:bg-[#1a2225] duration-500 sm:pt-12 z-50 md:px-0 md:static md:flex md:flex-col md:items-start md:space-y-0 md:pt-0  md:justify-start '
             }
           >
             <li className=" w-full md:border-r-4 md:hover:border-[#f16232] md:border-transparent">

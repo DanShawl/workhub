@@ -58,7 +58,7 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
   }, [priority, taskStatus]);
 
   return (
-    <section className=" relative">
+    <section className=" relative md:h-full">
       <h2 className="text-sm pl-1 text-center md:mb-8">
         {currentItem.length > 0 ? 'Update Work Order' : 'Create Work Order'}
       </h2>
@@ -68,20 +68,20 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
       >
         <BiX />
       </button>
-      <form onSubmit={onFormSubmit}>
+      <form onSubmit={onFormSubmit} className=" md:flex md:flex-col md:h-full">
         {/* ----------- Task Title Input ----------- */}
         <div className="flex flex-col gap-2">
           <div>
             <label className="mt-4 text-gray-500 font-semibold">Title</label>
             <input
               type="text"
-              placeholder="Work Order title"
+              placeholder="e.g. Water Heater Replacement"
               name="text"
               id="text"
               value={text}
               // currentItem ? currentItem[0].text :
               onChange={(e) => setText(e.target.value)}
-              className=" mt-1 w-full border-gray-300 py-1 px-2 border bg-gray-50 rounded-md outline-none font-medium text-gray-600"
+              className=" mt-1 w-full border-gray-200 py-2 px-2 border-[1.5px] rounded-md outline-none font-medium text-gray-600 focus:bg-gray-100"
             />
             {/* <input
             type="text"
@@ -101,12 +101,12 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
             <textarea
               name="description"
               id="description"
-              placeholder="Work Order description"
+              placeholder="e.g. Find dealer and schedule work to replace AO Smith Preferred water heater."
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               cols="30"
               rows="6"
-              className=" mt-1 w-full py-2 px-2 border-gray-300 border bg-gray-50 rounded-md outline-none font-medium resize-none text-gray-600"
+              className=" mt-1 w-full py-2 px-2 border-gray-200 border-[1.5px] focus:bg-gray-100 rounded-md outline-none font-medium resize-none text-gray-600"
             ></textarea>
           </div>
 
@@ -114,7 +114,7 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
 
           <div className=" mt-4">
             <label className="text-gray-500 font-semibold">Priority</label>
-            <div className="mt-1 flex flex-grow gap-x-2 md:gap-x-0 justify-between text-gray-600 text-xs border-gray-300 md:border rounded-md">
+            <div className="mt-1 flex flex-grow gap-x-2 md:gap-x-0 justify-between text-gray-600 text-xs border-gray-200 md:border-[1.5px] rounded-md">
               <input
                 type="button"
                 name="priority"
@@ -122,10 +122,11 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
                 id="priority-select"
                 value={'Low'}
                 onClick={() => selectPriority('Low')}
-                className={` cursor-pointer hover:bg-gray-100 bg-gray-50 flex-1 py-2 rounded-md md:rounded-l-md md:rounded-r-none flex items-center justify-center border ${
+                className={` cursor-pointer flex-1 py-2 rounded-md md:rounded-l-md md:rounded-r-none flex items-center justify-center border ${
                   active && priority === 'Low'
-                    ? 'border-[#ff7445] hover:bg-[#faad8c3d] bg-[#faad8c3d]'
-                    : 'border-gray-300 md:border-gray-50 text-gray-500'
+                    ? // ? 'border-[#ff7445] hover:bg-[#faad8c3d] bg-[#faad8c3d]'
+                      'bg-[#ff7445] text-white hover:bg-[#ff6b39]'
+                    : 'border-gray-200 md:border-gray-50 text-gray-500 hover:bg-gray-100'
                 } font-semibold`}
               />
               <input
@@ -135,10 +136,10 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
                 id="priority-select"
                 value={'Medium'}
                 onClick={() => selectPriority('Medium')}
-                className={` cursor-pointer hover:bg-gray-100 bg-gray-50 flex-1 py-2 rounded-md md:rounded-none flex items-center justify-center border ${
+                className={` cursor-pointer flex-1 py-2 rounded-md md:rounded-none flex items-center justify-center border ${
                   active && priority === 'Medium'
-                    ? 'border-[#ff7445] hover:bg-[#faad8c3d] bg-[#faad8c3d]'
-                    : 'border-gray-300 md:border-gray-50 text-gray-500'
+                    ? ' bg-[#ff7445] text-white hover:bg-[#ff6b39]'
+                    : 'border-gray-200 md:border-gray-50 text-gray-500 hover:bg-gray-100'
                 } font-semibold`}
               />
               <input
@@ -148,10 +149,10 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
                 id="priority-select"
                 value={'High'}
                 onClick={() => selectPriority('High')}
-                className={` cursor-pointer hover:bg-gray-100 bg-gray-50 flex-1 py-2 rounded-md md:rounded-r-md md:rounded-l-none flex items-center justify-center border ${
+                className={` cursor-pointer  flex-1 py-2 rounded-md md:rounded-r-md md:rounded-l-none flex items-center justify-center border ${
                   active && priority === 'High'
-                    ? 'border-[#ff7445] hover:bg-[#faad8c3d] bg-[#faad8c3d]'
-                    : 'border-gray-300 md:border-gray-50 text-gray-500'
+                    ? 'bg-[#ff7445] text-white hover:bg-[#ff6b39]'
+                    : 'border-gray-200 md:border-gray-50 text-gray-500 hover:bg-gray-100'
                 } font-semibold`}
               />
             </div>
@@ -160,7 +161,7 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
           {/* ----------- Task Status Input ----------- */}
           <div className=" mt-4 mb-12">
             <label className="mb-4 text-gray-500 font-semibold">Status</label>
-            <div className=" mt-1 border-gray-300 border rounded-md bg-gray-50">
+            <div className=" mt-1 border-gray-200 border-[1.5px] rounded-md">
               <button
                 className={` px-4 py-2 flex justify-between items-center w-full border-b border-gray-300 hover:bg-gray-100 rounded-t-md ${
                   active && taskStatus === 'Open' && 'bg-gray-100'
@@ -295,44 +296,46 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
           </div>
 
           {/* ----------- Create/Update / Delete Buttons ----------- */}
-          <div
+        </div>
+        {/* <div className=""> */}
+        <div
+          className={
+            currentItem.length > 0
+              ? 'flex justify-between mb-4 md:mb-0 pl-1'
+              : 'flex justify-end mb-4 md:mb-0 pl-1'
+          }
+        >
+          <button
+            type="button"
+            onClick={onDelete}
             className={
               currentItem.length > 0
-                ? 'flex justify-between mb-4 md:mb-0 pl-1'
-                : 'flex justify-end mb-4 md:mb-0 pl-1'
+                ? `rounded-full py-3 text-gray-500 hover:bg-zinc-100 text-lg px-3`
+                : 'hidden'
             }
           >
+            <BiTrash />
+          </button>
+          <div className="flex justify-end gap-4">
             <button
-              type="button"
-              onClick={onDelete}
-              className={
-                currentItem.length > 0
-                  ? `rounded-full py-3 text-gray-500 hover:bg-zinc-100 text-lg px-3`
-                  : 'hidden'
-              }
+              className="font-semibold rounded-md py-3 text-gray-500 hover:bg-zinc-100 text-sm px-5"
+              onClick={handleClose}
             >
-              <BiTrash />
+              Cancel
             </button>
-            <div className="flex justify-end gap-4">
-              <button
-                className="font-semibold rounded-md py-3 text-gray-500 hover:bg-zinc-100 text-sm px-5"
-                onClick={handleClose}
-              >
-                Cancel
-              </button>
-              <button
-                className="font-semibold rounded-md py-3 text-white text-sm px-5 md:px-4 md:py-2 bg-[#ff7445] hover:bg-[#cf5126] shadow-md flex items-center gap-x-2"
-                type="submit"
-                // onClick={handleClose}
-                // bg-[#ff5722]
-              >
-                {currentItem.length > 0
-                  ? 'Update Work Order'
-                  : 'Create Work Order'}
-              </button>
-            </div>
+            <button
+              className="font-semibold rounded-md py-3 text-white text-sm px-5 md:px-4 md:py-2 bg-[#ff7445] hover:bg-[#cf5126] shadow-md flex items-center gap-x-2"
+              type="submit"
+              // onClick={handleClose}
+              // bg-[#ff5722]
+            >
+              {currentItem.length > 0
+                ? 'Update Work Order'
+                : 'Create Work Order'}
+            </button>
           </div>
         </div>
+        {/* </div> */}
       </form>
     </section>
   );
