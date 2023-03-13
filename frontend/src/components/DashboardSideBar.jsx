@@ -56,13 +56,13 @@ const DashboardSideBar = () => {
           <ul
             className={
               (toggleNav ? 'left-0 flex-1' : '-left-full ') +
-              ' transition-left fixed bottom-0 top-14 w-full items-center space-y-3 px-5 pt-8 font-semibold leading-3 bg-zinc-100  md:bg-[#1a2225] duration-500 sm:pt-12 z-50 md:px-0 md:static md:flex md:flex-col md:items-start md:space-y-0 md:pt-0  md:justify-start '
+              ' transition-left fixed bottom-0 top-14 w-full items-center space-y-3 px-5 pt-8 font-semibold leading-3 bg-[#1a2225] duration-500 sm:pt-12 z-50 md:px-0 md:static md:flex md:flex-col md:items-start md:space-y-0 md:pt-0  md:justify-between '
             }
           >
             <li className=" w-full md:border-r-4 md:hover:border-[#f16232] md:border-transparent">
               <Link
                 to="/"
-                className=" flex items-center gap-x-2 text-zinc-800 font-bold md:font-semibold md:text-gray-400 py-1 md:py-3 pr-10 pl-5 hover:text-gray-100 "
+                className=" flex items-center gap-x-2 text-white font-bold md:font-semibold md:text-gray-400 py-1 md:py-3 pr-10 pl-5 hover:text-gray-100 "
               >
                 <BiTask />
                 Facility Tasks

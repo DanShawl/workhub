@@ -95,7 +95,7 @@ const TaskDashboard = () => {
                 <p className="text-gray-500 font-semibold">{getDate()}</p>
               </div>
             </div>
-            <div className="fixed bottom-6 right-4 lg:relative z-40">
+            <div className="fixed bottom-6 right-4 lg:static z-40">
               <button
                 className=" hover:bg-[#cf5126] rounded-full md:rounded-md text-white font-semibold bg-[#ff7445] flex items-center justify-between gap-x-2 p-5 md:p-4 md:py-2 z-49 md:shadow-sm shadow-2xl shadow-zinc-800"
                 onClick={handleOpen}
@@ -119,25 +119,22 @@ const TaskDashboard = () => {
                 } cursor-pointer md:border-r-4 md:border-b-0 border-b-2 hover:border-[#ff7445] px-6 min-w-fit py-3 md:w-[200px] flex items-center md:justify-between md:font-medium`}
                 onClick={() => setCurrentTaskStatus('All')}
               >
-                All Tasks{' '}
+                All Work Orders{' '}
                 <div className=" w-4 h-4 rounded-full flex items-center justify-center text-[#ff7445] text-xs ml-1 font-semibold">
                   {tasks.length}
                 </div>
               </li>
               <li
                 className={` ${
-                  currentTaskStatus === 'Not Started'
+                  currentTaskStatus === 'Open'
                     ? 'md:bg-[#faad8c3d] border-[#ff7445] text-gray-800'
                     : 'border-gray-500 md:border-zinc-50 text-gray-500'
                 } cursor-pointer md:border-r-4 md:border-b-0 border-b-2 hover:border-[#ff7445]  px-6 min-w-fit py-3 md:w-[200px] flex items-center md:justify-between md:font-medium`}
-                onClick={() => setCurrentTaskStatus('Not Started')}
+                onClick={() => setCurrentTaskStatus('Open')}
               >
-                Not Started
+                Open
                 <div className=" w-4 h-4 rounded-full flex items-center justify-center text-xs ml-1 text-[#ff7445] font-semibold">
-                  {
-                    tasks.filter((task) => task.taskStatus === 'Not Started')
-                      .length
-                  }
+                  {tasks.filter((task) => task.taskStatus === 'Open').length}
                 </div>
               </li>
               <li
@@ -158,18 +155,15 @@ const TaskDashboard = () => {
               </li>
               <li
                 className={` ${
-                  currentTaskStatus === 'Completed'
+                  currentTaskStatus === 'Closed'
                     ? 'md:bg-[#faad8c3d] border-[#ff7445] text-gray-800'
                     : 'border-gray-500 md:border-zinc-50 text-gray-500'
                 } cursor-pointer md:border-r-4 md:border-b-0 border-b-2 hover:border-[#ff7445]  px-6 min-w-fit py-3 md:w-[200px] flex items-center md:justify-between md:font-medium`}
-                onClick={() => setCurrentTaskStatus('Completed')}
+                onClick={() => setCurrentTaskStatus('Closed')}
               >
-                Completed
+                Closed
                 <div className=" w-4 h-4 rounded-full flex items-center justify-center  text-xs ml-1 text-[#ff7445] font-semibold">
-                  {
-                    tasks.filter((task) => task.taskStatus === 'Completed')
-                      .length
-                  }
+                  {tasks.filter((task) => task.taskStatus === 'Closed').length}
                 </div>
               </li>
             </ul>

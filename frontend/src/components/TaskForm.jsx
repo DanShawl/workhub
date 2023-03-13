@@ -68,7 +68,10 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
       >
         <BiX />
       </button>
-      <form onSubmit={onFormSubmit} className=" md:flex md:flex-col md:h-full">
+      <form
+        onSubmit={onFormSubmit}
+        className=" md:flex md:flex-col md:justify-between md:h-full md:max-h-[93%]"
+      >
         {/* ----------- Task Title Input ----------- */}
         <div className="flex flex-col gap-2">
           <div>
