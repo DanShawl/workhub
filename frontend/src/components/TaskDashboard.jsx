@@ -75,8 +75,10 @@ const TaskDashboard = () => {
   //  e9e9e9
   return (
     <>
-      <div className=" mt-14 md:mt-0 bg-gray-200 md:bg-[#f6f7f9] md:ml-[167px] h-screen flex flex-col text-sm md:w-screen">
+      <div className=" mt-14 md:mt-0 bg-gray-200 md:bg-[#f6f7f9] md:ml-[167px] h-screen flex flex-col text-sm md:w-fit">
+        {/* <div className=" mt-14 md:mt-0 bg-gray-200 md:bg-[#f6f7f9] md:ml-[167px] h-screen flex flex-col text-sm md:w-screen"> */}
         {/* ----------- Task Dashboard Header/Sidebar: contains header info and task sorting ----------- */}
+        {/* <section className=" md:ml-[200px]"> */}
         <section className=" md:ml-[200px]">
           <div className=" mx-6 mt-6 flex items-center justify-between gap-x-4">
             <div>

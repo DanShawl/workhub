@@ -5,6 +5,8 @@ import Register from './pages/Register';
 import Header from './components/Header';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ContactDashboard from './components/ContactDashboard';
+import TaskDashboard from './components/TaskDashboard';
 
 function App() {
   return (
@@ -13,7 +15,10 @@ function App() {
         <div className="md:w-full">
           <Header />
           <Routes>
-            <Route path="/" element={<Dashboard />} />
+            <Route path="/" element={<Dashboard />}>
+              <Route path="work-orders" element={<TaskDashboard />} />
+              <Route path="contacts" element={<ContactDashboard />} />
+            </Route>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
           </Routes>

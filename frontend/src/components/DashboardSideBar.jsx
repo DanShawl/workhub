@@ -62,7 +62,7 @@ const DashboardSideBar = () => {
           >
             <li className=" w-full md:border-r-4 md:hover:border-[#f16232] md:border-transparent">
               <Link
-                to="/"
+                to="work-orders"
                 className=" flex items-center gap-x-2 text-white font-bold md:font-medium md:text-gray-400 py-1 md:py-3 pr-10 pl-5 hover:text-gray-100 "
               >
                 <BiTask />
@@ -71,7 +71,7 @@ const DashboardSideBar = () => {
             </li>
             <li className=" w-full md:border-r-4 md:hover:border-[#f16232] md:border-transparent">
               <Link
-                to="/"
+                to="contacts"
                 className=" flex items-center gap-x-2 text-zinc-800 font-bold md:font-semibold md:text-gray-400 py-1 md:py-3 pr-10 pl-5 hover:text-gray-100"
               >
                 <BiUserCircle />
