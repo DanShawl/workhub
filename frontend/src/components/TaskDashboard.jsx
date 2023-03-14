@@ -71,9 +71,11 @@ const TaskDashboard = () => {
 
   // bg-gray-200
   // bg-[#f9f9f9]
+  // f6f7f9
+  //  e9e9e9
   return (
     <>
-      <div className=" mt-14 md:mt-0 bg-gray-200 md:bg-[#e9e9e9] md:ml-[167px] h-screen flex flex-col text-sm md:w-screen">
+      <div className=" mt-14 md:mt-0 bg-gray-200 md:bg-[#f6f7f9] md:ml-[167px] h-screen flex flex-col text-sm md:w-screen">
         {/* ----------- Task Dashboard Header/Sidebar: contains header info and task sorting ----------- */}
         <section className=" md:ml-[200px]">
           <div className=" mx-6 mt-6 flex items-center justify-between gap-x-4">
@@ -109,7 +111,7 @@ const TaskDashboard = () => {
           </div>
 
           {/* ----------- Task Sidebar: Sorting by status ----------- */}
-          <div className="md:fixed top-0 left-[167px] md:bg-zinc-50 md:h-screen">
+          <div className="md:fixed top-0 left-[167px] md:bg-[#ffffff] md:h-screen">
             <ul className=" overflow-x-scroll flex md:flex-col font-semibold md:font-normal">
               <li
                 className={` ${
@@ -171,7 +173,7 @@ const TaskDashboard = () => {
         </section>
 
         {/* ----------- Task Grid: Contains task items sorted by status ----------- */}
-        <section className="md:ml-[200px] md:bg-[#e9e9e9] bg-gray-200">
+        <section className="md:ml-[200px] md:bg-[#f6f7f9] bg-gray-200">
           <div className=" m-6 sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* md:grid grid-cols-3 */}
             {tasks.length > 0 ? (

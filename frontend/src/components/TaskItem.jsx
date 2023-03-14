@@ -16,7 +16,7 @@ function TaskItem({ task }) {
   }
 
   return (
-    <div className="flex flex-col  cursor-pointer pb-4 md:relative md:h-full">
+    <div className="flex flex-col  cursor-pointer pb-4 md:relative md:h-full overflow-hidden">
       {/* ----------- Task Item Title ----------- */}
       <div className="flex items-center mb-4">
         <BsFillCircleFill className={`${priorityColor} text-[0.3rem]`} />
