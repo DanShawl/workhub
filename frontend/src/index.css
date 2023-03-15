@@ -23,7 +23,10 @@ code {
 @import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@300;400;500;600;700&family=Figtree:wght@300;400;500;600;700;800&family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 /* 
+font-family: 'Inter', sans-serif;
 font-family: 'DM Sans', sans-serif;
 font-family: 'Tilt Warp', cursive;
 font-family: 'Urbanist', sans-serif; */
@@ -54,8 +57,13 @@ a {
 }
 
 p {
+  /* font-family: 'Inter', sans-serif; */
   line-height: 1.7;
   color: #4a4a4a;
+}
+
+button {
+  font-family: 'Urbanist', sans-serif;
 }
 
 ul {
@@ -70,6 +78,7 @@ h1,
 h2,
 h3 {
   /* font-family: 'DM Sans', sans-serif; */
+  /* font-family: 'Inter', sans-serif; */
 
   font-weight: 600;
   margin-bottom: 10px;

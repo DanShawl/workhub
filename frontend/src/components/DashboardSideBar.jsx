@@ -2,7 +2,9 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { logout, reset } from '../features/auth/authSlice';
 import { useState } from 'react';
-import { BiMenu, BiTask, BiX, BiUserCircle } from 'react-icons/bi';
+// import { BiMenu, BiTask, BiX, BiUserCircle } from 'react-icons/bi';
+import { CiReceipt, CiUser } from 'react-icons/ci';
+import { VscMenu, VscChromeClose } from 'react-icons/vsc';
 // BiBuildings, BiUserCircle
 
 const DashboardSideBar = () => {
@@ -29,26 +31,29 @@ const DashboardSideBar = () => {
   // bg-zinc-800
   // bg-[#1a2225]
   // [#292632]
+  // f2f2f2
+  // 1e2126
   return (
-    <div className="bg-[#1e2126] w-screen md:h-screen md:max-w-fit fixed top-0 left-0 md:flex md:flex-col md:justify-between md:items-center z-50 md:py-5 text-sm">
+    <div className="bg-[#f2f2f2] w-screen md:h-screen md:max-w-fit fixed top-0 left-0 md:flex md:flex-col md:justify-between md:items-center z-50 md:py-5 text-sm md:border-r-[1px] border-b-[1px] border-gray-300">
       {/* ----------- Sidebar: Logo/Menu Icons ----------- */}
       <div className={`flex items-center h-14 p-3 justify-between`}>
-        <Link to="/" className=" text-white">
-          W<span className=" italic font-bold text-[#ff5c35]">H</span>
+        <Link to="/" className=" text-[#212121] font-medium md:mb-4">
+          W<span className=" italic font-extrabold text-[#ff5c35]">H</span>
         </Link>
         {toggleNav ? (
           <button
             className="md:hidden"
             onClick={() => setToggleNav(!toggleNav)}
           >
-            <BiX className="text-2xl text-white" />
+            <VscChromeClose className="text-2xl text-[#212121]" />
           </button>
         ) : (
           <button
             className="md:hidden"
             onClick={() => setToggleNav(!toggleNav)}
           >
-            <BiMenu className=" text-3xl text-white" />
+            <VscMenu className="text-2xl text-[#212121]" />
+            {/* <BiMenu className=" text-3xl text-white" /> */}
           </button>
         )}
       </div>
@@ -64,7 +69,7 @@ const DashboardSideBar = () => {
           <ul
             className={
               (toggleNav ? 'left-0 flex-1' : '-left-full ') +
-              ' transition-left fixed bottom-0 top-14 w-full items-center space-y-3 px-5 pt-8 font-semibold leading-3 bg-[#1e2126] duration-500 sm:pt-12 z-50 md:px-0 md:static md:flex md:flex-col md:items-start md:space-y-0 md:pt-0  md:justify-between '
+              ' transition-left fixed bottom-0 top-14 w-full items-center space-y-3 px-5 pt-8 font-semibold leading-3 bg-[#f2f2f2] duration-500 sm:pt-12 z-50 md:px-0 md:static md:flex md:flex-col md:items-start md:space-y-0 md:pt-0  md:justify-between '
             }
           >
             <li
@@ -76,13 +81,13 @@ const DashboardSideBar = () => {
             >
               <Link
                 to="work-orders"
-                className={` flex items-center gap-x-2 text-white font-bold md:font-medium py-1 md:py-3 pr-6 pl-5 hover:text-gray-100 ${
+                className={`  flex md:flex-col md:justify-center items-center gap-x-2 md:gap-y-2 text-[#6b6b6b] font-normal text-sm md:text-[10px] py-1 md:py-3 px-5  ${
                   splitLocation[1] === 'work-orders'
-                    ? 'md:text-white'
-                    : 'md:text-gray-400'
+                    ? 'md:text-[#212121] md:bg-[#e3e3e3]'
+                    : 'md:text-gray-500 '
                 }`}
               >
-                <BiTask />
+                <CiReceipt className="text-xl" />
                 Work Orders
               </Link>
             </li>
@@ -95,13 +100,13 @@ const DashboardSideBar = () => {
             >
               <Link
                 to="contacts"
-                className={` flex items-center gap-x-2 text-white font-bold md:font-medium py-1 md:py-3 pr-6 pl-5 hover:text-gray-100 ${
+                className={`  flex md:flex-col md:justify-center items-center gap-x-2 md:gap-y-2 text-[#6b6b6b] font-normal text-sm md:text-[10px] py-1 md:py-3 px-5  ${
                   splitLocation[1] === 'contacts'
-                    ? 'md:text-white'
-                    : 'md:text-gray-400'
+                    ? 'md:text-[#212121] md:bg-[#e3e3e3]'
+                    : 'md:text-gray-500'
                 }`}
               >
-                <BiUserCircle />
+                <CiUser className="text-xl" />
                 Contacts
               </Link>
             </li>
@@ -119,10 +124,10 @@ const DashboardSideBar = () => {
             <li className=" w-full px-2 text-center">
               <Link
                 to="/login"
-                className=" mt-6 text-gray-400 flex pr-10 pl-5 justify-center items-center gap-1 font-extrabold hover:text-[#de5b34] hover:bg-zinc-700 hover:bg-opacity-50 md:px-3 rounded-sm"
+                className=" bg-[#e3e3e3] md:bg-transparent mt-6 text-gray-500 flex py-2 pr-10 pl-5 justify-center items-center gap-1 font-normal hover:text-[#de5b34] hover:bg-[#e3e3e3] hover:bg-opacity-50 md:px-3 rounded-sm text-xs md:text-[10px]"
                 onClick={onLogout}
               >
-                Logout
+                LOGOUT
               </Link>
             </li>
           </ul>
