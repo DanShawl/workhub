@@ -1,5 +1,4 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { logout, reset } from '../features/auth/authSlice';
 import { useState } from 'react';
@@ -8,9 +7,17 @@ import { BiMenu, BiTask, BiX, BiUserCircle } from 'react-icons/bi';
 
 const DashboardSideBar = () => {
   // const { user } = useSelector((state) => state.auth);
+  const location = useLocation();
+  const { pathname } = location;
+  const splitLocation = pathname.split('/');
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [toggleNav, setToggleNav] = useState(false);
+
+  // const [active, setActive] = useState(false)
+  // const toggleActive = () => {
+
+  // }
 
   //  Logs current user with logout dispatch function
   const onLogout = () => {
@@ -27,7 +34,7 @@ const DashboardSideBar = () => {
       {/* ----------- Sidebar: Logo/Menu Icons ----------- */}
       <div className={`flex items-center h-14 p-3 justify-between`}>
         <Link to="/" className=" text-white">
-          W<span className=" italic font-bold text-[#f16232]">H</span>
+          W<span className=" italic font-bold text-[#ff5c35]">H</span>
         </Link>
         {toggleNav ? (
           <button
@@ -60,19 +67,39 @@ const DashboardSideBar = () => {
               ' transition-left fixed bottom-0 top-14 w-full items-center space-y-3 px-5 pt-8 font-semibold leading-3 bg-[#1e2126] duration-500 sm:pt-12 z-50 md:px-0 md:static md:flex md:flex-col md:items-start md:space-y-0 md:pt-0  md:justify-between '
             }
           >
-            <li className=" w-full md:border-r-4 md:hover:border-[#f16232] md:border-transparent">
+            <li
+              className={` w-full md:hover:border-[#ff5c35] md:border-r-4 ${
+                splitLocation[1] === 'work-orders'
+                  ? 'md:border-[#ff5c35]'
+                  : 'md:border-transparent'
+              }`}
+            >
               <Link
                 to="work-orders"
-                className=" flex items-center gap-x-2 text-white font-bold md:font-medium md:text-gray-400 py-1 md:py-3 pr-10 pl-5 hover:text-gray-100 "
+                className={` flex items-center gap-x-2 text-white font-bold md:font-medium py-1 md:py-3 pr-6 pl-5 hover:text-gray-100 ${
+                  splitLocation[1] === 'work-orders'
+                    ? 'md:text-white'
+                    : 'md:text-gray-400'
+                }`}
               >
                 <BiTask />
                 Work Orders
               </Link>
             </li>
-            <li className=" w-full md:border-r-4 md:hover:border-[#f16232] md:border-transparent">
+            <li
+              className={` w-full md:hover:border-[#ff5c35] md:border-r-4 ${
+                splitLocation[1] === 'contacts'
+                  ? 'md:border-[#ff5c35]'
+                  : 'md:border-transparent'
+              }`}
+            >
               <Link
                 to="contacts"
-                className=" flex items-center gap-x-2 text-zinc-800 font-bold md:font-semibold md:text-gray-400 py-1 md:py-3 pr-10 pl-5 hover:text-gray-100"
+                className={` flex items-center gap-x-2 text-white font-bold md:font-medium py-1 md:py-3 pr-6 pl-5 hover:text-gray-100 ${
+                  splitLocation[1] === 'contacts'
+                    ? 'md:text-white'
+                    : 'md:text-gray-400'
+                }`}
               >
                 <BiUserCircle />
                 Contacts

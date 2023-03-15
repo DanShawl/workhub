@@ -10,6 +10,7 @@ const createContact = async (contactData, token) => {
   };
 
   const response = await axios.post(API_URL, contactData, config);
+  return response.data;
 };
 
 const contactService = {

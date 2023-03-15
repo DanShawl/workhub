@@ -59,7 +59,7 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
 
   return (
     <section className=" relative md:h-full">
-      <h2 className="text-sm pl-1 text-center md:mb-8">
+      <h2 className="text-sm pl-1 text-center text-[#2e4753] md:mb-8">
         {currentItem.length > 0 ? 'Update Work Order' : 'Create Work Order'}
       </h2>
       <button
@@ -128,7 +128,7 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
                 className={` cursor-pointer flex-1 py-2 rounded-md md:rounded-l-md md:rounded-r-none flex items-center justify-center border ${
                   active && priority === 'Low'
                     ? // ? 'border-[#ff7445] hover:bg-[#faad8c3d] bg-[#faad8c3d]'
-                      'bg-[#ff7445] text-white hover:bg-[#ff6b39]'
+                      'bg-[#ff5c35] text-white hover:bg-[#ff6b39]'
                     : 'border-gray-200 md:border-gray-50 text-gray-500 hover:bg-gray-100'
                 } font-semibold`}
               />
@@ -141,7 +141,7 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
                 onClick={() => selectPriority('Medium')}
                 className={` cursor-pointer flex-1 py-2 rounded-md md:rounded-none flex items-center justify-center border ${
                   active && priority === 'Medium'
-                    ? ' bg-[#ff7445] text-white hover:bg-[#ff6b39]'
+                    ? ' bg-[#ff5c35] text-white hover:bg-[#ff6b39]'
                     : 'border-gray-200 md:border-gray-50 text-gray-500 hover:bg-gray-100'
                 } font-semibold`}
               />
@@ -154,7 +154,7 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
                 onClick={() => selectPriority('High')}
                 className={` cursor-pointer  flex-1 py-2 rounded-md md:rounded-r-md md:rounded-l-none flex items-center justify-center border ${
                   active && priority === 'High'
-                    ? 'bg-[#ff7445] text-white hover:bg-[#ff6b39]'
+                    ? 'bg-[#ff5c35] text-white hover:bg-[#ff6b39]'
                     : 'border-gray-200 md:border-gray-50 text-gray-500 hover:bg-gray-100'
                 } font-semibold`}
               />
@@ -188,7 +188,7 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
                   </div>
                 </div>
                 {active && taskStatus === 'Open' ? (
-                  <BiRadioCircleMarked className="text-[#ff7445] text-xl" />
+                  <BiRadioCircleMarked className="text-[#ff5c35] text-xl" />
                 ) : (
                   <BiRadioCircle className="text-xl text-gray-600" />
                 )}
@@ -204,7 +204,7 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
                   <BiRevision
                     className={`text-xl ${
                       active && taskStatus === 'In Progress'
-                        ? 'text-[#ff7445]'
+                        ? 'text-[#ff5c35]'
                         : 'text-gray-600'
                     } `}
                   />
@@ -216,7 +216,7 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
                   </div>
                 </div>
                 {active && taskStatus === 'In Progress' ? (
-                  <BiRadioCircleMarked className="text-[#ff7445] text-xl" />
+                  <BiRadioCircleMarked className="text-[#ff5c35] text-xl" />
                 ) : (
                   <BiRadioCircle className="text-xl text-gray-600" />
                 )}
@@ -243,7 +243,7 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
                   </div>
                 </div>
                 {active && taskStatus === 'Closed' ? (
-                  <BiRadioCircleMarked className="text-[#ff7445] text-xl" />
+                  <BiRadioCircleMarked className="text-[#ff5c35] text-xl" />
                 ) : (
                   <BiRadioCircle className="text-xl text-gray-600" />
                 )}
@@ -327,7 +327,7 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
               Cancel
             </button>
             <button
-              className="font-semibold rounded-md py-3 text-white text-sm px-5 md:px-4 md:py-2 bg-[#ff7445] hover:bg-[#cf5126] shadow-md flex items-center gap-x-2"
+              className="font-semibold rounded-sm py-3 text-white text-sm px-5 md:px-4 md:py-2 bg-[#ff5c35] hover:bg-[#cf5126] shadow-md flex items-center gap-x-2"
               type="submit"
               // onClick={handleClose}
               // bg-[#ff5722]
