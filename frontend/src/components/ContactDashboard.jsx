@@ -1,18 +1,18 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { createContact } from '../features/contacts/contactSlice';
+// import { useState } from 'react';
+// import { useDispatch } from 'react-redux';
+// import { createContact } from '../features/contacts/contactSlice';
 import { BiChevronRight, BiListPlus } from 'react-icons/bi';
 
 const ContactDashboard = () => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const dispatch = useDispatch();
+  // const [firstName, setFirstName] = useState('');
+  // const [lastName, setLastName] = useState('');
+  // const dispatch = useDispatch();
 
-  const onFormSubmit = (e) => {
-    e.preventDefault();
-    dispatch(createContact({ firstName, lastName }));
-    console.log('hello world');
-  };
+  // const onFormSubmit = (e) => {
+  //   e.preventDefault();
+  //   dispatch(createContact({ firstName, lastName }));
+  //   console.log('hello world');
+  // };
   return (
     <>
       <div className=" mt-14 md:mt-0 bg-[#edeeef] md:ml-[146px] h-screen flex flex-col text-sm md:w-fit">
