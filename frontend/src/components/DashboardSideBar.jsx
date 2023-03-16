@@ -16,11 +16,6 @@ const DashboardSideBar = () => {
   const dispatch = useDispatch();
   const [toggleNav, setToggleNav] = useState(false);
 
-  // const [active, setActive] = useState(false)
-  // const toggleActive = () => {
-
-  // }
-
   //  Logs current user with logout dispatch function
   const onLogout = () => {
     setToggleNav(!toggleNav);
