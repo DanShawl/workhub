@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getTasks, reset } from '../features/tasks/taskSlice';
 
 import ItemBox from './ItemBox';
-import { BiChevronRight, BiListPlus, BiRightArrowAlt } from 'react-icons/bi';
+import { BiChevronRight, BiRightArrowAlt } from 'react-icons/bi';
 import { VscAdd } from 'react-icons/vsc';
 import Spinner from '../components/Spinner';
 import FormModal from './FormModal';
