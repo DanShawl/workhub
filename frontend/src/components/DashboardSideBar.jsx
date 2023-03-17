@@ -29,11 +29,12 @@ const DashboardSideBar = () => {
   // f2f2f2
   // 1e2126
   return (
-    <div className="bg-[#f2f2f2] w-screen md:h-screen md:max-w-fit fixed top-0 left-0 md:flex md:flex-col md:justify-between md:items-center z-50 md:py-5 text-sm md:border-r-[1px] border-b-[1px] border-gray-300">
+    <div className="bg-white md:bg-[#f2f2f2] w-screen md:h-screen md:max-w-fit fixed top-0 left-0 md:flex md:flex-col md:justify-between md:items-center z-50 md:py-5 text-sm md:border-r-[1px] border-b-[1px] border-gray-300">
       {/* ----------- Sidebar: Logo/Menu Icons ----------- */}
-      <div className={`flex items-center h-14 p-3 justify-between`}>
-        <Link to="/" className=" text-[#212121] font-medium md:mb-4">
-          W<span className=" italic font-extrabold text-[#ff5c35]">H</span>
+      <div className={`flex items-center h-14 py-3 px-5 justify-between`}>
+        <Link to="/" className=" text-[#212121] font-medium md:mb-4 text-xl">
+          W
+          <span className=" italic font-extrabold -ml-2 text-[#ff5c35]">H</span>
         </Link>
         {toggleNav ? (
           <button

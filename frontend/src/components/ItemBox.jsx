@@ -5,7 +5,7 @@ import TaskItem from './TaskItem';
 function ItemBox({ task, handleOpen }) {
   return (
     <section
-      className=" mb-4 md:mb-0 bg-[#efefef]  rounded-sm p-4 cursor-pointer md:min-h-[200px] md:hover:bg-[#e6e6e6] shadow-sm min-w-[200px]"
+      className=" md:mb-0 border-b-4 border-[#efefef] bg-white md:bg-[#efefef]  rounded-sm p-4 cursor-pointer md:min-h-[200px] md:hover:bg-[#e6e6e6] shadow-sm min-w-[200px]"
       onClick={() => handleOpen(task._id)}
     >
       <TaskItem task={task} />

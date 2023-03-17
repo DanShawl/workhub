@@ -67,6 +67,11 @@ const TaskDashboard = () => {
     return <Spinner />;
   }
 
+  // f4f4f4
+  // 0025e8
+  // 302f2d
+  // f5f5f5 - form input
+
   // bg-[#ff7445]
   // bg-[#ff7043]
 
@@ -82,14 +87,14 @@ const TaskDashboard = () => {
   // 2e4753
   return (
     <>
-      <div className=" mt-14 md:mt-0 bg-[#f2f2f2] md:bg-[#fff] md:ml-[95px] h-screen flex flex-col text-sm md:w-fit">
+      <div className=" mt-14 md:mt-0 md:bg-[#fff] md:ml-[95px] h-screen flex flex-col text-sm md:w-fit">
         {/* <div className=" mt-14 md:mt-0 bg-gray-200 md:bg-[#f6f7f9] md:ml-[167px] h-screen flex flex-col text-sm md:w-screen"> */}
         {/* ----------- Task Dashboard Header/Sidebar: contains header info and task sorting ----------- */}
         {/* <section className=" md:ml-[200px]"> */}
         <section className=" md:ml-[200px]">
           <div className=" mx-6 mt-6 md:mb-6 flex items-center justify-between gap-x-4">
             <div>
-              <div className="flex items-center gap-x-1 text-[#938f8f] font-normal text-xs mb-2">
+              <div className=" hidden md:flex items-center gap-x-1 text-[#938f8f] font-normal text-xs mb-2">
                 <span className=" hover:text-[#ff5c35] cursor-pointer decoration-[#ff5c35]">
                   Dashboard
                 </span>{' '}
@@ -100,7 +105,7 @@ const TaskDashboard = () => {
                 <BiChevronRight className="" /> {currentTaskStatus}
               </div>
               <div className="">
-                <h1 className="font-semibold text-3xl mb-0 pb-1 text-[#212121]">
+                <h1 className="font-semibold text-4xl mb-0 pb-1 text-[#302f2d]">
                   Work Orders
                 </h1>
                 <p className="text-[#6b6b6b] font-semibold text-xs">
@@ -122,7 +127,7 @@ const TaskDashboard = () => {
           </div>
 
           {/* ----------- Task Sidebar: Sorting by status ----------- */}
-          <div className="md:fixed top-0 left-[95px] md:border-r-[1px] md:border-gray-300 md:h-screen bg-[#f2f2f2]">
+          <div className="md:fixed top-0 left-[95px] md:border-r-[1px] md:border-gray-300 md:h-screen bg-white md:bg-[#f2f2f2]">
             <ul className=" overflow-x-scroll flex md:flex-col font-semibold md:font-normal md:text-xs">
               <li
                 className={` ${
@@ -184,8 +189,8 @@ const TaskDashboard = () => {
         </section>
 
         {/* ----------- Task Grid: Contains task items sorted by status ----------- */}
-        <section className="md:ml-[200px] bg-[#fff] md:border-t-[1px] md:border-gray-300">
-          <div className=" m-6 sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6 bg-[#fff] rounded-md">
+        <section className=" md:ml-[200px] bg-[#fff] md:border-t-[1px] md:border-gray-300">
+          <div className=" md:m-6 sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6 bg-[#fff]">
             {/* md:grid grid-cols-3 */}
             {tasks.length > 0 ? (
               currentTaskStatus !== 'All' ? (
