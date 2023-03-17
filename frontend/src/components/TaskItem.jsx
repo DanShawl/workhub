@@ -4,16 +4,16 @@
 
 function TaskItem({ task }) {
   //  Determine Priority color
-  let priorityColor;
-  if (task.priority === 'Low') {
-    priorityColor = 'bg-green-500';
-  }
-  if (task.priority === 'Medium') {
-    priorityColor = 'bg-orange-400';
-  }
-  if (task.priority === 'High') {
-    priorityColor = 'bg-red-700';
-  }
+  // let priorityColor;
+  // if (task.priority === 'Low') {
+  //   priorityColor = 'bg-green-500';
+  // }
+  // if (task.priority === 'Medium') {
+  //   priorityColor = 'bg-orange-400';
+  // }
+  // if (task.priority === 'High') {
+  //   priorityColor = 'bg-red-700';
+  // }
 
   return (
     <div className="flex flex-col justify-between cursor-pointer md:relative md:h-full overflow-hidden mx-2">
