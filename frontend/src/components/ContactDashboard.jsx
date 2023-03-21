@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getContacts, reset } from '../features/contacts/contactSlice';
 import { VscAdd } from 'react-icons/vsc';
 import { BiChevronRight } from 'react-icons/bi';
 import ContactListItem from './ContactListItem';
+import Spinner from './Spinner';
 
 const ContactDashboard = () => {
   const navigate = useNavigate();
@@ -31,7 +32,11 @@ const ContactDashboard = () => {
     return () => {
       dispatch(reset());
     };
-  }, [user, navigate, dispatch]);
+  }, [user, navigate, isError, message, dispatch]);
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   //  To conditionally render a specific users info, I need to:
   //    1.  get all contacts from db and map - done
