@@ -5,8 +5,9 @@ import TaskForm from './TaskForm';
 function FormModal({ toggleModal, handleClose, currentItem, setCurrentItem }) {
   if (!toggleModal) return null;
   return (
-    <div className="fixed inset-0 bg-opacity-30 bg-black backdrop-blur-sm flex justify-center items-end z-50 md:items-center md:justify-end">
-      <div className="bg-white w-full px-4 py-4 md:h-screen md:w-96 md:rounded-sm rounded-t-md md:rounded-t-none md:rounded-l-sm md:max-h-full max-h-[90%] overflow-y-scroll ">
+    <div className="fixed inset-0 bg-opacity-30 bg-black backdrop-blur-sm flex justify-center items-end z-50 sm:items-center sm:justify-end">
+      <div className="bg-white w-full px-4 py-4 sm:h-screen sm:w-96 sm:rounded-sm rounded-t-md sm:rounded-t-none sm:rounded-l-sm sm:max-h-full max-h-[95%] overflow-y-scroll ">
+        {/* if formType = Task ? (TaskForm) : Contact */}
         <TaskForm
           handleClose={handleClose}
           currentItem={currentItem}

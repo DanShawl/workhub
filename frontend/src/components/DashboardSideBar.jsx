@@ -74,10 +74,11 @@ const DashboardSideBar = () => {
                   ? 'md:border-[#ff5c35]'
                   : 'md:border-transparent'
               }`}
+              onClick={() => setToggleNav(!toggleNav)}
             >
               <Link
                 to="work-orders"
-                className={`  flex md:flex-col md:justify-center items-center gap-x-2 md:gap-y-2 text-[#6b6b6b] font-normal text-sm md:text-[10px] py-1 md:py-3 px-5  ${
+                className={`  flex md:flex-col md:justify-center items-center gap-x-2 md:gap-y-2 text-[#6b6b6b] font-normal text-2xl md:text-[10px] py-1 md:py-3 px-5  ${
                   splitLocation[1] === 'work-orders'
                     ? 'md:text-[#212121] md:bg-[#e3e3e3]'
                     : 'md:text-gray-500 '
@@ -93,10 +94,11 @@ const DashboardSideBar = () => {
                   ? 'md:border-[#ff5c35]'
                   : 'md:border-transparent'
               }`}
+              onClick={() => setToggleNav(!toggleNav)}
             >
               <Link
                 to="contacts"
-                className={`  flex md:flex-col md:justify-center items-center gap-x-2 md:gap-y-2 text-[#6b6b6b] font-normal text-sm md:text-[10px] py-1 md:py-3 px-5  ${
+                className={`  flex md:flex-col md:justify-center items-center gap-x-2 md:gap-y-2 text-[#6b6b6b] font-normal text-2xl md:text-[10px] py-1 md:py-3 px-5  ${
                   splitLocation[1] === 'contacts'
                     ? 'md:text-[#212121] md:bg-[#e3e3e3]'
                     : 'md:text-gray-500'

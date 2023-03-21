@@ -35,7 +35,7 @@ function TaskItem({ task }) {
       <div>
         <div className="flex items-center mb-2">
           {/* <BsFillCircleFill className={`${priorityColor} text-[0.3rem]`} /> */}
-          <h2 className="mb-0 font-bold text-[#302f2d] text-lg md:text-sm">
+          <h2 className="mb-0 font-bold text-[#302f2d] text-base md:text-sm">
             {task.text}
           </h2>
         </div>

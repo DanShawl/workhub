@@ -53,7 +53,7 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
   }, [priority, taskStatus]);
 
   return (
-    <section className=" relative md:h-full">
+    <section className=" relative sm:h-full">
       <h2 className="text-sm text-center text-[#212121] md:mb-8">
         {currentItem.length > 0 ? 'Update Work Order' : 'Create Work Order'}
       </h2>
@@ -65,7 +65,7 @@ function TaskForm({ handleClose, currentItem, setCurrentItem }) {
       </button>
       <form
         onSubmit={onFormSubmit}
-        className=" md:flex md:flex-col md:justify-between md:h-full md:max-h-[93%]"
+        className=" sm:flex sm:flex-col sm:justify-between sm:h-full sm:max-h-[93%]"
       >
         {/* ----------- Task Title Input ----------- */}
         <div className="flex flex-col gap-2">

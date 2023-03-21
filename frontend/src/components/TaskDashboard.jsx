@@ -118,10 +118,10 @@ const TaskDashboard = () => {
                 className=" hover:bg-[#cf5126] rounded-full md:rounded-sm text-white font-semibold bg-[#ff5c35] flex items-center justify-between gap-x-2 p-5 md:p-4 md:py-2 z-49 md:shadow-sm shadow-2xl shadow-zinc-800"
                 onClick={handleOpen}
               >
+                <VscAdd className=" text-xl md:text-base" />
                 <p className="text-white font-semibold hidden md:block">
                   Create Work Order
                 </p>
-                <VscAdd className=" text-xl md:text-base" />
               </button>
             </div>
           </div>

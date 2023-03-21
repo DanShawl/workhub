@@ -27,6 +27,24 @@ export const createContact = createAsyncThunk(
   }
 );
 
+export const getContacts = createAsyncThunk(
+  'contacts/getAll',
+  async (_, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await contactService.getContacts(token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const contactSlice = createSlice({
   name: 'contact',
   initialState,
@@ -54,20 +72,20 @@ export const contactSlice = createSlice({
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
+      })
+      .addCase(getContacts.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getContacts.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.contacts = action.payload;
+      })
+      .addCase(getContacts.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
       });
-    // .addCase(getTasks.pending, (state) => {
-    //   state.isLoading = true;
-    // })
-    // .addCase(getTasks.fulfilled, (state, action) => {
-    //   state.isLoading = false;
-    //   state.isSuccess = true;
-    //   state.tasks = action.payload;
-    // })
-    // .addCase(getTasks.rejected, (state, action) => {
-    //   state.isLoading = false;
-    //   state.isError = true;
-    //   state.message = action.payload;
-    // })
     // .addCase(deleteTask.pending, (state) => {
     //   state.isLoading = true;
     // })
