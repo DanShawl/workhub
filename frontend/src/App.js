@@ -7,6 +7,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ContactDashboard from './components/ContactDashboard';
 import TaskDashboard from './components/TaskDashboard';
+import ContactPage from './components/ContactPage';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/" element={<Dashboard />}>
               <Route path="work-orders" element={<TaskDashboard />} />
               <Route path="contacts" element={<ContactDashboard />} />
+              <Route path="contacts/:id" element={<ContactPage />} />
             </Route>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />

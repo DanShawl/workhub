@@ -36,7 +36,8 @@ const setContact = asyncHandler(async (req, res) => {
 //  @access   Private
 const updateContact = asyncHandler(async (req, res) => {
   const contact = await Contact.findById(req.params.id);
-
+  // console.log(req.params.id);
+  // console.log(contact);
   if (!contact) {
     res.status(400);
     throw new Error('Contact not found.');
@@ -52,6 +53,8 @@ const updateContact = asyncHandler(async (req, res) => {
     throw new Error('User not authorized.');
   }
 
+  // const { _id, user, firstName, lastName, phoneNumber }
+  console.log(req.body);
   const updatedContact = await Contact.findByIdAndUpdate(
     req.params.id,
     req.body,
@@ -59,7 +62,7 @@ const updateContact = asyncHandler(async (req, res) => {
       new: true,
     }
   );
-
+  console.log(updatedContact);
   res.status(200).json(updatedContact);
 });
 

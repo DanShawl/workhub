@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import { getContacts, reset } from '../features/contacts/contactSlice';
 import { VscAdd } from 'react-icons/vsc';
 import { BiChevronRight } from 'react-icons/bi';
@@ -26,7 +26,6 @@ const ContactDashboard = () => {
     }
 
     if (user) {
-      console.log('getting contacts');
       dispatch(getContacts());
     }
     return () => {
@@ -46,7 +45,7 @@ const ContactDashboard = () => {
   return (
     <>
       <div className=" mt-14 md:mt-0 md:bg-[#fff] md:pl-[100px] h-screen flex flex-col text-sm md:w-full">
-        <div className=" mx-6 mt-6 md:mb-6 flex items-center justify-between gap-x-4">
+        <div className=" px-6 py-6 flex items-center justify-between gap-x-4">
           <div>
             <div className=" hidden md:flex items-center gap-x-1 text-[#938f8f] font-normal text-xs mb-2">
               <span className=" hover:text-[#ff5c35] cursor-pointer decoration-[#ff5c35]">
@@ -162,6 +161,7 @@ const ContactDashboard = () => {
         <button type="submit">Create Contact</button>
       </form>
     </div> */}
+      <Outlet />
     </>
   );
 };

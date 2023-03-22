@@ -45,6 +45,52 @@ export const getContacts = createAsyncThunk(
   }
 );
 
+export const updateContact = createAsyncThunk(
+  'contacts/update',
+  async (contact, thunkAPI) => {
+    // console.log(contact);
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      // const {
+      //   _id,
+      //   firstName,
+      //   lastName,
+      //   emailAddress,
+      //   phoneNumber,
+      //   company,
+      //   jobTitle,
+      // } = contact;
+      return await contactService.updateContact(contact, token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+// export const deleteTask = createAsyncThunk(
+//   'tasks/delete',
+//   async (id, thunkAPI) => {
+//     try {
+//       const token = thunkAPI.getState().auth.user.token;
+//       return await taskService.deleteTask(id, token);
+//     } catch (error) {
+//       const message =
+//         (error.response &&
+//           error.response.data &&
+//           error.response.data.message) ||
+//         error.message ||
+//         error.toString();
+//       return thunkAPI.rejectWithValue(message);
+//     }
+//   }
+// );
+
 export const contactSlice = createSlice({
   name: 'contact',
   initialState,
@@ -82,6 +128,21 @@ export const contactSlice = createSlice({
         state.contacts = action.payload;
       })
       .addCase(getContacts.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(updateContact.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(updateContact.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.contacts = state.contacts.map((contact) =>
+          contact._id === action.payload.id ? action.payload : contact
+        );
+      })
+      .addCase(updateContact.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
