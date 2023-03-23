@@ -6,8 +6,9 @@ import {
   reset,
   updateContact,
 } from '../features/contacts/contactSlice';
-import { BiChevronRight, BiRightArrowAlt } from 'react-icons/bi';
-// import { VscAdd } from 'react-icons/vsc';
+import { BiChevronRight, BiEdit, BiRightArrowAlt } from 'react-icons/bi';
+// import { VscAdd, VscArrowCircleRight } from 'react-icons/vsc';
+import { SlPaperPlane, SlPencil } from 'react-icons/sl';
 import {
   CiEdit,
   CiUser,
@@ -16,47 +17,47 @@ import {
   CiShop,
   CiDesktop,
   CiLocationArrow1,
+  CiPaperplane,
 } from 'react-icons/ci';
+import Spinner from './Spinner';
 
 const ContactPage = () => {
   const dispatch = useDispatch();
   // const { id } = useParams();
   // const navigate = useNavigate();
   // const { user } = useSelector((state) => state.auth);
-  // const { contacts, isLoading, isError, message } = useSelector(
-  //   (state) => state.contacts
-  // );
-
-  // console.log(contacts);
+  const { contacts, isLoading, isError, message } = useSelector(
+    (state) => state.contacts
+  );
 
   //  State passed from contact dashboard containing user data
   const location = useLocation();
   const contact = location.state?.contact;
+
   const {
     _id,
     firstName,
     lastName,
     emailAddress: currentEmail,
-    phoneNumber,
-    company,
-    jobTitle,
+    phoneNumber: currentPhoneNumber,
+    company: currentCompany,
+    jobTitle: currentJobTitle,
   } = contact;
 
-  // console.log(contact);
   //  State for handling input selection
   const [currentlyEditing, setCurrentlyEditing] = useState(false);
   const [editEmail, setEditEmail] = useState(false);
   const [editPhone, setEditPhone] = useState(false);
   const [editCompany, setEditCompany] = useState(false);
-  const [editJob, setEditJob] = useState(false);
+  const [editJobTitle, setEditJobTitle] = useState(false);
 
   //  State for updating contact details
   const [newFirstName, setNewFirstName] = useState(firstName);
   const [newLastName, setNewLastName] = useState(lastName);
   const [emailAddress, setEmailAddress] = useState(currentEmail);
-  const [newPhoneNumber, setNewPhoneNumber] = useState(phoneNumber);
-  const [newCompany, setNewCompany] = useState(company);
-  const [newJobTitle, setNewJobTitle] = useState(jobTitle);
+  const [phoneNumber, setPhoneNumber] = useState(currentPhoneNumber);
+  const [company, setCompany] = useState(currentCompany);
+  const [jobTitle, setJobTitle] = useState(currentJobTitle);
 
   const emailRef = useRef(null);
   const phoneRef = useRef(null);
@@ -65,28 +66,50 @@ const ContactPage = () => {
 
   const emailFocus = () => {
     emailRef.current.focus();
-    setCurrentlyEditing(true);
+    setToggleSubmitButton('email');
+    // setCurrentlyEditing(true);
   };
   const phoneFocus = () => {
     phoneRef.current.focus();
+    setToggleSubmitButton('phoneNumber');
   };
   const companyFocus = () => {
     companyRef.current.focus();
+    setToggleSubmitButton('company');
   };
-
-  const handleMouseLeave = (ref, edit) => {
-    if (document.activeElement !== ref.current) {
-      setCurrentlyEditing(false);
-      edit(false);
-    } else {
-      edit(false);
-    }
+  const jobTitleFocus = () => {
+    jobTitleRef.current.focus();
+    setToggleSubmitButton('jobTitle');
   };
 
   const onEmailSubmit = () => {
+    // location.state?.contact.emailAddress = emailAddress
     dispatch(updateContact({ _id, emailAddress }));
-    setCurrentlyEditing(false);
+    setToggleSubmitButton('');
   };
+  const onPhoneSubmit = () => {
+    dispatch(updateContact({ _id, phoneNumber }));
+    setToggleSubmitButton('');
+  };
+  const onCompanySubmit = () => {
+    dispatch(updateContact({ _id, company }));
+    setToggleSubmitButton('');
+  };
+  const onJobTitleSubmit = () => {
+    dispatch(updateContact({ _id, jobTitle }));
+    setToggleSubmitButton('');
+  };
+
+  // const handleMouseLeave = (ref, edit) => {
+  //   if (document.activeElement !== ref.current) {
+  //     setCurrentlyEditing(false);
+  //     edit(false);
+  //   } else {
+  //     edit(false);
+  //   }
+  // };
+
+  const [toggleSubmitButton, setToggleSubmitButton] = useState(false);
 
   return (
     <>
@@ -105,7 +128,6 @@ const ContactPage = () => {
               <span className="   hover:text-[#ff5c35] cursor-pointer decoration-[#ff5c35]">
                 {firstName} {lastName}
               </span>{' '}
-              {/* <BiChevronRight className="" /> {currentTaskStatus} */}
             </div>
             <div className="">
               <h1 className="font-semibold text-4xl mb-0 pb-1 text-[#302f2d]">
@@ -134,7 +156,7 @@ const ContactPage = () => {
           </div>
         </div>
         <div className="flex w-full h-full">
-          <form
+          <section
             className="py-3 px-3 border-r-[1px] border-gray-300 text-xs font-sans"
             // onSubmit={onFormSubmit}
           >
@@ -148,9 +170,206 @@ const ContactPage = () => {
                 </p>
               </div>
             </div>
+
             <div
               className="flex items-center justify-between gap-x-5 my-2 hover:bg-[#f2f2f2] pl-3 pr-4 py-2 rounded-sm"
-              onClick={emailFocus}
+              onMouseEnter={() => setEditEmail(true)}
+              onMouseLeave={() => setEditEmail(false)}
+              // onMouseLeave={() => handleMouseLeave(emailRef, setEditEmail)}
+            >
+              <div className="flex items-center gap-x-5">
+                <CiMail className="text-lg text-[#6b6b6b]" />
+                <div>
+                  <p className="text-[#6b6b6b] font-semibold">Email Address</p>
+
+                  {/* {isLoading && toggleSubmitButton === 'email' ? (
+                    <Spinner />
+                  ) : ( */}
+                  <input
+                    type="text"
+                    placeholder={currentEmail}
+                    value={emailAddress}
+                    // disabled={false}
+                    onChange={(e) => setEmailAddress(e.target.value)}
+                    onClick={emailFocus}
+                    className={`text-xs outline-none placeholder:text-[#212121] focus:placeholder:text-gray-400 bg-transparent`}
+                    ref={emailRef}
+                  />
+                  {/* )} */}
+                </div>
+              </div>
+              {toggleSubmitButton === 'email' && editEmail ? (
+                <button
+                  type="button"
+                  onClick={onEmailSubmit}
+                  className=" text-base text-[#626262] hover:cursor-pointer hover:text-[#ff5c35]"
+                >
+                  <SlPaperPlane />
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  className={`${editEmail ? 'visible' : 'invisible'}
+                 text-base text-[#626262] hover:cursor-pointer hover:text-[#ff5c35]`}
+                  onClick={emailFocus}
+                >
+                  <SlPencil />
+                </button>
+              )}
+            </div>
+            <div
+              className="flex items-center justify-between gap-x-5 my-2 hover:bg-[#f2f2f2] pl-3 pr-4 py-2 rounded-sm"
+              onMouseEnter={() => setEditPhone(true)}
+              onMouseLeave={() => setEditPhone(false)}
+              // onMouseLeave={() => handleMouseLeave(emailRef, setEditEmail)}
+            >
+              <div className="flex items-center gap-x-5">
+                <CiPhone className="text-lg text-[#6b6b6b]" />
+                <div>
+                  <p className="text-[#6b6b6b] font-semibold">Phone Number</p>
+
+                  {/* {isLoading ? (
+                    <Spinner />
+                  ) : ( */}
+                  <input
+                    type="text"
+                    placeholder={currentPhoneNumber}
+                    value={phoneNumber}
+                    // disabled={false}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
+                    onClick={phoneFocus}
+                    className={` text-xs outline-none placeholder:text-[#212121] focus:placeholder:text-gray-400 bg-transparent`}
+                    ref={phoneRef}
+                  />
+                  {/* )} */}
+                </div>
+              </div>
+              {toggleSubmitButton === 'phoneNumber' && editPhone ? (
+                <button
+                  type="button"
+                  // onClick={() => setToggleSubmitButton('')}
+                  onClick={onPhoneSubmit}
+                  className=" text-base text-[#626262] hover:cursor-pointer hover:text-[#ff5c35]"
+                >
+                  <SlPaperPlane />
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  className={`${editPhone ? 'visible' : 'invisible'}
+                 text-base text-[#626262] hover:cursor-pointer hover:text-[#ff5c35]`}
+                  // onClick={() => setToggleSubmitButton('email')}
+                  onClick={phoneFocus}
+                >
+                  <SlPencil />
+                </button>
+              )}
+            </div>
+            <div
+              className="flex items-center justify-between gap-x-5 my-2 hover:bg-[#f2f2f2] pl-3 pr-4 py-2 rounded-sm"
+              onMouseEnter={() => setEditCompany(true)}
+              onMouseLeave={() => setEditCompany(false)}
+            >
+              <div className="flex items-center gap-x-5">
+                <CiShop className="text-lg text-[#6b6b6b]" />
+                <div>
+                  <p className="text-[#6b6b6b] font-semibold">Company</p>
+
+                  {/* {isLoading ? (
+                    <Spinner />
+                  ) : ( */}
+                  <input
+                    type="text"
+                    placeholder={currentCompany}
+                    value={company}
+                    // disabled={false}
+                    onChange={(e) => setCompany(e.target.value)}
+                    onClick={companyFocus}
+                    className={` text-xs outline-none placeholder:text-[#212121] focus:placeholder:text-gray-400 bg-transparent`}
+                    ref={companyRef}
+                  />
+                  {/* )} */}
+                </div>
+              </div>
+              {toggleSubmitButton === 'company' && editCompany ? (
+                <button
+                  type="button"
+                  onClick={onCompanySubmit}
+                  className=" text-base text-[#626262] hover:cursor-pointer hover:text-[#ff5c35]"
+                >
+                  <SlPaperPlane />
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  className={`${editCompany ? 'visible' : 'invisible'}
+                 text-base text-[#626262] hover:cursor-pointer hover:text-[#ff5c35]`}
+                  // onClick={() => setToggleSubmitButton('email')}
+                  onClick={companyFocus}
+                >
+                  <SlPencil />
+                </button>
+              )}
+            </div>
+            <div
+              className="flex items-center justify-between gap-x-5 my-2 hover:bg-[#f2f2f2] pl-3 pr-4 py-2 rounded-sm"
+              onMouseEnter={() => setEditJobTitle(true)}
+              onMouseLeave={() => setEditJobTitle(false)}
+            >
+              <div className="flex items-center gap-x-5">
+                <CiDesktop className="text-lg text-[#6b6b6b]" />
+                <div>
+                  <p className="text-[#6b6b6b] font-semibold">Job Title</p>
+
+                  {isLoading ? (
+                    <Spinner />
+                  ) : (
+                    <input
+                      type="text"
+                      placeholder={currentJobTitle}
+                      value={jobTitle}
+                      // disabled={false}
+                      onChange={(e) => setJobTitle(e.target.value)}
+                      onClick={jobTitleFocus}
+                      className={` text-xs outline-none placeholder:text-[#212121] focus:placeholder:text-gray-400 bg-transparent`}
+                      ref={jobTitleRef}
+                    />
+                  )}
+                </div>
+              </div>
+              {toggleSubmitButton === 'jobTitle' && editJobTitle ? (
+                <button
+                  type="button"
+                  onClick={onJobTitleSubmit}
+                  className=" text-base text-[#626262] hover:cursor-pointer hover:text-[#ff5c35]"
+                >
+                  <SlPaperPlane />
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  className={`${editJobTitle ? 'visible' : 'invisible'}
+                 text-base text-[#626262] hover:cursor-pointer hover:text-[#ff5c35]`}
+                  // onClick={() => setToggleSubmitButton('email')}
+                  onClick={jobTitleFocus}
+                >
+                  <SlPencil />
+                </button>
+              )}
+            </div>
+          </section>
+          <section className="flex-1">hello world</section>
+        </div>
+      </div>
+    </>
+  );
+};
+
+{
+  /* <div
+              className="flex items-center justify-between gap-x-5 my-2 hover:bg-[#f2f2f2] pl-3 pr-4 py-2 rounded-sm"
+              // onClick={() => setCurrentlyEditing('email')}
+              // onClick={emailFocus}
               onMouseEnter={() => setEditEmail(true)}
               onMouseLeave={() => handleMouseLeave(emailRef, setEditEmail)}
             >
@@ -159,117 +378,41 @@ const ContactPage = () => {
                 <div>
                   <p className="text-[#6b6b6b] font-semibold">Email Address</p>
 
-                  <input
-                    type="text"
-                    placeholder={currentEmail}
-                    value={emailAddress}
-                    onChange={(e) => setEmailAddress(e.target.value)}
-                    className="text-xs outline-none placeholder:text-[#212121] focus:placeholder:text-gray-400 bg-transparent"
-                    ref={emailRef}
-                  />
+                  {isLoading ? (
+                    <Spinner />
+                  ) : (
+                    <input
+                      type="text"
+                      placeholder={currentEmail}
+                      value={emailAddress}
+                      // disabled={!currentlyEditing}
+                      onChange={(e) => setEmailAddress(e.target.value)}
+                      className={`text-xs outline-none placeholder:text-[#212121] focus:placeholder:text-gray-400 bg-transparent`}
+                      ref={emailRef}
+                    />
+                  )}
                 </div>
               </div>
               <div>
                 {editEmail && currentlyEditing ? (
-                  <button type="button" className="" onClick={onEmailSubmit}>
-                    <CiLocationArrow1
+                  <button type="button" onClick={onEmailSubmit}>
+                    <SlPaperPlane
                       className={`${
                         editEmail ? 'visible' : 'invisible'
                       } text-lg text-[#626262] hover:cursor-pointer hover:text-[#ff5c35]`}
                     />
                   </button>
                 ) : (
-                  <button>
-                    <CiEdit
-                      className={`${
-                        editEmail ? 'visible' : 'invisible'
-                      } text-lg text-[#626262] hover:cursor-pointer hover:text-[#ff5c35]`}
+                  <button type="button" onClick={emailFocus}>
+                    <BiChevronRight
+                      className={`
+                      ${editEmail ? 'visible' : 'invisible'} 
+                      text-lg text-[#626262] hover:cursor-pointer hover:text-[#ff5c35]`}
                     />
                   </button>
                 )}
               </div>
-            </div>
-            <div
-              className="flex items-center justify-between gap-x-5 my-2 hover:bg-[#f2f2f2] pl-3 pr-4 py-2 rounded-sm"
-              onClick={phoneFocus}
-              onMouseEnter={() => setEditPhone(true)}
-              onMouseLeave={() => setEditPhone(false)}
-            >
-              <div className="flex items-center gap-x-5">
-                <CiMail className="text-lg text-[#6b6b6b]" />
-                <div>
-                  <p className="text-[#6b6b6b] font-semibold">Phone Number</p>
-
-                  <input
-                    type="text"
-                    placeholder={phoneNumber}
-                    className="text-xs outline-none placeholder:text-[#212121] focus:placeholder:text-gray-400 bg-transparent"
-                    ref={phoneRef}
-                  />
-                </div>
-              </div>
-              <div>
-                <CiEdit
-                  className={`${
-                    editPhone ? 'visible' : 'invisible'
-                  } text-lg text-[#626262] hover:cursor-pointer hover:text-[#ff5c35]`}
-                />
-              </div>
-            </div>
-            <div
-              className="flex items-center justify-between gap-x-5 my-2 hover:bg-[#f2f2f2] pl-3 pr-4 py-2 rounded-sm"
-              onClick={companyFocus}
-              onMouseEnter={() => setEditCompany(true)}
-              onMouseLeave={() => setEditCompany(false)}
-            >
-              <div className="flex items-center gap-x-5">
-                <CiMail className="text-lg text-[#6b6b6b]" />
-                <div>
-                  <p className="text-[#6b6b6b] font-semibold">Company</p>
-
-                  <input
-                    type="text"
-                    placeholder={company}
-                    className="text-xs outline-none placeholder:text-[#212121] focus:placeholder:text-gray-400 bg-transparent"
-                    ref={companyRef}
-                  />
-                </div>
-              </div>
-              <div>
-                <CiEdit
-                  className={`${
-                    editCompany ? 'visible' : 'invisible'
-                  } text-lg text-[#626262] hover:cursor-pointer hover:text-[#ff5c35]`}
-                />
-              </div>
-            </div>
-            <div className="flex items-center gap-x-5 my-4">
-              <CiPhone className="text-lg text-[#6b6b6b]" />
-              <div>
-                <p className="text-[#6b6b6b] font-semibold">Phone Number</p>
-                <p className="text-[#212121] font-normal">{phoneNumber}</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-x-5 my-4">
-              <CiShop className="text-lg text-[#6b6b6b]" />
-              <div>
-                <p className="text-[#6b6b6b] font-semibold">Company</p>
-                <p className="text-[#212121] font-normal">{company}</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-x-5 my-4">
-              <CiDesktop className="text-lg text-[#6b6b6b]" />
-              <div>
-                <p className="text-[#6b6b6b] font-semibold">Job Title</p>
-                <p className="text-[#212121] font-normal">{jobTitle}</p>
-              </div>
-            </div>
-          </form>
-          <section className="flex-1">hello world</section>
-        </div>
-      </div>
-    </>
-  );
-};
+            </div> */
+}
 
 export default ContactPage;
