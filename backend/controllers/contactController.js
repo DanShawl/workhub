@@ -17,7 +17,7 @@ const setContact = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error('Please add all fields.');
   }
-
+  console.log(req.body);
   const contact = await Contact.create({
     user: req.user.id,
     firstName: req.body.firstName,

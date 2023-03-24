@@ -12,6 +12,7 @@ const initialState = {
 export const createContact = createAsyncThunk(
   'contacts/create',
   async (contactData, thunkAPI) => {
+    console.log(contactData);
     try {
       const token = thunkAPI.getState().auth.user.token;
       return await contactService.createContact(contactData, token);

@@ -31,6 +31,10 @@ const contactSchema = mongoose.Schema(
       type: String,
       required: false,
     },
+    workOrders: {
+      type: Array,
+      required: false,
+    },
   },
   {
     timestamps: true,

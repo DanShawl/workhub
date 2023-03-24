@@ -4,6 +4,7 @@ const API_URL = '/api/contacts/';
 
 //  POST request for contact
 const createContact = async (contactData, token) => {
+  console.log(contactData);
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { getContacts, reset } from '../features/contacts/contactSlice';
@@ -6,6 +6,7 @@ import { VscAdd } from 'react-icons/vsc';
 import { BiChevronRight } from 'react-icons/bi';
 import ContactListItem from './ContactListItem';
 import Spinner from './Spinner';
+import FormModal from './FormModal';
 
 const ContactDashboard = () => {
   const navigate = useNavigate();
@@ -15,6 +16,18 @@ const ContactDashboard = () => {
   const { contacts, isLoading, isError, message } = useSelector(
     (state) => state.contacts
   );
+
+  const [currentContact, setCurrentContact] = useState(null);
+  const [toggleModal, setToggleModal] = useState(false);
+
+  const handleOpen = (contactID) => {
+    setCurrentContact(contacts.filter((contact) => contact._id === contactID));
+    setToggleModal(true);
+  };
+  const handleClose = () => {
+    setCurrentContact(null);
+    setToggleModal(false);
+  };
 
   useEffect(() => {
     if (isError) {
@@ -74,7 +87,7 @@ const ContactDashboard = () => {
             />
             <button
               className=" hover:bg-[#cf5126] rounded-full md:rounded-sm text-white font-semibold bg-[#ff5c35] flex items-center justify-between gap-x-2 p-5 md:p-4 md:py-2 z-49 md:shadow-sm shadow-2xl shadow-zinc-800"
-              // onClick={handleOpen}
+              onClick={handleOpen}
             >
               <p className="text-white font-semibold hidden md:block">
                 Create Contact
@@ -93,8 +106,13 @@ const ContactDashboard = () => {
                 <div>COMPANY </div>
                 <div>TITLE </div>
               </li>
+
               {contacts.map((contact) => (
-                <ContactListItem contact={contact} />
+                <ContactListItem
+                  contact={contact}
+                  key={contact._id}
+                  handleOpen={handleOpen}
+                />
               ))}
             </ul>
           </section>
@@ -161,6 +179,13 @@ const ContactDashboard = () => {
         <button type="submit">Create Contact</button>
       </form>
     </div> */}
+      <FormModal
+        setCurrentItem={setCurrentContact}
+        toggleModal={toggleModal}
+        handleClose={handleClose}
+        currentItem={currentContact}
+        modalType={'contact'}
+      />
       <Outlet />
     </>
   );

@@ -1,13 +1,12 @@
-import { useEffect, useState, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import { useState, useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import {
-  getContacts,
-  reset,
+  // getContacts,
+  // reset,
   updateContact,
 } from '../features/contacts/contactSlice';
-import { BiChevronRight, BiEdit, BiRightArrowAlt } from 'react-icons/bi';
-// import { VscAdd, VscArrowCircleRight } from 'react-icons/vsc';
+import { BiChevronRight } from 'react-icons/bi';
 import { SlPaperPlane, SlPencil } from 'react-icons/sl';
 import {
   CiEdit,
@@ -16,19 +15,17 @@ import {
   CiPhone,
   CiShop,
   CiDesktop,
-  CiLocationArrow1,
-  CiPaperplane,
 } from 'react-icons/ci';
-import Spinner from './Spinner';
+// import Spinner from './Spinner';
 
 const ContactPage = () => {
   const dispatch = useDispatch();
   // const { id } = useParams();
   // const navigate = useNavigate();
   // const { user } = useSelector((state) => state.auth);
-  const { contacts, isLoading, isError, message } = useSelector(
-    (state) => state.contacts
-  );
+  // const { contacts, isLoading, isError, message } = useSelector(
+  //   (state) => state.contacts
+  // );
 
   //  State passed from contact dashboard containing user data
   const location = useLocation();
@@ -45,15 +42,15 @@ const ContactPage = () => {
   } = contact;
 
   //  State for handling input selection
-  const [currentlyEditing, setCurrentlyEditing] = useState(false);
+  // const [currentlyEditing, setCurrentlyEditing] = useState(false);
   const [editEmail, setEditEmail] = useState(false);
   const [editPhone, setEditPhone] = useState(false);
   const [editCompany, setEditCompany] = useState(false);
   const [editJobTitle, setEditJobTitle] = useState(false);
 
   //  State for updating contact details
-  const [newFirstName, setNewFirstName] = useState(firstName);
-  const [newLastName, setNewLastName] = useState(lastName);
+  // const [newFirstName, setNewFirstName] = useState(firstName);
+  // const [newLastName, setNewLastName] = useState(lastName);
   const [emailAddress, setEmailAddress] = useState(currentEmail);
   const [phoneNumber, setPhoneNumber] = useState(currentPhoneNumber);
   const [company, setCompany] = useState(currentCompany);
@@ -161,14 +158,56 @@ const ContactPage = () => {
             // onSubmit={onFormSubmit}
           >
             <h2 className="text-sm">Contact Details</h2>
-            <div className="flex items-center gap-x-5 my-4">
-              <CiUser className="text-lg text-[#6b6b6b]" />
-              <div>
-                <p className="text-[#6b6b6b] font-semibold">Name</p>
-                <p className="text-[#212121] font-normal">
-                  {firstName} {lastName}
-                </p>
+            <div
+              className="flex items-center justify-between gap-x-5 my-2 hover:bg-[#f2f2f2] pl-3 pr-4 py-2 rounded-sm"
+              // onMouseEnter={() => setEditEmail(true)}
+              // onMouseLeave={() => setEditEmail(false)}
+              // onMouseLeave={() => handleMouseLeave(emailRef, setEditEmail)}
+            >
+              <div className="flex items-center gap-x-5">
+                <CiUser className="text-lg text-[#6b6b6b]" />
+                <div>
+                  <p className="text-[#6b6b6b] font-semibold">Name</p>
+
+                  {/* {isLoading && toggleSubmitButton === 'email' ? (
+                    <Spinner />
+                  ) : ( */}
+                  {/* <input
+                    type="text"
+                    placeholder={currentEmail}
+                    value={emailAddress}
+                    // disabled={false}
+                    onChange={(e) => setEmailAddress(e.target.value)}
+                    onClick={emailFocus}
+                    className={`text-xs outline-none placeholder:text-[#212121] focus:placeholder:text-gray-400 bg-transparent`}
+                    ref={emailRef}
+                  /> */}
+                  <div className="text-xs font-normal">
+                    <p className="text-[#212121]">
+                      {firstName} {lastName}
+                    </p>
+                  </div>
+                  {/* )} */}
+                </div>
               </div>
+              {/* {toggleSubmitButton === 'email' && editEmail ? (
+                <button
+                  type="button"
+                  onClick={onEmailSubmit}
+                  className=" text-base text-[#626262] hover:cursor-pointer hover:text-[#ff5c35]"
+                >
+                  <SlPaperPlane />
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  className={`${editEmail ? 'visible' : 'invisible'}
+                 text-base text-[#626262] hover:cursor-pointer hover:text-[#ff5c35]`}
+                  onClick={emailFocus}
+                >
+                  <SlPencil />
+                </button>
+              )} */}
             </div>
 
             <div
@@ -321,20 +360,20 @@ const ContactPage = () => {
                 <div>
                   <p className="text-[#6b6b6b] font-semibold">Job Title</p>
 
-                  {isLoading ? (
+                  {/* {isLoading ? (
                     <Spinner />
-                  ) : (
-                    <input
-                      type="text"
-                      placeholder={currentJobTitle}
-                      value={jobTitle}
-                      // disabled={false}
-                      onChange={(e) => setJobTitle(e.target.value)}
-                      onClick={jobTitleFocus}
-                      className={` text-xs outline-none placeholder:text-[#212121] focus:placeholder:text-gray-400 bg-transparent`}
-                      ref={jobTitleRef}
-                    />
-                  )}
+                  ) : ( */}
+                  <input
+                    type="text"
+                    placeholder={currentJobTitle}
+                    value={jobTitle}
+                    // disabled={false}
+                    onChange={(e) => setJobTitle(e.target.value)}
+                    onClick={jobTitleFocus}
+                    className={` text-xs outline-none placeholder:text-[#212121] focus:placeholder:text-gray-400 bg-transparent`}
+                    ref={jobTitleRef}
+                  />
+                  {/* )} */}
                 </div>
               </div>
               {toggleSubmitButton === 'jobTitle' && editJobTitle ? (
@@ -358,61 +397,13 @@ const ContactPage = () => {
               )}
             </div>
           </section>
-          <section className="flex-1">hello world</section>
+          <section className="flex-1 flex justify-center items-center text-[#6b6b6b]">
+            {firstName} {lastName}'s tasks will go here.
+          </section>
         </div>
       </div>
     </>
   );
 };
-
-{
-  /* <div
-              className="flex items-center justify-between gap-x-5 my-2 hover:bg-[#f2f2f2] pl-3 pr-4 py-2 rounded-sm"
-              // onClick={() => setCurrentlyEditing('email')}
-              // onClick={emailFocus}
-              onMouseEnter={() => setEditEmail(true)}
-              onMouseLeave={() => handleMouseLeave(emailRef, setEditEmail)}
-            >
-              <div className="flex items-center gap-x-5">
-                <CiMail className="text-lg text-[#6b6b6b]" />
-                <div>
-                  <p className="text-[#6b6b6b] font-semibold">Email Address</p>
-
-                  {isLoading ? (
-                    <Spinner />
-                  ) : (
-                    <input
-                      type="text"
-                      placeholder={currentEmail}
-                      value={emailAddress}
-                      // disabled={!currentlyEditing}
-                      onChange={(e) => setEmailAddress(e.target.value)}
-                      className={`text-xs outline-none placeholder:text-[#212121] focus:placeholder:text-gray-400 bg-transparent`}
-                      ref={emailRef}
-                    />
-                  )}
-                </div>
-              </div>
-              <div>
-                {editEmail && currentlyEditing ? (
-                  <button type="button" onClick={onEmailSubmit}>
-                    <SlPaperPlane
-                      className={`${
-                        editEmail ? 'visible' : 'invisible'
-                      } text-lg text-[#626262] hover:cursor-pointer hover:text-[#ff5c35]`}
-                    />
-                  </button>
-                ) : (
-                  <button type="button" onClick={emailFocus}>
-                    <BiChevronRight
-                      className={`
-                      ${editEmail ? 'visible' : 'invisible'} 
-                      text-lg text-[#626262] hover:cursor-pointer hover:text-[#ff5c35]`}
-                    />
-                  </button>
-                )}
-              </div>
-            </div> */
-}
 
 export default ContactPage;
