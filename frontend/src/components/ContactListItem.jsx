@@ -37,19 +37,19 @@ const ContactListItem = ({ contact }) => {
             </div>
           </div>
         </div>
-        <div className="flex items-center gap-x-2">
+        <div className=" hidden sm:flex items-center gap-x-2">
           <CiMail />
           <p>{contact.emailAddress ? contact.emailAddress : '-'}</p>
         </div>
 
-        <div className="flex items-center gap-x-2">
+        <div className=" hidden sm:flex items-center gap-x-2">
           <CiPhone />
           <p>{contact.phoneNumber ? contact.phoneNumber : '-'}</p>
         </div>
-        <div className="flex items-center">
+        <div className="hidden sm:flex items-center">
           <p>{contact.company}</p>
         </div>
-        <div className="flex items-center">
+        <div className="hidden sm:flex items-center">
           <p>{contact.jobTitle}</p>
         </div>
       </Link>

@@ -110,8 +110,8 @@ const ContactPage = () => {
 
   return (
     <>
-      <div className=" mt-14 md:mt-0 md:bg-[#fff] md:pl-[100px] h-screen flex flex-col text-sm md:w-full">
-        <div className=" px-6 py-6 flex items-center justify-between gap-x-4 border-b-[1px] border-gray-300">
+      <div className=" mt-14 md:mt-0 md:bg-[#fff] md:pl-[100px] h-screen flex flex-col text-sm md:w-full items-center sm:items-stretch w-full">
+        <div className=" px-6 py-6 flex items-center justify-between gap-x-4 sm:border-b-[1px] border-gray-300 border-b-0">
           <div>
             <div className=" hidden md:flex items-center gap-x-1 text-[#938f8f] font-normal text-xs mb-2">
               <span className=" hover:text-[#ff5c35] cursor-pointer decoration-[#ff5c35]">
@@ -126,7 +126,11 @@ const ContactPage = () => {
                 {firstName} {lastName}
               </span>{' '}
             </div>
-            <div className="">
+            <div className="flex flex-col sm:flex-row sm:gap-x-4 items-center justify-center w-full gap-y-2">
+              <div className=" bg-gray-200 rounded-full w-10 h-10 flex justify-center items-center">
+                {contact.firstName[0]}
+                {contact.lastName[0]}
+              </div>
               <h1 className="font-semibold text-4xl mb-0 pb-1 text-[#302f2d]">
                 {firstName} {lastName}
               </h1>
@@ -152,9 +156,9 @@ const ContactPage = () => {
             </button>
           </div>
         </div>
-        <div className="flex w-full h-full">
+        <div className="flex flex-col sm:flex-row w-full h-full">
           <section
-            className="py-3 px-3 border-r-[1px] border-gray-300 text-xs font-sans"
+            className="py-3 px-3 border-y-[1px] sm:border-r-[1px] border-gray-300 text-xs font-sans "
             // onSubmit={onFormSubmit}
           >
             <h2 className="text-sm">Contact Details</h2>
@@ -398,6 +402,8 @@ const ContactPage = () => {
             </div>
           </section>
           <section className="flex-1 flex justify-center items-center text-[#6b6b6b]">
+            {/* <h2>Select work order</h2>
+            <ul></ul> */}
             {firstName} {lastName}'s tasks will go here.
           </section>
         </div>

@@ -58,7 +58,7 @@ const ContactDashboard = () => {
   return (
     <>
       <div className=" mt-14 md:mt-0 md:bg-[#fff] md:pl-[100px] h-screen flex flex-col text-sm md:w-full">
-        <div className=" px-6 py-6 flex items-center justify-between gap-x-4">
+        <div className=" border-b-2 border-gray-200 sm:border-b-0 px-6 py-6 flex items-center justify-between gap-x-4">
           <div>
             <div className=" hidden md:flex items-center gap-x-1 text-[#938f8f] font-normal text-xs mb-2">
               <span className=" hover:text-[#ff5c35] cursor-pointer decoration-[#ff5c35]">

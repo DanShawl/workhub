@@ -31,6 +31,8 @@ const contactSchema = mongoose.Schema(
       type: String,
       required: false,
     },
+    //  workOrders should be an array of the work order id's
+    //  query the work order id's
     workOrders: {
       type: Array,
       required: false,
