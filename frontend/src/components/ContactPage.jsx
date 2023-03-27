@@ -1,11 +1,17 @@
-import { useState, useRef } from 'react';
-import { useDispatch } from 'react-redux';
+import { useState, useRef, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import {
   // getContacts,
   // reset,
   updateContact,
 } from '../features/contacts/contactSlice';
+
+// import { useNavigate } from 'react-router-dom';
+import { getTasks, reset } from '../features/tasks/taskSlice';
+
+import Dropdown from './Dropdown';
+// import { VscAdd } from 'react-icons/vsc';
 import { BiChevronRight } from 'react-icons/bi';
 import { SlPaperPlane, SlPencil } from 'react-icons/sl';
 import {
@@ -16,10 +22,33 @@ import {
   CiShop,
   CiDesktop,
 } from 'react-icons/ci';
+import ContactWorkOrderItem from './ContactWorkOrderItem';
 // import Spinner from './Spinner';
 
 const ContactPage = () => {
   const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth);
+  const { tasks, isLoading, isError, message } = useSelector(
+    (state) => state.tasks
+  );
+
+  useEffect(() => {
+    if (isError) {
+      console.log(message);
+    }
+
+    // if (!user) {
+    //   navigate('/login');
+    // }
+
+    if (user) {
+      dispatch(getTasks());
+    }
+    return () => {
+      dispatch(reset());
+    };
+  }, [user, isError, message, dispatch]);
+
   // const { id } = useParams();
   // const navigate = useNavigate();
   // const { user } = useSelector((state) => state.auth);
@@ -39,6 +68,7 @@ const ContactPage = () => {
     phoneNumber: currentPhoneNumber,
     company: currentCompany,
     jobTitle: currentJobTitle,
+    workOrders: currentWorkOrders,
   } = contact;
 
   //  State for handling input selection
@@ -55,6 +85,7 @@ const ContactPage = () => {
   const [phoneNumber, setPhoneNumber] = useState(currentPhoneNumber);
   const [company, setCompany] = useState(currentCompany);
   const [jobTitle, setJobTitle] = useState(currentJobTitle);
+  const [workOrders, setWorkOrders] = useState(currentWorkOrders);
 
   const emailRef = useRef(null);
   const phoneRef = useRef(null);
@@ -79,6 +110,18 @@ const ContactPage = () => {
     setToggleSubmitButton('jobTitle');
   };
 
+  useEffect(() => {
+    dispatch(updateContact({ _id, workOrders }));
+  }, [workOrders]);
+
+  const onWorkOrderSubmit = (workOrderID) => {
+    workOrders.includes(workOrderID)
+      ? console.log('work order already exists')
+      : setWorkOrders((workOrders) => [...workOrders, workOrderID]);
+    console.log(workOrders);
+    dispatch(updateContact({ _id, workOrders }));
+    // setToggleSubmitButton('');
+  };
   const onEmailSubmit = () => {
     // location.state?.contact.emailAddress = emailAddress
     dispatch(updateContact({ _id, emailAddress }));
@@ -105,6 +148,22 @@ const ContactPage = () => {
   //     edit(false);
   //   }
   // };
+
+  // const filtered = tasks.filter((task) => {
+  //   if (workOrders.some((id) => id === task._id) === false) {
+  //     return true;
+  //   } else return false;
+  // });
+
+  // setWorkOrders((workOrders.length = 6));
+
+  const removeWorkOrder = (workOrderID) => {
+    setWorkOrders(
+      workOrders.filter((workOrder) => {
+        return workOrder !== workOrderID && workOrder;
+      })
+    );
+  };
 
   const [toggleSubmitButton, setToggleSubmitButton] = useState(false);
 
@@ -158,7 +217,7 @@ const ContactPage = () => {
         </div>
         <div className="flex flex-col sm:flex-row w-full h-full">
           <section
-            className="py-3 px-3 border-y-[1px] sm:border-r-[1px] border-gray-300 text-xs font-sans "
+            className="py-3 px-3 border-y-[1px] sm:border-r-[1px] sm:border-y-0 border-gray-300 text-xs font-sans "
             // onSubmit={onFormSubmit}
           >
             <h2 className="text-sm">Contact Details</h2>
@@ -173,45 +232,13 @@ const ContactPage = () => {
                 <div>
                   <p className="text-[#6b6b6b] font-semibold">Name</p>
 
-                  {/* {isLoading && toggleSubmitButton === 'email' ? (
-                    <Spinner />
-                  ) : ( */}
-                  {/* <input
-                    type="text"
-                    placeholder={currentEmail}
-                    value={emailAddress}
-                    // disabled={false}
-                    onChange={(e) => setEmailAddress(e.target.value)}
-                    onClick={emailFocus}
-                    className={`text-xs outline-none placeholder:text-[#212121] focus:placeholder:text-gray-400 bg-transparent`}
-                    ref={emailRef}
-                  /> */}
                   <div className="text-xs font-normal">
                     <p className="text-[#212121]">
                       {firstName} {lastName}
                     </p>
                   </div>
-                  {/* )} */}
                 </div>
               </div>
-              {/* {toggleSubmitButton === 'email' && editEmail ? (
-                <button
-                  type="button"
-                  onClick={onEmailSubmit}
-                  className=" text-base text-[#626262] hover:cursor-pointer hover:text-[#ff5c35]"
-                >
-                  <SlPaperPlane />
-                </button>
-              ) : (
-                <button
-                  type="button"
-                  className={`${editEmail ? 'visible' : 'invisible'}
-                 text-base text-[#626262] hover:cursor-pointer hover:text-[#ff5c35]`}
-                  onClick={emailFocus}
-                >
-                  <SlPencil />
-                </button>
-              )} */}
             </div>
 
             <div
@@ -401,10 +428,55 @@ const ContactPage = () => {
               )}
             </div>
           </section>
-          <section className="flex-1 flex justify-center items-center text-[#6b6b6b]">
-            {/* <h2>Select work order</h2>
-            <ul></ul> */}
-            {firstName} {lastName}'s tasks will go here.
+          <section className="flex-1 flex text-[#6b6b6b] font-sans">
+            {tasks.length > 0 ? (
+              <div className="w-full p-3">
+                <div className="flex justify-between w-full">
+                  <h2 className="mb-0">Work Orders</h2>
+                  <Dropdown
+                    tasks={tasks}
+                    workOrders={workOrders}
+                    setWorkOrders={setWorkOrders}
+                    onWorkOrderSubmit={onWorkOrderSubmit}
+                  />
+                </div>
+                <div>
+                  <ul className="w-full sm:grid sm:grid-flow-row">
+                    <li className="hidden sm:grid sm:grid-cols-5 px-6 py-1 gap-x-6 text-[10px] ">
+                      <div>TITLE</div>
+                      <div>STATUS </div>
+                      <div>PRIORITY</div>
+                      <div>ASSIGNED</div>
+                      <div> </div>
+                    </li>
+                    {tasks
+                      .filter((task) => {
+                        return workOrders.some((id) => {
+                          return id === task._id;
+                        });
+                      })
+                      .map((task) => (
+                        <ContactWorkOrderItem
+                          task={task}
+                          removeWorkOrder={removeWorkOrder}
+                        />
+                      ))}
+                  </ul>
+                </div>
+              </div>
+            ) : (
+              <div className="w-full p-3">
+                <div className="flex justify-between w-full">
+                  <h2 className="mb-0">Work Orders</h2>
+                  <Dropdown
+                    tasks={tasks}
+                    workOrders={workOrders}
+                    setWorkOrders={setWorkOrders}
+                    onWorkOrderSubmit={onWorkOrderSubmit}
+                  />
+                </div>
+              </div>
+            )}
           </section>
         </div>
       </div>
