@@ -8,7 +8,7 @@ const Dropdown = ({ tasks, workOrders, setWorkOrders, onWorkOrderSubmit }) => {
   return (
     <div className="">
       <div
-        className=" hover:cursor-pointer py-2 px-4 justify-between flex gap-x-2 text-sm  items-center rounded-sm font-semibold text-[#6b6b6b] hover:bg-[#e2e2e2] bg-[#efefef] hover:text-[#212121] focus:bg-[#e2e2e2] "
+        className=" hover:cursor-pointer py-2 px-4 sm:mt-2 justify-between flex gap-x-2 text-sm  items-center rounded-sm font-semibold text-[#6b6b6b] hover:bg-[#e2e2e2] bg-[#efefef] hover:text-[#212121] focus:bg-[#e2e2e2] "
         onClick={() => setOpen(!open)}
       >
         Add Work Orders
@@ -19,7 +19,7 @@ const Dropdown = ({ tasks, workOrders, setWorkOrders, onWorkOrderSubmit }) => {
         />
       </div>
       <ul
-        className={`shadow-sm mt-2 min-w-fit max-h-56 overflow-x-scroll absolute right-4 bg-white border-[1px] border-gray-200 rounded overflow-y-auto p-2 ${
+        className={`shadow-md mt-2 min-w-fit max-h-60 sm:max-h-72 overflow-x-scroll absolute right-4 bg-white border-[1px] border-gray-200 rounded overflow-y-auto p-2 ${
           open ? 'flex flex-col' : 'hidden'
         } `}
       >

@@ -4,7 +4,6 @@ const API_URL = '/api/contacts/';
 
 //  POST request for contact
 const createContact = async (contactData, token) => {
-  console.log(contactData);
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -36,7 +35,6 @@ const updateContact = async (contact, token) => {
   };
 
   const response = await axios.put(API_URL + contact._id, contact, config);
-  console.log(response.data);
   return response.data;
 };
 

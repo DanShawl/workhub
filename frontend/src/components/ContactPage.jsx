@@ -14,14 +14,7 @@ import Dropdown from './Dropdown';
 // import { VscAdd } from 'react-icons/vsc';
 import { BiChevronRight } from 'react-icons/bi';
 import { SlPaperPlane, SlPencil } from 'react-icons/sl';
-import {
-  CiEdit,
-  CiUser,
-  CiMail,
-  CiPhone,
-  CiShop,
-  CiDesktop,
-} from 'react-icons/ci';
+import { CiUser, CiMail, CiPhone, CiShop, CiDesktop } from 'react-icons/ci';
 import ContactWorkOrderItem from './ContactWorkOrderItem';
 // import Spinner from './Spinner';
 
@@ -170,6 +163,7 @@ const ContactPage = () => {
   return (
     <>
       <div className=" mt-14 md:mt-0 md:bg-[#fff] md:pl-[100px] h-screen flex flex-col text-sm md:w-full items-center sm:items-stretch w-full">
+        {/* ----------- Contact Page Header/Sidebar ----------- */}
         <div className=" px-6 py-6 flex items-center justify-between gap-x-4 sm:border-b-[1px] border-gray-300 border-b-0">
           <div>
             <div className=" hidden md:flex items-center gap-x-1 text-[#938f8f] font-normal text-xs mb-2">
@@ -198,7 +192,7 @@ const ContactPage = () => {
               </p>
             </div>
           </div>
-          <div className="fixed bottom-6 right-4 lg:static z-40 sm:flex sm:gap-x-4">
+          {/* <div className="fixed bottom-6 right-4 lg:static z-40 sm:flex sm:gap-x-4">
             <input
               type="text"
               placeholder="Search for a name, email, phone number..."
@@ -206,15 +200,18 @@ const ContactPage = () => {
             />
             <button
               className=" hover:bg-[#cf5126] rounded-full md:rounded-sm text-white font-semibold bg-[#ff5c35] flex items-center justify-between gap-x-2 p-5 md:p-4 md:py-2 z-49 md:shadow-sm shadow-2xl shadow-zinc-800"
-              // onClick={handleOpen}
+              
             >
               <CiEdit className=" text-xl md:text-base" />
               <p className="text-white font-semibold hidden md:block">
                 Edit Contact
               </p>
             </button>
-          </div>
+          </div> */}
         </div>
+
+        {/* ----------- Contact Page Details: can click to update info ----------- */}
+
         <div className="flex flex-col sm:flex-row w-full h-full">
           <section
             className="py-3 px-3 border-y-[1px] sm:border-r-[1px] sm:border-y-0 border-gray-300 text-xs font-sans "
@@ -428,6 +425,9 @@ const ContactPage = () => {
               )}
             </div>
           </section>
+
+          {/* -------- Contact Page Work Orders: list of work orders tagged to contact -------- */}
+
           <section className="flex-1 flex text-[#6b6b6b] font-sans">
             {tasks.length > 0 ? (
               <div className="w-full p-3">
@@ -441,11 +441,11 @@ const ContactPage = () => {
                   />
                 </div>
                 <div>
-                  <ul className="w-full sm:grid sm:grid-flow-row">
-                    <li className="hidden sm:grid sm:grid-cols-5 px-6 py-1 gap-x-6 text-[10px] ">
+                  <ul className="w-full sm:grid sm:grid-flow-row mt-8">
+                    <li className="hidden sm:grid sm:grid-cols-5 px-6 py-1 gap-x-6 text-[10px] sm:border-b-[1px] border-gray-300 ">
                       <div>TITLE</div>
-                      <div>STATUS </div>
                       <div>PRIORITY</div>
+                      <div>STATUS</div>
                       <div>ASSIGNED</div>
                       <div> </div>
                     </li>
@@ -457,6 +457,7 @@ const ContactPage = () => {
                       })
                       .map((task) => (
                         <ContactWorkOrderItem
+                          key={task._id}
                           task={task}
                           removeWorkOrder={removeWorkOrder}
                         />

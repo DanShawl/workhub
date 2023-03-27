@@ -5,7 +5,8 @@ import { getTasks, reset } from '../features/tasks/taskSlice';
 
 import ItemBox from './ItemBox';
 import { BiChevronRight, BiRightArrowAlt } from 'react-icons/bi';
-import { VscAdd } from 'react-icons/vsc';
+import { BiPlus } from 'react-icons/bi';
+// import { VscAdd } from 'react-icons/vsc';
 import Spinner from '../components/Spinner';
 import FormModal from './FormModal';
 
@@ -67,30 +68,11 @@ const TaskDashboard = () => {
     return <Spinner />;
   }
 
-  // f4f4f4
-  // 0025e8
-  // 302f2d
-  // f5f5f5 - form input
-
-  // bg-[#ff7445]
-  // bg-[#ff7043]
-
-  // bg-gray-200
-  // bg-[#f9f9f9]
-  // f6f7f9
-  //  e9e9e9
-  //  ff5c35
-  // ff7445
-  // f6f7f9
-  // edeeef
-  // edf0f4
-  // 2e4753
   return (
     <>
       <div className=" mt-14 md:mt-0 md:bg-[#fff] md:ml-[95px] h-screen flex flex-col text-sm md:w-fit">
-        {/* <div className=" mt-14 md:mt-0 bg-gray-200 md:bg-[#f6f7f9] md:ml-[167px] h-screen flex flex-col text-sm md:w-screen"> */}
-        {/* ----------- Task Dashboard Header/Sidebar: contains header info and task sorting ----------- */}
-        {/* <section className=" md:ml-[200px]"> */}
+        {/* ----------- Task Dashboard Header/Sidebar: contains header/sorting ----------- */}
+
         <section className=" md:ml-[200px]">
           <div className=" mx-6 mt-6 md:mb-6 flex items-center justify-between gap-x-4">
             <div>
@@ -118,7 +100,7 @@ const TaskDashboard = () => {
                 className=" hover:bg-[#cf5126] rounded-full md:rounded-sm text-white font-semibold bg-[#ff5c35] flex items-center justify-between gap-x-2 p-5 md:p-4 md:py-2 z-49 md:shadow-sm shadow-2xl shadow-zinc-800"
                 onClick={handleOpen}
               >
-                <VscAdd className=" text-xl md:text-base" />
+                <BiPlus className=" text-xl md:text-base" />
                 <p className="text-white font-semibold hidden md:block">
                   Create Work Order
                 </p>
