@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import ContactDashboard from './components/ContactDashboard';
 import TaskDashboard from './components/TaskDashboard';
 import ContactPage from './components/ContactPage';
+import DashboardHome from './components/DashboardHome';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<Dashboard />}>
+              <Route path="/" element={<DashboardHome />} />
               <Route path="work-orders" element={<TaskDashboard />} />
               <Route path="contacts" element={<ContactDashboard />} />
               <Route path="contacts/:id" element={<ContactPage />} />
@@ -32,6 +34,3 @@ function App() {
 }
 
 export default App;
-
-// Proxy error: Could not proxy request /api/tasks/ from localhost:3000 to http://localhost:5000/.
-// [1] See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (ECONNREFUSED).
