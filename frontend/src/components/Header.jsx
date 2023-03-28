@@ -23,8 +23,17 @@ function Header() {
           !toggleNav && 'border-b border-zinc-200 md:border-0'
         }`}
       >
-        <Link to="/" className=" text-gray-800 text-2xl">
+        {/* <Link to="/" className=" text-gray-800 text-2xl">
           W<span className=" italic font-bold text-[#f16232]">H</span>
+        </Link> */}
+        <Link
+          to="/"
+          className=" text-[#212121] font-medium text-xl flex items-center"
+        >
+          W
+          <span className=" italic font-black -ml-2 text-[#ff5c35] text-3xl">
+            H
+          </span>
         </Link>
         {toggleNav ? (
           <button
@@ -63,7 +72,7 @@ function Header() {
           <li>
             <Link
               to="/login"
-              className="text-[#ff7445] flex justify-center items-center gap-1 font-bold hover:text-[#de5b34] hover:bg-[#e4e4e4] md:px-2 rounded-md"
+              className="text-[#ff5c35] flex justify-center items-center gap-1 font-bold hover:text-[#de5b34] hover:bg-[#efefef] md:px-2 rounded-sm"
               onClick={() => setToggleNav(!toggleNav)}
             >
               Login
@@ -72,7 +81,7 @@ function Header() {
           <li>
             <Link
               to="/register"
-              className="flex justify-center items-center gap-1 font-bold bg-[#ff7445] rounded-md text-white md:w-fit md:px-4 hover:bg-[#de5b34] shadow-sm"
+              className="flex justify-center items-center gap-1 font-bold bg-[#ff5c35] rounded-sm text-white md:w-fit py-3 sm:py-0 md:px-4 hover:bg-[#de5b34] shadow-sm"
               onClick={() => setToggleNav(!toggleNav)}
             >
               Register

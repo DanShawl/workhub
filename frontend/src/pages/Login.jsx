@@ -66,24 +66,29 @@ function Login() {
 
         <section className=" px-4 flex-1 md:border-l md:border-zinc-200 md:max-w-lg lg:max-w-xl md:pl-12 lg:mr-20">
           <div className="md:mb-10">
-            <h1 className=" text-4xl md:text-5xl text-gray-800">
+            <h1 className=" text-4xl md:text-5xl text-gray-800 font-bold">
               Easily manage your day-to-day facility tasks.
             </h1>
-            <p className="md:text-xl text-zinc-600">
+            <p className="md:text-md text-[#6b6b6b] font-normal">
               With WorkHub's easy-to-use and simplified facility management
-              software, you'll have all of your tasks, work orders, and
-              equipment reports in one place.
+              software, you'll be able to organize and manage tasks, work
+              orders, assets, and more, all in one place.
+            </p>
+
+            <p className="md:text-md text-[#6b6b6b] font-normal mt-2">
+              WorkHub can be accessed through a desktop or mobile device,
+              allowing facility managers to remotely monitor and manage
+              facilities from anywhere, at any time.
             </p>
           </div>{' '}
           <div className="hidden md:block">
-            <h1>Login</h1>
-            <p>Please sign in.</p>
+            <h3>Login</h3>
           </div>
           <form onSubmit={onFormSubmit}>
             <div className="">
               <input
                 type="email"
-                className=" border-zinc-200 border w-full px-2 py-3 rounded-md my-2 outline-1 outline-[#f16232]"
+                className=" border-zinc-200 border w-full px-2 py-3 rounded-md my-2 outline-1 outline-[#ff5c35] text-sm"
                 id="email"
                 name="email"
                 value={email}
@@ -94,7 +99,7 @@ function Login() {
             <div className="">
               <input
                 type="password"
-                className=" border-zinc-200 border w-full px-2 py-3 rounded-md my-2 outline-1 outline-[#f16232]"
+                className=" border-zinc-200 border w-full px-2 py-3 rounded-md my-2 outline-1 outline-[#ff5c35] text-sm"
                 id="password"
                 name="password"
                 value={password}
@@ -106,7 +111,7 @@ function Login() {
             <div className="">
               <button
                 type="submit"
-                className=" my-2 flex justify-center items-center gap-1 font-bold bg-[#ff7445] rounded-md w-full py-3 text-white md:w-28 md:mt-2 hover:bg-[#de5b34]"
+                className=" my-2 flex justify-center items-center gap-1 font-bold bg-[#ff5c35] rounded-sm w-full py-3 text-white md:w-28 md:mt-2 hover:bg-[#de5b34]"
                 // [#f16232]
                 // [#6870fa]
               >
