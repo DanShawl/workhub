@@ -1,6 +1,5 @@
 import DashboardSideBar from '../components/DashboardSideBar';
-import { Link, Outlet } from 'react-router-dom';
-import { CiReceipt, CiUser } from 'react-icons/ci';
+import { Outlet } from 'react-router-dom';
 
 function Dashboard() {
   return (

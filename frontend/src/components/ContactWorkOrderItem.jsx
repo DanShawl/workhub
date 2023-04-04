@@ -1,4 +1,4 @@
-import { CiMail, CiPhone } from 'react-icons/ci';
+// import { CiMail, CiPhone } from 'react-icons/ci';
 // import { Link } from 'react-router-dom';
 import { BiMinusCircle, BiCheck, BiX, BiRevision } from 'react-icons/bi';
 const ContactWorkOrderItem = ({ task, removeWorkOrder }) => {

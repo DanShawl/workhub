@@ -16,7 +16,7 @@ import { BiChevronRight } from 'react-icons/bi';
 import { SlPaperPlane, SlPencil } from 'react-icons/sl';
 import { CiUser, CiMail, CiPhone, CiShop, CiDesktop } from 'react-icons/ci';
 import ContactWorkOrderItem from './ContactWorkOrderItem';
-// import Spinner from './Spinner';
+import Spinner from './Spinner';
 
 const ContactPage = () => {
   const dispatch = useDispatch();
@@ -105,7 +105,7 @@ const ContactPage = () => {
 
   useEffect(() => {
     dispatch(updateContact({ _id, workOrders }));
-  }, [workOrders]);
+  }, [workOrders, _id, dispatch]);
 
   const onWorkOrderSubmit = (workOrderID) => {
     workOrders.includes(workOrderID)
@@ -388,20 +388,20 @@ const ContactPage = () => {
                 <div>
                   <p className="text-[#6b6b6b] font-semibold">Job Title</p>
 
-                  {/* {isLoading ? (
+                  {isLoading ? (
                     <Spinner />
-                  ) : ( */}
-                  <input
-                    type="text"
-                    placeholder={currentJobTitle}
-                    value={jobTitle}
-                    // disabled={false}
-                    onChange={(e) => setJobTitle(e.target.value)}
-                    onClick={jobTitleFocus}
-                    className={` text-xs outline-none placeholder:text-[#212121] focus:placeholder:text-gray-400 bg-transparent`}
-                    ref={jobTitleRef}
-                  />
-                  {/* )} */}
+                  ) : (
+                    <input
+                      type="text"
+                      placeholder={currentJobTitle}
+                      value={jobTitle}
+                      // disabled={false}
+                      onChange={(e) => setJobTitle(e.target.value)}
+                      onClick={jobTitleFocus}
+                      className={` text-xs outline-none placeholder:text-[#212121] focus:placeholder:text-gray-400 bg-transparent`}
+                      ref={jobTitleRef}
+                    />
+                  )}
                 </div>
               </div>
               {toggleSubmitButton === 'jobTitle' && editJobTitle ? (
