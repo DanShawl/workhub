@@ -60,11 +60,11 @@ function Login() {
   return (
     <>
       <div className="flex flex-col md:flex-row justify-center items-center h-screen bg-gray-100">
-        <section className=" mt-12 md:mt-0 mx-4 md:flex-1 flex justify-center md:items-center -mb-14 md:mb-0">
+        <section className=" mt-20 sm:mt-12 md:mt-0 mx-4 md:flex-1 flex justify-center md:items-center -mb-14 md:mb-0">
           <img src={WorkhubDemo} alt="" className=" w-full md:max-w-[85%]" />
         </section>
 
-        <section className=" px-4 flex-1 md:border-l md:border-zinc-200 md:max-w-lg lg:max-w-xl md:pl-12 lg:mr-20">
+        <section className=" px-4 flex-1 md:border-l md:border-zinc-200 md:max-w-lg lg:max-w-xl md:pl-12 lg:mr-20 pb-12 sm:pb-0">
           <div className="md:mb-10">
             <h1 className=" text-4xl md:text-5xl text-gray-800 font-bold">
               Easily manage your day-to-day facility tasks.

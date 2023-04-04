@@ -97,11 +97,12 @@ const TaskDashboard = () => {
             </div>
             <div className="fixed bottom-6 right-4 lg:static z-40">
               <button
-                className=" hover:bg-[#cf5126] rounded-full md:rounded-sm text-white font-semibold bg-[#ff5c35] flex items-center justify-between gap-x-2 p-5 md:p-4 md:py-2 z-49 md:shadow-sm shadow-2xl shadow-zinc-800"
+                // className=" hover:bg-[#cf5126] rounded-full md:rounded-sm text-white font-semibold bg-[#ff5c35] flex items-center justify-between gap-x-2 p-5 md:p-4 md:py-2 z-49 md:shadow-sm shadow-2xl shadow-zinc-800"
+                className=" hover:bg-[#cf5126] rounded-full lg:rounded-sm text-white font-semibold bg-[#ff5c35] flex items-center justify-between gap-x-2 p-5 lg:p-4 lg:py-2 z-49 sm:shadow-sm shadow-2xl shadow-zinc-800"
                 onClick={handleOpen}
               >
-                <BiPlus className=" text-xl md:text-base" />
-                <p className="text-white font-semibold hidden md:block">
+                <BiPlus className=" text-xl lg:text-base" />
+                <p className="text-white font-semibold hidden lg:block">
                   Create Work Order
                 </p>
               </button>

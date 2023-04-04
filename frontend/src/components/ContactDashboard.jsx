@@ -82,14 +82,14 @@ const ContactDashboard = () => {
             <input
               type="text"
               placeholder="Search for a name, email, phone number..."
-              className=" hidden sm:block focus:border-gray-300 py-2 px-2 border-[1px] rounded-sm outline-none font-medium text-[#212121] hover:bg-[#efefef] bg-[#f9f9f9] text-xs w-64"
+              className=" hidden lg:block focus:border-gray-300 py-2 px-2 border-[1px] rounded-sm outline-none font-medium text-[#212121] hover:bg-[#efefef] bg-[#f9f9f9] text-xs w-64"
             />
             <button
-              className=" hover:bg-[#cf5126] rounded-full md:rounded-sm text-white font-semibold bg-[#ff5c35] flex items-center justify-between gap-x-2 p-5 md:p-4 md:py-2 z-49 md:shadow-sm shadow-2xl shadow-zinc-800"
+              className=" hover:bg-[#cf5126] rounded-full lg:rounded-sm text-white font-semibold bg-[#ff5c35] flex items-center justify-between gap-x-2 p-5 lg:p-4 lg:py-2 z-49 sm:shadow-sm shadow-2xl shadow-zinc-800"
               onClick={handleOpen}
             >
-              <BiPlus className=" text-xl md:text-base" />
-              <p className="text-white font-semibold hidden md:block">
+              <BiPlus className=" text-xl lg:text-base" />
+              <p className="text-white font-semibold hidden lg:block">
                 Create Contact
               </p>
             </button>

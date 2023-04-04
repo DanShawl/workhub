@@ -16,13 +16,13 @@ const DashboardHome = () => {
 
   return (
     <>
-      <div className=" flex-1 h-screen flex flex-col justify-center items-center md:pl-[100px] gap-y-10">
-        <div className="text-center md:mx-52">
+      <div className=" flex-1 pt-24 pb-10 h-full sm:h-screen flex flex-col justify-center items-center md:pl-[100px] gap-y-5 sm:gap-y-10">
+        <div className=" text-center md:mx-10 lg:mx-52">
           <h1 className=" text-5xl text-[#212121] font-semibold mb-6">
             Welcome to WorkHub
             {/* text-[#ff5c35] */}
           </h1>
-          <p className="font-medium text-center text-[#6b6b6b]">
+          <p className="hidden sm:flex font-medium text-center text-[#6b6b6b]">
             WorkHub was designed to help you organize and manage various tasks
             and operations related to building maintenance, such as work order
             management, asset tracking, and more. The application can be
@@ -31,7 +31,7 @@ const DashboardHome = () => {
           </p>
         </div>
         {/* hover:bg-[#ffb4a16d] */}
-        <div className="flex gap-x-16 max-w-3xl">
+        <div className="flex flex-col sm:flex-row gap-y-8 px-6 gap-x-16 max-w-3xl">
           <Link
             to={'work-orders'}
             className=" flex flex-1 justify-center items-center flex-col border-[1px] border-gray-300 p-8 rounded-md hover:cursor-pointer bg-[#f2f2f2] hover:bg-[#e7e7e7]  hover:text-[#ff5c35]"
