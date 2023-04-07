@@ -79,11 +79,11 @@ const ContactDashboard = () => {
             </div>
           </div>
           <div className="fixed bottom-6 right-4 lg:static z-40 sm:flex sm:gap-x-4">
-            <input
+            {/* <input
               type="text"
               placeholder="Search for a name, email, phone number..."
               className=" hidden lg:block focus:border-gray-300 py-2 px-2 border-[1px] rounded-sm outline-none font-medium text-[#212121] hover:bg-[#efefef] bg-[#f9f9f9] text-xs w-64"
-            />
+            /> */}
             <button
               className=" hover:bg-[#cf5126] rounded-full lg:rounded-sm text-white font-semibold bg-[#ff5c35] flex items-center justify-between gap-x-2 p-5 lg:p-4 lg:py-2 z-49 sm:shadow-sm shadow-2xl shadow-zinc-800"
               onClick={handleOpen}
@@ -101,12 +101,12 @@ const ContactDashboard = () => {
         <div className="flex sm:w-full">
           <section className="sm:flex-1 w-full ">
             <ul className=" w-full sm:grid sm:grid-flow-row">
-              <li className="hidden sm:grid sm:grid-cols-5 px-6 py-1 gap-x-6 text-[10px] ">
+              <li className="hidden sm:grid sm:grid-cols-3 px-6 py-1 gap-x-6 text-[10px] ">
                 <div>NAME</div>
                 <div>EMAIL </div>
                 <div>PHONE</div>
-                <div>COMPANY </div>
-                <div>TITLE </div>
+                <div className="hidden lg:block">COMPANY </div>
+                <div className="hidden lg:block">TITLE </div>
               </li>
 
               {contacts.map((contact) => (

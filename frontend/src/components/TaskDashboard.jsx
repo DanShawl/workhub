@@ -70,10 +70,19 @@ const TaskDashboard = () => {
 
   return (
     <>
-      <div className=" mt-14 md:mt-0 md:bg-[#fff] md:ml-[95px] h-screen flex flex-col text-sm md:w-fit">
+      {/* <div className=" mt-14 md:mt-0 md:bg-[#fff] md:ml-[95px] h-screen flex flex-col text-sm md:w-fit"> */}
+      <div
+        className={` mt-14 md:mt-0 md:bg-[#fff] md:ml-[95px] h-screen flex flex-col text-sm overflow-x-hidden ${
+          tasks.length > 0 ? 'md:w-fit' : 'md:w-full'
+        }`}
+      >
         {/* ----------- Task Dashboard Header/Sidebar: contains header/sorting ----------- */}
 
-        <section className=" md:ml-[200px]">
+        <section
+          className={` md:ml-[200px] ${
+            tasks.length > 0 ? 'md:mr-0' : 'md:mr-[200px]'
+          }`}
+        >
           <div className=" mx-6 mt-6 md:mb-6 flex items-center justify-between gap-x-4">
             <div>
               <div className=" hidden md:flex items-center gap-x-1 text-[#938f8f] font-normal text-xs mb-2">
@@ -173,7 +182,7 @@ const TaskDashboard = () => {
 
         {/* ----------- Task Grid: Contains task items sorted by status ----------- */}
         <section className=" md:ml-[200px] bg-[#fff] md:border-t-[1px] md:border-gray-300">
-          <div className=" md:m-6 sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6 bg-[#fff]">
+          <div className=" md:m-6 sm:grid sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 bg-[#fff]">
             {/* md:grid grid-cols-3 */}
             {tasks.length > 0 ? (
               currentTaskStatus !== 'All' ? (
@@ -196,10 +205,10 @@ const TaskDashboard = () => {
                 <h1 className="flex gap-x-1">
                   You have no tasks.{' '}
                   <button
-                    className=" decoration-[#ff7445] underline underline-offset-4 flex items-center gap-x hover:text-[#ff7445]"
+                    className=" decoration-[#ff7445] underline underline-offset-4 flex items-center gap-x hover:text-[#ff7445] text-[#ff7445] font-semibold"
                     onClick={handleOpen}
                   >
-                    Create a task now.
+                    Create a task
                     <BiRightArrowAlt className="text-[#ff7445] text-lg" />
                   </button>
                 </h1>

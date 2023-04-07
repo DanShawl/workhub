@@ -6,7 +6,7 @@ const ContactListItem = ({ contact }) => {
   return (
     <li>
       <Link
-        className="grid grid-cols-2 gap-y-4 sm:gap-y-0 sm:grid-cols-5 w-full px-6 py-4 gap-x-6 border-[1px] border-b-0 border-gray-200 hover:cursor-pointer hover:bg-[#f2f2f2] font-sans text-xs"
+        className="grid grid-cols-2 gap-y-4 sm:gap-y-0 sm:grid-cols-3 w-full px-6 py-4 gap-x-6 border-[1px] border-b-0 border-gray-200 hover:cursor-pointer hover:bg-[#f2f2f2] font-sans text-xs"
         // onClick={() => console.log(contact._id)}
         to={`/contacts/${contact._id}`}
         state={{ contact: contact }}
@@ -46,10 +46,10 @@ const ContactListItem = ({ contact }) => {
           <CiPhone />
           <p>{contact.phoneNumber ? contact.phoneNumber : '-'}</p>
         </div>
-        <div className="hidden sm:flex items-center">
+        <div className="hidden lg:flex items-center">
           <p>{contact.company}</p>
         </div>
-        <div className="hidden sm:flex items-center">
+        <div className="hidden lg:flex items-center">
           <p>{contact.jobTitle}</p>
         </div>
       </Link>

@@ -17,7 +17,7 @@ function TaskItem({ task }) {
 
   return (
     // <div className="flex flex-col justify-between cursor-pointer md:relative md:h-full overflow-hidden mx-2">
-    <div className="flex gap-x-4 justify-between cursor-pointer md:relative md:h-full overflow-hidden mx-2">
+    <div className="flex gap-x-4 cursor-pointer md:relative md:h-full overflow-hidden mx-2">
       <div className=" text-xs font-medium flex flex-col items-center justify-center gap-x-1">
         <p className="text-[#6b6b6b] text-2xl">
           {new Date(task.createdAt).toLocaleString('default', {
