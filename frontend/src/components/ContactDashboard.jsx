@@ -101,12 +101,12 @@ const ContactDashboard = () => {
         <div className="flex sm:w-full">
           <section className="sm:flex-1 w-full ">
             <ul className=" w-full sm:grid sm:grid-flow-row">
-              <li className="hidden sm:grid sm:grid-cols-3 px-6 py-1 gap-x-6 text-[10px] ">
+              <li className="hidden sm:grid sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 px-6 py-1 gap-x-6 text-[10px] ">
                 <div>NAME</div>
                 <div>EMAIL </div>
                 <div>PHONE</div>
                 <div className="hidden lg:block">COMPANY </div>
-                <div className="hidden lg:block">TITLE </div>
+                <div className="hidden xl:block">TITLE </div>
               </li>
 
               {contacts.map((contact) => (

@@ -442,11 +442,11 @@ const ContactPage = () => {
                 </div>
                 <div>
                   <ul className="w-full sm:grid sm:grid-flow-row mt-8">
-                    <li className="hidden sm:grid sm:grid-cols-3 px-6 py-1 gap-x-6 text-[10px] sm:border-b-[1px] border-gray-300 ">
+                    <li className="hidden sm:grid sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 px-6 py-1 gap-x-6 text-[10px] sm:border-b-[1px] border-gray-300 ">
                       <div>TITLE</div>
                       <div>PRIORITY</div>
                       <div className="hidden lg:block">STATUS</div>
-                      <div className="hidden lg:block">ASSIGNED</div>
+                      <div className="hidden xl:block">ASSIGNED</div>
                       <div> </div>
                     </li>
                     {tasks

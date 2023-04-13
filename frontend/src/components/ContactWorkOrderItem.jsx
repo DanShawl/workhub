@@ -9,7 +9,7 @@ const ContactWorkOrderItem = ({ task, removeWorkOrder }) => {
   // }
 
   return (
-    <li className="grid grid-cols-3 gap-y-4 sm:gap-y-0 sm:grid-cols-3 w-full px-6 py-4 gap-x-6 border-t-[1px] sm:border-0 sm:border-b-[1px] border-gray-200 hover:cursor-pointer hover:bg-[#f2f2f2] font-sans text-xs">
+    <li className="grid grid-cols-3 gap-y-4 sm:gap-y-0 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 w-full px-6 py-4 gap-x-6 border-t-[1px] sm:border-0 sm:border-b-[1px] border-gray-200 hover:cursor-pointer hover:bg-[#f2f2f2] font-sans text-xs">
       <div className="flex items-center gap-x-2 col-span-2 sm:col-span-1">
         <div className="">
           <p className="font-semibold">{task.text}</p>
@@ -56,7 +56,7 @@ const ContactWorkOrderItem = ({ task, removeWorkOrder }) => {
         {task.taskStatus === 'Closed' && <BiCheck className=" text-lg" />}
         <p>{task.taskStatus}</p>
       </div>
-      <div className="hidden lg:flex items-center">
+      <div className="hidden xl:flex items-center">
         {/* <p>{contact.company}</p> */}
       </div>
       <div className="hidden sm:flex items-center justify-end">
