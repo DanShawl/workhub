@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import {
   // getContacts,
   // reset,
@@ -167,13 +167,19 @@ const ContactPage = () => {
         <div className=" px-6 py-6 flex items-center justify-between gap-x-4 sm:border-b-[1px] border-gray-300 border-b-0">
           <div>
             <div className=" hidden md:flex items-center gap-x-1 text-[#938f8f] font-normal text-xs mb-2">
-              <span className=" hover:text-[#ff5c35] cursor-pointer decoration-[#ff5c35]">
+              <Link
+                to={'/'}
+                className=" hover:text-[#ff5c35] cursor-pointer decoration-[#ff5c35] text-[#938f8f]"
+              >
                 Dashboard
-              </span>{' '}
+              </Link>{' '}
               <BiChevronRight className="" />{' '}
-              <span className="   hover:text-[#ff5c35] cursor-pointer decoration-[#ff5c35]">
+              <Link
+                to={'/contacts'}
+                className="   hover:text-[#ff5c35] cursor-pointer decoration-[#ff5c35] text-[#938f8f]"
+              >
                 Contacts
-              </span>{' '}
+              </Link>{' '}
               <BiChevronRight className="" />{' '}
               <span className="   hover:text-[#ff5c35] cursor-pointer decoration-[#ff5c35]">
                 {firstName} {lastName}

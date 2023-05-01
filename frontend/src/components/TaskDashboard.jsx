@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getTasks, reset } from '../features/tasks/taskSlice';
 
@@ -86,13 +86,19 @@ const TaskDashboard = () => {
           <div className=" mx-6 mt-6 md:mb-6 flex items-center justify-between gap-x-4">
             <div>
               <div className=" hidden md:flex items-center gap-x-1 text-[#938f8f] font-normal text-xs mb-2">
-                <span className=" hover:text-[#ff5c35] cursor-pointer decoration-[#ff5c35]">
+                <Link
+                  to={'/'}
+                  className=" hover:text-[#ff5c35] cursor-pointer decoration-[#ff5c35] text-[#938f8f]"
+                >
                   Dashboard
-                </span>{' '}
+                </Link>{' '}
                 <BiChevronRight className="" />{' '}
-                <span className="   hover:text-[#ff5c35] cursor-pointer decoration-[#ff5c35]">
+                <Link
+                  to={'/work-orders'}
+                  className="   hover:text-[#ff5c35] cursor-pointer decoration-[#ff5c35] text-[#938f8f]"
+                >
                   Work Orders
-                </span>{' '}
+                </Link>{' '}
                 <BiChevronRight className="" /> {currentTaskStatus}
               </div>
               <div className="">

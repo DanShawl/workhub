@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate, Link } from 'react-router-dom';
 import { getContacts, reset } from '../features/contacts/contactSlice';
 // import { VscAdd } from 'react-icons/vsc';
 import { BiChevronRight, BiPlus } from 'react-icons/bi';
@@ -60,9 +60,12 @@ const ContactDashboard = () => {
         <div className=" border-b-2 border-gray-200 sm:border-b-0 px-6 py-6 flex items-center justify-between gap-x-4">
           <div>
             <div className=" hidden md:flex items-center gap-x-1 text-[#938f8f] font-normal text-xs mb-2">
-              <span className=" hover:text-[#ff5c35] cursor-pointer decoration-[#ff5c35]">
+              <Link
+                to={'/'}
+                className=" hover:text-[#ff5c35] cursor-pointer decoration-[#ff5c35] text-[#938f8f]"
+              >
                 Dashboard
-              </span>{' '}
+              </Link>{' '}
               <BiChevronRight className="" />{' '}
               <span className="   hover:text-[#ff5c35] cursor-pointer decoration-[#ff5c35]">
                 Contacts
